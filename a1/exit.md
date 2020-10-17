@@ -1,0 +1,4 @@
+   |                        Specification                         | Test ID | Purpose                                                      | Test Procedure                                               | Expect Output                                                |
+ | :----------------------------------------------------------: | ------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+ |  Check Exit command and following result output   | R7.1.10  | make sure user successfully logged out and ticket has been created.                              | Landing the exit page, and produce output file based on the program output details.                |return message "Ticket was created successfully. Logout successfully. Exiting program."
+ 
