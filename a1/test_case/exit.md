@@ -1,0 +1,5 @@
+   |                        Specification                         | Test ID | Purpose                                                      | Test Procedure                                               | Expect Output                                                |
+ | :----------------------------------------------------------: | ------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+ |  Check Exit command if user logged in   | R7.1  | make sure user successfully logged out and ticket has been created.                | Landing the exit page, and produce output file based on the program output details.                |return message "Ticket was created successfully. Logout successfully. Exiting program."
+ |  Check Exit command if user not logged in   | R7.2  | user not logged in, the update will not be successful.          | Landing the exit page, and return error message                |return message "you are not logged in yet, you cannot exit."
+ 
