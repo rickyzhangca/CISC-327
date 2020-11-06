@@ -5,8 +5,10 @@ import helpers
 
 def main():
 
-    helpers.ResourcesHelper.loadUserInfo(sys.argv[1])
-    helpers.ResourcesHelper.loadTicketInfo(sys.argv[2])
+    region = sys.argv[1]
+
+    helpers.ResourcesHelper.loadUserInfo(sys.argv[2])
+    helpers.ResourcesHelper.loadTicketInfo(sys.argv[3])
 
     next_session = sessions.LandingSession()
     while next_session:
