@@ -1,10 +1,12 @@
+import sys
+
 import sessions
 import helpers
 
 def main():
 
-    helpers.ResourcesHelper.loadUserInfo()
-    helpers.ResourcesHelper.loadTicketInfo()
+    helpers.ResourcesHelper.loadUserInfo(sys.argv[1])
+    helpers.ResourcesHelper.loadTicketInfo(sys.argv[2])
 
     next_session = sessions.LandingSession()
     while next_session:

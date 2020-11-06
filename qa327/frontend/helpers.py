@@ -1,21 +1,10 @@
 user_info = {}
 ticket_info = {}
 
-user_file_path = 'qa327/data/user.csv'
-ticket_file_path = 'qa327/data/ticket.csv'
-
 class ResourcesHelper:
 
     @staticmethod
-    def setUserFilePath(file_path):
-        user_file_path = user_file
-
-    @staticmethod
-    def setTicketFilePath(file_path):
-        ticket_file_path = file_path        
-
-    @staticmethod
-    def loadUserInfo():
+    def loadUserInfo(user_file_path):
         user_file = open(user_file_path, 'r').read().split('\n')
         for i in user_file:
             record = i.split(', ')
@@ -26,7 +15,7 @@ class ResourcesHelper:
             }
     
     @staticmethod
-    def loadTicketInfo():        
+    def loadTicketInfo(ticket_file_path):        
         ticket_file = open(ticket_file_path, 'r').read().split('\n')
         for i in ticket_file:
             record = i.split(', ')
