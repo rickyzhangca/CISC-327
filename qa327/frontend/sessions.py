@@ -2,23 +2,33 @@ import helpers
 import exceptions
 
 '''
-This is the sessions module
+This is the sessions module:
 '''
 
+'''
+Base class with the basic structure of all frontend sessions.
+'''
 class Session:
 
+    # username is None when no one logged in.
     def __init__(self, username = None):
         self.username = username
 
+    # return with the object of the next session.
     def routing(self):
         return self
 
+    # functionality of the current session.
     def operate(self):
         pass
 
 
+'''
+Base class for sessions that required login.
+'''
 class LoggedInSession(Session):
 
+    # raise exceptions if user have not logged in.
     def __init__(self, username):
         super().__init__(username)   
         if not username:
@@ -35,8 +45,12 @@ class LoggedInSession(Session):
         return 'buy, sell, update, and logout'
 
 
+'''
+Base class for sessions that does not required login.
+'''
 class UnloggedInSession(Session):
 
+    # raise exceptions if user have logged in.
     def __init__(self, username): 
         super().__init__() 
         if username:
@@ -55,6 +69,7 @@ class LandingSession(Session):
     def __init__(self, username = None):
         super().__init__(username)
     
+    # go to corresponding sessions.
     def routing(self):
         try:
             if self.command == 'login':
@@ -84,6 +99,7 @@ class LandingSession(Session):
         self.displayMenu()
         self.getUserCommand()
     
+    # display user menu depend on whether the user logged in.
     def displayMenu(self):
         print('Menu options - ', end = '')
         if self.username:
@@ -100,6 +116,9 @@ class LandingSession(Session):
         self.command = input('Your command: ')
 
 
+'''
+session that guide the user's login process.
+'''
 class LoginSession(UnloggedInSession):
 
     def __init__(self, username):
@@ -115,9 +134,10 @@ class LoginSession(UnloggedInSession):
             email = helpers.UserIOHelper.acceptEmail()
             password = helpers.UserIOHelper.acceptPassword()            
             self.authorize(email, password)
-        except exceptions.FormatingException:            
+        except exceptions.WrongFormatException:            
             print('Login failed, ending session...')
     
+    # authorize email and password the user inputed. Setup username. 
     def authorize(self, email, password):
         for i in helpers.ResourcesHelper.getUserInfo():
             if helpers.ResourcesHelper.getUserInfo()[i]['email'] == email and helpers.ResourcesHelper.getUserInfo()[i]['password'] == password:
@@ -165,6 +185,9 @@ class UpdateSession(LoggedInSession):
         print('\nUpdateSession...')
 
 
+'''
+User logout.
+'''
 class LogoutSession(LoggedInSession):
 
     def __init__(self, username):
@@ -176,6 +199,10 @@ class LogoutSession(LoggedInSession):
     def routing(self):
         return LandingSession(None)
 
+
+'''
+Exiting the program.
+'''
 class ExitSession(UnloggedInSession):
 
     def __init__(self, username):
