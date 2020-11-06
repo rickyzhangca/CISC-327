@@ -1,3 +1,7 @@
+import re
+import getpass
+import exceptions
+
 user_info = {}
 ticket_info = {}
 
@@ -55,3 +59,36 @@ class TransactionsHelper:
     @staticmethod
     def newTicketTransaction(transaction_name, user_name, ticket_name, ticket_price, quantity):
         transactions.append(transaction_name + ', ' + user_name + ', ' + ticket_name + ', ' + ticket_price + ', ' + quantity)
+
+class UserIOHelper:
+
+    @staticmethod
+    def acceptEmail():
+        email = input('Email: ')
+        if len(email) < 1:
+            print('Email address cannot be empty.')
+            raise exceptions.FormatingException()
+        if not re.match(r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)", email):
+            print('Recieved email address:', email, 'format is incorrect.')
+            raise exceptions.FormatingException()
+        return email
+    
+    @staticmethod
+    def acceptPassword():
+        password = getpass.getpass('Password: ')
+        if len(password) < 1:
+            print('Password cannot be empty.')
+            raise exceptions.FormatingException()
+        if len(password) < 6:
+            print('Given password is too short. Need at least 6 in length.')
+            raise exceptions.FormatingException()
+        if not any(i.isupper() for i in password):
+            print('Password should contain at least one upper case character.')
+            raise exceptions.FormatingException()
+        if not any(i.islower() for i in password):
+            print('Password should contain at least one lower case character.')
+            raise exceptions.FormatingException()
+        if not any(not i.isalnum() for i in password):
+            print('Password should contain at least one special character.')
+            raise exceptions.FormatingException()
+        return password

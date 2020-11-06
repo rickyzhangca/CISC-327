@@ -1,4 +1,5 @@
 import helpers
+import exceptions
 
 '''
 This is the sessions module
@@ -22,7 +23,7 @@ class LoggedInSession(Session):
         super().__init__(username)   
         if not username:
             print('Invaild command, user must be logged in first')
-            raise Exception('User Not Logged In')
+            raise exceptions.CannotAccessPageException()
     
     def routing(self):
         return LandingSession(self.username)
@@ -36,11 +37,11 @@ class LoggedInSession(Session):
 
 class UnloggedInSession(Session):
 
-    def __init__(self, username = None): 
+    def __init__(self, username): 
         super().__init__() 
         if username:
             print('Invaild command, user must be logged out first')
-            raise Exception('User Logged In')
+            raise exceptions.CannotAccessPageException()
 
     def routing(self):
         return LandingSession()
@@ -55,32 +56,36 @@ class LandingSession(Session):
         super().__init__(username)
     
     def routing(self):
-        if self.command == 'login':
-            new_session = LoginSession()
-        elif self.command == 'register':
-            new_session = RegisterSession()
-        elif self.command == 'buy':
-            new_session = BuySession(self.username)
-        elif self.command == 'sell':
-            new_session = SellSession(self.username)
-        elif self.command == 'update':
-            new_session = UpdateSession(self.username)
-        elif self.command == 'logout':
-            new_session = LogoutSession(self.username)
-        elif self.command == 'exits':
-            new_session = ExitSession(self.username)
-        else:
-            print('Command undefind.')
+        try:
+            if self.command == 'login':
+                new_session = LoginSession(self.username)
+            elif self.command == 'register':
+                new_session = RegisterSession(self.username)
+            elif self.command == 'buy':
+                new_session = BuySession(self.username)
+            elif self.command == 'sell':
+                new_session = SellSession(self.username)
+            elif self.command == 'update':
+                new_session = UpdateSession(self.username)
+            elif self.command == 'logout':
+                new_session = LogoutSession(self.username)
+            elif self.command == 'exits':
+                new_session = ExitSession(self.username)
+            else:
+                print('Command undefind.')
+                new_session = self
+        except exceptions.CannotAccessPageException:
             new_session = self
         return new_session
     
     def operate(self):
-        print('\nLanding...')
-        self.displayMenu()
+        print('\nLanding Screen...')        
         self.showBalence()
+        self.displayMenu()
         self.getUserCommand()
     
     def displayMenu(self):
+        print('Menu options - ', end = '')
         if self.username:
             print(LoggedInSession.getMenu(self))
         else:
@@ -88,7 +93,8 @@ class LandingSession(Session):
 
     def showBalence(self):
         if self.username:
-            print('Your balance is:', helpers.ResourcesHelper.getUserInfo()[self.username]['balence'])
+            print('\nHi', self.username + '!')
+            print('Your balance is: $' + str(helpers.ResourcesHelper.getUserInfo()[self.username]['balence']) + '.\n')
 
     def getUserCommand(self):
         self.command = input('Your command: ')
@@ -96,8 +102,8 @@ class LandingSession(Session):
 
 class LoginSession(UnloggedInSession):
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, username):
+        super().__init__(username)
         self.username = None
     
     def routing(self):
@@ -105,22 +111,25 @@ class LoginSession(UnloggedInSession):
     
     def operate(self):
         print('\nLog in session starts...')
-        email = input('Email: ')
-        password = input('Password: ')
-        self.authorize(email, password)
+        try:
+            email = helpers.UserIOHelper.acceptEmail()
+            password = helpers.UserIOHelper.acceptPassword()            
+            self.authorize(email, password)
+        except exceptions.FormatingException:            
+            print('Login failed, ending session...')
     
     def authorize(self, email, password):
         for i in helpers.ResourcesHelper.getUserInfo():
             if helpers.ResourcesHelper.getUserInfo()[i]['email'] == email and helpers.ResourcesHelper.getUserInfo()[i]['password'] == password:
-                print('Account logged in.')
+                print('Account logged in!')
                 self.username = i
                 return
         print('Email or password incorrect.')
 
 class RegisterSession(UnloggedInSession):
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, username):
+        super().__init__(username)
         self.username = None
     
     def operate(self):
@@ -162,7 +171,7 @@ class LogoutSession(LoggedInSession):
         super().__init__(username)
 
     def operate(self):
-        print('\nLogoutSession...')
+        print('\nLogout Successfully!')
 
     def routing(self):
         return LandingSession(None)
@@ -173,7 +182,7 @@ class ExitSession(UnloggedInSession):
         super().__init__(username)
 
     def operate(self):
-        print('\nExitSession...')
+        print('\nSaving transactions & exit...')
 
     def routing(self):
         return None

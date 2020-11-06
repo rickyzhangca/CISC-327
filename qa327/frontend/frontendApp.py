@@ -10,6 +10,9 @@ def main():
     helpers.ResourcesHelper.loadUserInfo(sys.argv[2])
     helpers.ResourcesHelper.loadTicketInfo(sys.argv[3])
 
+    print('Welcome to SeetGeek!')
+    print('author @VeryUsefulGroup')
+
     next_session = sessions.LandingSession()
     while next_session:
         current_session = next_session
@@ -18,3 +21,7 @@ def main():
         del current_session
     
     helpers.TransactionsHelper.saveTransactions(location)
+    
+    print('Transactions saved.')
+    print()
+    print('Good bye!')
