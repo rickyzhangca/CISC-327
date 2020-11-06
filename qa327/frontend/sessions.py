@@ -149,6 +149,7 @@ class LoginSession(UnloggedInSession):
                 return
         print('Email or password incorrect.')
 
+
 class RegisterSession(UnloggedInSession):
 
     def __init__(self, username):
@@ -160,6 +161,7 @@ class RegisterSession(UnloggedInSession):
     
     def authorize(self, username, password):
         self.username = username
+
 
 class SellSession(LoggedInSession):
 
