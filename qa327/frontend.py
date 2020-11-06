@@ -1,5 +1,4 @@
-import sys
-import os
+from sessions.landing import LandingSession
 
 def main():
     
