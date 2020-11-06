@@ -49,9 +49,9 @@ class TransactionsHelper:
         transaction_file.close()
 
     @staticmethod
-    def newUserTransaction(transaction_name, user_name, user_email, user_password, balance)
+    def newUserTransaction(transaction_name, user_name, user_email, user_password, balance):
         transactions.append(transaction_name + ', ' + user_name + ', ' + user_email + ', ' + user_password + ', ' + balance)
 
     @staticmethod
-    def newTicketTransaction(transaction_name, user_name, ticket_name, ticket_price, quantity)
+    def newTicketTransaction(transaction_name, user_name, ticket_name, ticket_price, quantity):
         transactions.append(transaction_name + ', ' + user_name + ', ' + ticket_name + ', ' + ticket_price + ', ' + quantity)
