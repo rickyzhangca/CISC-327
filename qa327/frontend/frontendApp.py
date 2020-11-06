@@ -5,7 +5,7 @@ import helpers
 
 def main():
 
-    region = sys.argv[1]
+    location = sys.argv[1]
 
     helpers.ResourcesHelper.loadUserInfo(sys.argv[2])
     helpers.ResourcesHelper.loadTicketInfo(sys.argv[3])
@@ -16,4 +16,5 @@ def main():
         current_session.operate()
         next_session = current_session.routing()
         del current_session
-        
+    
+    helpers.TransactionsHelper.saveTransactions(location)

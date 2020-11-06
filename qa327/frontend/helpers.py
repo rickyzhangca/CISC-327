@@ -1,6 +1,10 @@
 user_info = {}
 ticket_info = {}
 
+location = None
+
+transactions = []
+
 class ResourcesHelper:
 
     @staticmethod
@@ -33,3 +37,21 @@ class ResourcesHelper:
     @staticmethod
     def getTicketInfo():
         return ticket_info
+
+
+class TransactionsHelper:
+
+    @staticmethod
+    def saveTransactions(location):
+        transaction_file = open(location + '_transactions.csv', 'w+')
+        for i in transactions:
+            transaction_file.write(i)
+        transaction_file.close()
+
+    @staticmethod
+    def newUserTransaction(transaction_name, user_name, user_email, user_password, balance)
+        transactions.append(transaction_name + ', ' + user_name + ', ' + user_email + ', ' + user_password + ', ' + balance)
+
+    @staticmethod
+    def newTicketTransaction(transaction_name, user_name, ticket_name, ticket_price, quantity)
+        transactions.append(transaction_name + ', ' + user_name + ', ' + ticket_name + ', ' + ticket_price + ', ' + quantity)
