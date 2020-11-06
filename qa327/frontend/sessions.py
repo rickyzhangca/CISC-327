@@ -16,6 +16,39 @@ class Session:
         pass
 
 
+class LoggedInSession(Session):
+
+    def __init__(self, username):
+        super().__init__(username)   
+        if not username:
+            print('Invaild command, user must be logged in first')
+            raise Exception('User Not Logged In')
+    
+    def routing(self):
+        return LandingSession(self.username)
+        
+    def getBalence(self):
+        pass
+
+    def getMenu(self):
+        return 'buy, sell, update, and logout'
+
+
+class UnloggedInSession(Session):
+
+    def __init__(self, username = None): 
+        super().__init__() 
+        if username:
+            print('Invaild command, user must be logged out first')
+            raise Exception('User Logged In')
+
+    def routing(self):
+        return LandingSession()
+
+    def getMenu(self):
+        return 'login, register, and exits'
+
+
 class LandingSession(Session):
 
     def __init__(self, username = None):
@@ -59,39 +92,6 @@ class LandingSession(Session):
 
     def getUserCommand(self):
         self.command = input('Your command: ')
-
-
-class LoggedInSession(Session):
-
-    def __init__(self, username):
-        super().__init__(username)   
-        if not username:
-            print('Invaild command, user must be logged in first')
-            raise Exception('User Not Logged In')
-    
-    def routing(self):
-        return LandingSession(self.username)
-        
-    def getBalence(self):
-        pass
-
-    def getMenu(self):
-        return 'buy, sell, update, and logout'
-
-
-class UnloggedInSession(Session):
-
-    def __init__(self, username = None): 
-        super().__init__() 
-        if username:
-            print('Invaild command, user must be logged out first')
-            raise Exception('User Logged In')
-
-    def routing(self):
-        return LandingSession()
-
-    def getMenu(self):
-        return 'login, register, and exits'
 
 
 class LoginSession(UnloggedInSession):
