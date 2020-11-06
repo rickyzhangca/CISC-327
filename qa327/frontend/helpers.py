@@ -1,8 +1,8 @@
 user_info = {}
 ticket_info = {}
 
-user_file = open('d:/2020_Fall/CMPE 327/project/CISC-327/qa327/user.csv', 'r').read().split('\n')
-ticket_file = open('d:/2020_Fall/CMPE 327/project/CISC-327/qa327/ticket.csv', 'r').read().split('\n')
+user_file = open('qa327/data/user.csv', 'r').read().split('\n')
+ticket_file = open('qa327/data/ticket.csv', 'r').read().split('\n')
 
 class ResourcesHelper:
 
