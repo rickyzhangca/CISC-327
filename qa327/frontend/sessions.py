@@ -64,6 +64,9 @@ class UnloggedInSession(Session):
         return 'login, register, and exits'
 
 
+'''
+Landing page that displays usermenu and balence.
+'''
 class LandingSession(Session):
 
     def __init__(self, username = None):
