@@ -169,23 +169,6 @@ class RegisterSession(UnloggedInSession):
     '''def authorize(self, username, password):
         self.username = username'''
 
-class SellSession(LoggedInSession):
-
-    def __init__(self, username):
-        super().__init__(username)
-
-    def operate(self):
-        print('\nSellSession...')
-
-
-class BuySession(LoggedInSession):
-
-    def __init__(self, username):
-        super().__init__(username)
-
-    def operate(self):
-        print('\nBuySession...')
-
 
 class UpdateSession(LoggedInSession):
 
@@ -234,178 +217,35 @@ class SellSession(LoggedInSession):
     def __init__(self, username):
         super().__init__(username)
 
+
     def operate(self):
         print('\nSelling Session starts...')
-        name = self.ticketName()
-        quantity = self.ticketQuantity()
-        price = self.ticketPrice()
-        date = self.ticketDate()
-
-
-    # check if the ticketName valid
-    def ticketName(self):
-        count = 0
-        while (count <= 60):
-            name = input("Please enter the tickets' name you'd like to sell: ")
-            if (not name == ""):
-                # check if ticket name is alphanumeric and space only, check if space not the first or the last character.
-                if all(x.isalnum() or x.isspace() for x in name):
-                    # check if the name of the ticket is no longer than 60 characters
-                    if (not name[0].isspace() and not name[-1].isspace()):
-                        if (len(name) <= 60):
-                            #print("valid")
-                            return name
-                            #break
-                        else:
-                            print("The ticket's name should less than 60 charaters")
-                    else:
-                        count += 1
-                        print("Space not allow in first or last charater in ticket's name")
-                else:
-                    print("The name of the ticket has to be alphanumeric-only,")
-                    count += 1
-            else:
-                count += 1
-
-    def ticketQuantity(self):
-        count = 0
-        while (count <= 10):
-            quantity = input("Please enter the quantity of the tickets you’d like to sell: ")
-            if (not quantity == "" and quantity.isnumeric()):
-                # The quantity of the tickets has to be more than 0, and less than or equal to 100
-                if int(quantity) in range(1, 101):
-                    #print("valid")
-                    return quantity
-                    #break
-                else:
-                    print("The quantity of the tickets has to be more than 0, and less than or equal to 100.")
-                    count += 1
-            else:
-                print("Please enter the number")
-                count += 1
-
-    def ticketPrice(self):
-        count = 0
-        while (count <= 10):
-            price = input("Price your ticket(s) to sell: ")
-            if (not price == "" and price.isnumeric()):
-                # Price has to be of range [10, 100]
-                if int(price) in range(10, 101):
-                    #print("valid")
-                    return price
-                    #break
-                else:
-                    print("Price has to be of range [10, 100]")
-                    count += 1
-            else:
-                print("Please enter the number")
-                count += 1
-
-    def ticketDate(self):
-        count = 0
-        while (count <= 10):
-            date = input("Date of Ticket YYYYMMDD (e.g. 20200202): ")
-            if (not date == "" and date.isnumeric()):
-                # Date must be given in the format YYYYMMDD (e.g. 20200901)
-                if (len(date) == 8):
-                    day = dt.datetime.strptime(date, '%Y%m%d').date()
-                    # check if the valid date
-                    if day > dt.datetime.today().date():
-                        #print("valid " + date)
-                        return date
-                        #break
-                    else:
-                        print("Unavailable date")
-                        count += 1
-                else:
-                    print("Date must be given in the format YYYYMMDD (e.g. 20200901)")
-                    count += 1
-            else:
-                print("Date must be given in the format YYYYMMDD (e.g. 20200901)")
-                count += 1
+        try:
+            ticket_name = helpers.UserIOHelper.checkTicketName()
+            ticket_quantity = helpers.UserIOHelper.checkTicketQuantity(100)
+            ticket_price = helpers.UserIOHelper.checkTicketPrice()
+            date = helpers.UserIOHelper.checkDate()
+            helpers.TransactionsHelper.newTicketTransaction("sell", self.username, ticket_name, ticket_price, ticket_quantity)
+        except exceptions.WrongFormatException:            
+            print('sell failed, ending session...')
 
 class BuySession(LoggedInSession):
 
     def __init__(self, username):
         super().__init__(username)
 
+
     def operate(self):
-        print('\nSelling Session start...')
-        #self.ticketName()
-        quantity, price = self.ticketName()
-        balance = helpers.ResourcesHelper.getUserInfo()[self.username]['balence']
-        quantity = self.ticketQuantity(quantity)
-        newBalance = self.ticketPrice(price, quantity, balance)
+        print('\nSelling Session starts...')
+        try:
+            ticket_name, avaliable_quantity, ticket_price= helpers.UserIOHelper.buyTicketName(self)
+            ticket_quantity = helpers.UserIOHelper.checkTicketQuantity(avaliable_quantity)
+            balance = helpers.ResourcesHelper.getUserInfo()[self.username]['balence']
+            newBalance = helpers.UserIOHelper.balanceAfterbuy(ticket_price,ticket_quantity,balance)
+            helpers.TransactionsHelper.newTicketTransaction("buy", self.username, ticket_name, ticket_price, ticket_quantity)
 
-    def findTicket(self,name):
-        # if the valid ticket name, check if the name of ticket on selling
-        for i in helpers.ResourcesHelper.getTicketInfo():
-            # print(helpers.ResourcesHelper.getTicketInfo()[i]['name'])
-            if helpers.ResourcesHelper.getTicketInfo()[i]['name'] == name:
-                # check the available quantity of this ticket
-                quantity = helpers.ResourcesHelper.getTicketInfo()[i]['number']
-                price = helpers.ResourcesHelper.getTicketInfo()[i]['price']
-                print("available ticket quantity for %s is " % name + str(quantity))
-                return quantity, price,True
-
-    # check if the ticketName valid
-    def ticketName(self):
-        count = 0
-        #flag = False
-        while (count <= 10):
-            name = input("Please enter the tickets' name you'd like to buy.: ")
-            if (not name == ""):
-                # check if ticket name is alphanumeric and space only, check if space not the first or the last character.
-                if all(x.isalnum() or x.isspace() for x in name):
-                    # check if the name of the ticket is no longer than 60 characters
-                    if (not name[0].isspace() and not name[-1].isspace()):
-                        if (len(name) <= 60):
-                            #print("valid input")
-                            quantity, price, check = self.findTicket(name)
-                            #print(check)
-                            if check == True:
-                                return quantity,price
-
-                            count += 1
-                            print("sorry, we do not have %s yet" % name)
-
-                        else:
-                            count += 1
-                            print("The ticket's name should less than 60 charaters")
-                    else:
-                        count += 1
-                        print("Space not allow in first or last charater in ticket's name")
-                else:
-                    print("The name of the ticket has to be alphanumeric-only")
-                    count += 1
-            else:
-                count += 1
-
-    def ticketQuantity(self, quantities):
-        count = 0
-        while (count <= 10):
-            quantity = input("Please enter the quantity of the tickets you’d like to buy: ")
-            if (not quantity == "" and quantity.isnumeric()):
-                # The quantity of the tickets has to be more than 0, and less than or equal to the available quantity
-                if int(quantity) in range(1, quantities+1):
-                    #print("valid")
-                    return quantity
-                    #break
-                else:
-                    print("The quantity of the tickets has to be more than 0, and less than or equal to 100.")
-                    count += 1
-            else:
-                print("Please enter the number")
-                count += 1
-
-    # The user has more balance than the ticket price * quantity + service fee (35%) + tax (5%)
-    def ticketPrice(self, price, quantities, balance):
-        ticket_price = 1.05 * ((1.35 * float(price)) * float(quantities))
-        balance_now = float(balance) - ticket_price
-        if balance_now >= 0:
-            #print("valid")
-            print("Total price: ", ticket_price)
-            return balance_now
-        else:
-            print("Balance not enough, still need: $", str(balance_now))
-
+            userEmail = helpers.ResourcesHelper.getUserInfo()[self.username]['email']
+            userPassword = helpers.ResourcesHelper.getUserInfo()[self.username]['password']
+            helpers.TransactionsHelper.newUserTransactionAfterBuy("buy", self.username, userEmail, userPassword, newBalance)
+        except exceptions.WrongFormatException:            
+            print('sell failed, ending session...')
