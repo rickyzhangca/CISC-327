@@ -52,12 +52,6 @@ Helper that handle all the transactional activities, including saving and adding
 '''
 class TransactionsHelper:
 
-    current_username = 'no_username'
-
-    @staticmethod
-    def setUsername(username):
-        TransactionsHelper.current_username = username
-
     @staticmethod
     def saveTransactions(location):
         transaction_file = open(location + '_transactions.csv', mode='a', newline=None)
@@ -70,8 +64,8 @@ class TransactionsHelper:
         transactions.append(str(transaction_name) + ', ' + str(user_name) + ', ' + str(TransactionsHelper.current_username) + ', ' + str(user_email) + ', ' + str(user_password) + ', ' + str(balance) + '\n')
 
     @staticmethod
-    def newTicketTransaction(transaction_name, ticket_name, ticket_price, quantity):
-        transactions.append(str(transaction_name) + ', ' + str(TransactionsHelper.current_username) + ', ' + str(ticket_name) + ', ' + str(ticket_price) + ', ' + str(quantity) + '\n')
+    def newTicketTransaction(transaction_name, user_name, ticket_name, ticket_price, quantity):
+        transactions.append(str(transaction_name) + ', ' + str(user_name) + ', ' + str(ticket_name) + ', ' + str(ticket_price) + ', ' + str(quantity) + '\n')
 
 '''
 Helper that handle all user inputs.
