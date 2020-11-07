@@ -22,24 +22,13 @@ class LandingSession(Session):
         super().__init__(username)
     
     def routing(self):
-        if self.command == 'login':
-            new_session = LoginSession()
-        elif self.command == 'register':
-            new_session = RegisterSession()
-        elif self.command == 'buy':
-            new_session = BuySession(self.username)
-        elif self.command == 'sell':
-            new_session = SellSession(self.username)
-        elif self.command == 'update':
-            new_session = UpdateSession(self.username)
-        elif self.command == 'logout':
-            new_session = LogoutSession(self.username)
-        elif self.command == 'exits':
-            new_session = ExitSession(self.username)
+        #different routing for each case
+        if self.username:
+            # if loogged in
+            LoggedInSession.routing(self)
         else:
-            print('Command undefind.')
-            new_session = self
-        return new_session
+            # if not logged in yet
+            UnloggedInSession.routing(self)
     
     def operate(self):
         print('\nLanding...')
@@ -48,6 +37,7 @@ class LandingSession(Session):
         self.getUserCommand()
     
     def displayMenu(self):
+        # for different log in status， the input requirement is also different。
         if self.username:
             print(LoggedInSession.getMenu(self))
         else:
@@ -65,11 +55,24 @@ class LoggedInSession(Session):
 
     def __init__(self, username):
         super().__init__(username)   
-        if not username:
+        if not username: # check log in status
             print('Invaild command, user must be logged in first')
             raise Exception('User Not Logged In')
     
     def routing(self):
+        # if user logged in, no commads other than "buy" "sell""log out" are accepted
+        UpdateSession(self.username) #print out update status (update is not a command)
+        if self.command == 'buy':
+            new_session = BuySession(self.username)
+        elif self.command == 'sell':
+            new_session = SellSession(self.username)
+        elif self.command == 'logout':
+            new_session = LogoutSession(self.username)
+        elif self.command == 'exits':
+            new_session = ExitSession(self.username)
+        else:
+            print('Command undefind.')
+            new_session = self
         return LandingSession(self.username)
         
     def getBalence(self):
@@ -83,11 +86,21 @@ class UnloggedInSession(Session):
 
     def __init__(self, username = None): 
         super().__init__() 
-        if username:
+        if username: #check log in status
             print('Invaild command, user must be logged out first')
             raise Exception('User Logged In')
 
-    def routing(self):
+    def routing(self): #get the not-loggedin routing
+        # if user not loggedin, no command other thaan login register is accepted
+        if self.command == 'login':
+            new_session = LoginSession()
+        elif self.command == 'register':
+            new_session = RegisterSession()
+        elif self.command == 'exits':
+            new_session = ExitSession(self.username)
+        else:
+            print('Command undefind.')
+            new_session = self
         return LandingSession()
 
     def getMenu(self):
