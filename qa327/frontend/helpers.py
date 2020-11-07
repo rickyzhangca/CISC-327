@@ -63,7 +63,7 @@ class TransactionsHelper:
 
     @staticmethod
     def newUserTransaction(transaction_name, user_name, user_email, user_password, balance):
-        transactions.append(str(transaction_name) + ', ' + str(user_name) + ', ' + str(TransactionsHelper.current_username) + ', ' + str(user_email) + ', ' + str(user_password) + ', ' + str(balance) + '\n')
+        transactions.append(str(transaction_name) + ', ' + str(user_name) + ', ' + str(user_email) + ', ' + str(user_password) + ', ' + str(balance) + '\n')
 
     @staticmethod
     def newTicketTransaction(transaction_name, user_name, ticket_name, ticket_price, quantity):
