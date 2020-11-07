@@ -1,4 +1,3 @@
-import re
 import getpass
 import exceptions
 
@@ -61,14 +60,14 @@ class TransactionsHelper:
 
     @staticmethod
     def saveTransactions(location):
-        transaction_file = open(location + '_transactions.csv', 'w+')
+        transaction_file = open(location + '_transactions.csv', mode='a', newline=None)
         for i in transactions:
             transaction_file.write(i)
         transaction_file.close()
 
     @staticmethod
-    def newUserTransaction(transaction_name, user_email, user_password, balance):
-        transactions.append(str(transaction_name) + ', ' + str(TransactionsHelper.current_username) + ', ' + str(user_email) + ', ' + str(user_password) + ', ' + str(balance) + '\n')
+    def newUserTransaction(transaction_name, user_name, user_email, user_password, balance):
+        transactions.append(str(transaction_name) + ', ' + str(user_name) + ', ' + str(TransactionsHelper.current_username) + ', ' + str(user_email) + ', ' + str(user_password) + ', ' + str(balance) + '\n')
 
     @staticmethod
     def newTicketTransaction(transaction_name, ticket_name, ticket_price, quantity):
@@ -80,15 +79,25 @@ Helper that handle all user inputs.
 class UserIOHelper:
 
     @staticmethod
-    def acceptEmail():
+    def test(unique=False):
+        if unique:
+            ResourcesHelper.loadUserInfo('qa327/data/user.csv')
+            print(ResourcesHelper.getUserInfo())
+    
+    @staticmethod
+    def acceptEmail(unique=False):
         email = input('Email: ')
-        if len(email) < 1:
-            print('Email address cannot be empty.')
+        regex = """(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])"""
+        import re
+        if re.search(regex,email):  
+            if unique:
+                users = ResourcesHelper.getUserInfo()
+                for u in users.items():
+                    if u[1]['email'] == email:
+                        raise exceptions.WrongFormatException()
+            return email
+        else:  
             raise exceptions.WrongFormatException()
-        if not re.match(r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)", email):
-            print('Recieved email address:', email, 'format is incorrect.')
-            raise exceptions.WrongFormatException()
-        return email
     
     @staticmethod
     def acceptPassword():
@@ -109,6 +118,11 @@ class UserIOHelper:
             print('Password should contain at least one special character.')
             raise exceptions.WrongFormatException()
         return password
+    
+    @staticmethod
+    def acceptPassword2(password):
+        password2 = getpass.getpass('Confirm password: ')
+        return password2 == password
     
     @staticmethod
     def acceptTicketName():
@@ -173,3 +187,22 @@ class UserIOHelper:
             raise exceptions.WrongDateException()
         else:
             return date
+
+    @staticmethod
+    def acceptUsername():
+        username = input('Username: ')
+
+        if len(username) <= 2 or len(username) >= 20:
+            raise exceptions.WrongFormatException()
+
+        if len(username) > 1: 
+            if username[0] == ' ':
+                username = username[1:]
+            if username[-1] == ' ':
+                username = username[:-1]
+
+        check = username.isalnum()
+        if check:
+            return username
+        else:
+            raise exceptions.WrongFormatException()
