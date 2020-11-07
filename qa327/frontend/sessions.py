@@ -196,7 +196,7 @@ class UpdateSession(LoggedInSession):
         ticket_quantity = helpers.UserIOHelper.acceptTicketQuantity()
         ticket_price = helpers.UserIOHelper.acceptTicketPrice()
         date = helpers.UserIOHelper.acceptDate()
-        helpers.TransactionsHelper.newTicketTransaction("update", ticket_name, ticket_price, ticket_quantity)
+        helpers.TransactionsHelper.newTicketTransaction("update", self.username, ticket_name, ticket_price, ticket_quantity)
 
 
 '''
