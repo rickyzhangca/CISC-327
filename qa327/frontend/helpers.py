@@ -26,7 +26,7 @@ class ResourcesHelper:
                 'email': record[0],
                 'password': record[2],
                 'balence': float(record[3]),
-            }
+    }
     
     @staticmethod
     def loadTicketInfo(ticket_file_path):        
@@ -37,7 +37,7 @@ class ResourcesHelper:
                 'price': float(record[1]),
                 'number': int(record[2]),
                 'email': record[3],
-            }
+    }
 
     @staticmethod
     def getUserInfo():
@@ -63,11 +63,11 @@ class TransactionsHelper:
 
     @staticmethod
     def newUserTransaction(transaction_name, user_name, user_email, user_password, balance):
-        transactions.append(transaction_name + ', ' + user_name + ', ' + user_email + ', ' + user_password + ', ' + balance)
+        transactions.append(str(transaction_name) + ', ' + str(user_name) + ', ' + str(user_email) + ', ' + str(user_password) + ', ' + str(balance))
 
     @staticmethod
     def newTicketTransaction(transaction_name, user_name, ticket_name, ticket_price, quantity):
-        transactions.append(transaction_name + ', ' + user_name + ', ' + ticket_name + ', ' + ticket_price + ', ' + quantity)
+        transactions.append(str(transaction_name) + ', ' + str(user_name) + ', ' + str(ticket_name) + ', ' + str(ticket_price) + ', ' + str(quantity))
 
 
 '''
