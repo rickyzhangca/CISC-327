@@ -151,6 +151,9 @@ class LoginSession(UnloggedInSession):
         print('Email or password incorrect.')
 
 
+'''
+user register
+'''
 class RegisterSession(UnloggedInSession):
 
     def __init__(self, username):
@@ -158,29 +161,41 @@ class RegisterSession(UnloggedInSession):
         self.username = None
     
     def operate(self):
-        user_email = helpers.UserIOHelper.acceptEmail(unique=True)
-        user_name = helpers.UserIOHelper.acceptUsername()
-        user_password = helpers.UserIOHelper.acceptPassword()
-        if not helpers.UserIOHelper.acceptPassword2(user_password):
-            raise exceptions.WrongFormatException('Password 2')
-
-        helpers.TransactionsHelper.newUserTransaction("register", user_name, user_email, user_password, 3000)
+        try:
+            user_email = helpers.UserIOHelper.acceptEmail(unique=True)
+            user_name = helpers.UserIOHelper.acceptUsername()
+            user_password = helpers.UserIOHelper.acceptPassword()
+            if not helpers.UserIOHelper.acceptPassword2(user_password):
+                raise exceptions.WrongFormatException('Password 2')
+            helpers.TransactionsHelper.newUserTransaction("register", user_name, user_email, user_password, 3000)
+        except exceptions.CannotAccessPageException: 
+            print('register failed, ending session...')
+        except:
+            print('update failed, ending session...')
     
     '''def authorize(self, username, password):
         self.username = username'''
 
 
+'''
+update ticket
+'''
 class UpdateSession(LoggedInSession):
 
     def __init__(self, username):
         super().__init__(username)
 
     def operate(self):
-        ticket_name = helpers.UserIOHelper.acceptTicketName()
-        ticket_quantity = helpers.UserIOHelper.acceptTicketQuantity()
-        ticket_price = helpers.UserIOHelper.acceptTicketPrice()
-        date = helpers.UserIOHelper.acceptDate()
-        helpers.TransactionsHelper.newTicketTransaction("update", self.username, ticket_name, ticket_price, ticket_quantity)
+        try:
+            ticket_name = helpers.UserIOHelper.acceptTicketName()
+            ticket_quantity = helpers.UserIOHelper.acceptTicketQuantity()
+            ticket_price = helpers.UserIOHelper.acceptTicketPrice()
+            date = helpers.UserIOHelper.acceptDate()
+            helpers.TransactionsHelper.newTicketTransaction("update", self.username, ticket_name, ticket_price, ticket_quantity)
+        except exceptions.WrongFormatException:     
+            print('update failed, ending session...')
+        except:
+            print('update failed, ending session...')
 
 
 '''
@@ -248,4 +263,4 @@ class BuySession(LoggedInSession):
             userPassword = helpers.ResourcesHelper.getUserInfo()[self.username]['password']
             helpers.TransactionsHelper.newUserTransactionAfterBuy("buy", self.username, userEmail, userPassword, newBalance)
         except exceptions.WrongFormatException:            
-            print('sell failed, ending session...')
+            print('buy failed, ending session...')
