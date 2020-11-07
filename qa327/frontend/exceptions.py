@@ -25,11 +25,11 @@ class WrongFormatException(Exception):
 '''
 Exception of when the ticket quantity is wrong.
 '''
-class WrongTicektQuantityException(Exception):
+class WrongTicketQuantityException(Exception):
     pass
 
 '''
 Exception of when the ticket quantity is wrong.
 '''
-class WrongTicektPriceException(Exception):
+class WrongTicketPriceException(Exception):
     pass

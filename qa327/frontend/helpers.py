@@ -149,7 +149,7 @@ class UserIOHelper:
         if ticket_quantity > 0 and ticket_quantity <= 100:
             return ticket_quantity
         else:
-            raise exceptions.WrongTicektQuantityException()
+            raise exceptions.WrongTicketQuantityException()
     
     @staticmethod
     def acceptTicketPrice():
@@ -163,7 +163,7 @@ class UserIOHelper:
         if price >= 10 and price <= 100:
             return price
         else:
-            raise exceptions.WrongTicektPriceException()
+            raise exceptions.WrongTicketPriceException()
     
     @staticmethod
     def acceptDate():
