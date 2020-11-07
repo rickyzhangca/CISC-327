@@ -157,11 +157,16 @@ class RegisterSession(UnloggedInSession):
         self.username = None
     
     def operate(self):
-        print('\nRegister Session...')
-    
-    def authorize(self, username, password):
-        self.username = username
+        user_email = helpers.UserIOHelper.acceptEmail(unique=True)
+        user_name = helpers.UserIOHelper.acceptUsername()
+        user_password = helpers.UserIOHelper.acceptPassword()
+        if not helpers.UserIOHelper.acceptPassword2(user_password):
+            raise exceptions.WrongFormatException('Password 2')
 
+        helpers.TransactionsHelper.newUserTransaction("register", user_name, user_email, user_password, 3000)
+    
+    '''def authorize(self, username, password):
+        self.username = username'''
 
 class SellSession(LoggedInSession):
 
