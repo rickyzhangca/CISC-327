@@ -187,7 +187,11 @@ class UpdateSession(LoggedInSession):
         super().__init__(username)
 
     def operate(self):
-        print('\nUpdateSession...')
+        ticket_name = helpers.UserIOHelper.acceptTicketName()
+        ticket_quantity = helpers.UserIOHelper.acceptTicketQuantity()
+        price = helpers.UserIOHelper.acceptTicketPrice()
+        date = helpers.UserIOHelper.acceptDate()
+        helpers.TransactionsHelper.newTicketTransaction("test transaction", "rickyzhangca", "a ticket", 999, 1)
 
 
 '''

@@ -105,3 +105,67 @@ class UserIOHelper:
             print('Password should contain at least one special character.')
             raise exceptions.WrongFormatException()
         return password
+    
+    @staticmethod
+    def acceptTicketName():
+        ticket_name = input('Ticket name: ')
+
+        if len(ticket_name) < 1 or len(ticket_name) > 60:
+            raise exceptions.WrongFormatException()
+
+        if len(ticket_name) > 1: 
+            if ticket_name[0] == ' ':
+                ticket_name = ticket_name[1:]
+            if ticket_name[-1] == ' ':
+                ticket_name = ticket_name[:-1]
+
+        check = ticket_name.isalnum()
+        if check:
+            return ticket_name
+        else:
+            raise exceptions.WrongFormatException()
+    
+    @staticmethod
+    def acceptTicketQuantity():
+        ticket_quantity = input('Ticket quantity: ')
+
+        if ticket_quantity.isdigit():
+            ticket_quantity = int(ticket_quantity)
+        else:
+            raise exceptions.WrongFormatException()
+
+        if ticket_quantity > 0 and ticket_quantity <= 100:
+            return ticket_quantity
+        else:
+            raise exceptions.WrongTicektQuantityException()
+    
+    @staticmethod
+    def acceptTicketPrice():
+        price = input('Price: ')
+
+        if price.isdigit():
+            price = int(price)
+        else:
+            raise exceptions.WrongFormatException()
+
+        if price >= 10 and price <= 100:
+            return price
+        else:
+            raise exceptions.WrongTicektPriceException()
+    
+    @staticmethod
+    def acceptDate():
+        date = input('Date: ')
+
+        if not date.isdigit():
+            raise exceptions.WrongFormatException()
+
+        if len(date) != 8:
+            raise exceptions.WrongFormatException()
+        
+        if int(date[4:6]) < 1 or int(date[4:6]) > 12:
+            raise exceptions.WrongDateException()
+        elif int(date[6:]) < 1 or int(date[6:]) > 31:
+            raise exceptions.WrongDateException()
+        else:
+            return date
