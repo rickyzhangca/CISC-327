@@ -68,11 +68,11 @@ class TransactionsHelper:
 
     @staticmethod
     def newUserTransaction(transaction_name, user_email, user_password, balance):
-        transactions.append(str(transaction_name) + ', ' + str(TransactionsHelper.current_username) + ', ' + str(user_email) + ', ' + str(user_password) + ', ' + str(balance))
+        transactions.append(str(transaction_name) + ', ' + str(TransactionsHelper.current_username) + ', ' + str(user_email) + ', ' + str(user_password) + ', ' + str(balance) + '\n')
 
     @staticmethod
     def newTicketTransaction(transaction_name, ticket_name, ticket_price, quantity):
-        transactions.append(str(transaction_name) + ', ' + str(TransactionsHelper.current_username) + ', ' + str(ticket_name) + ', ' + str(ticket_price) + ', ' + str(quantity))
+        transactions.append(str(transaction_name) + ', ' + str(TransactionsHelper.current_username) + ', ' + str(ticket_name) + ', ' + str(ticket_price) + ', ' + str(quantity) + '\n')
 
 '''
 Helper that handle all user inputs.
