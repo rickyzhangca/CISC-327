@@ -161,7 +161,7 @@ class RegisterSession(UnloggedInSession):
         user_name = helpers.UserIOHelper.acceptUsername()
         user_password = helpers.UserIOHelper.acceptPassword()
         if not helpers.UserIOHelper.acceptPassword2(user_password):
-            raise exceptions.WrongFormatException()
+            raise exceptions.WrongFormatException('Password 2')
 
         helpers.TransactionsHelper.newUserTransaction("register", user_name, user_email, user_password, 3000)
     
