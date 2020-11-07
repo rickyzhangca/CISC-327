@@ -312,11 +312,8 @@ class UserIOHelper:
         if len(username) <= 2 or len(username) >= 20:
             raise exceptions.WrongFormatException()
 
-        if len(username) > 1: 
-            if username[0] == ' ':
-                username = username[1:]
-            if username[-1] == ' ':
-                username = username[:-1]
+        if username[0] == ' ' or username[-1] == ' ':
+            raise exceptions.WrongFormatException('Space not on the first or the last character')
 
         check = username.isalnum()
         if check:
