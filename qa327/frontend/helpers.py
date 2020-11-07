@@ -77,12 +77,6 @@ class TransactionsHelper:
 Helper that handle all user inputs.
 '''
 class UserIOHelper:
-
-    @staticmethod
-    def test(unique=False):
-        if unique:
-            ResourcesHelper.loadUserInfo('qa327/data/user.csv')
-            print(ResourcesHelper.getUserInfo())
     
     @staticmethod
     def acceptEmail(unique=False):
@@ -94,29 +88,29 @@ class UserIOHelper:
                 users = ResourcesHelper.getUserInfo()
                 for u in users.items():
                     if u[1]['email'] == email:
-                        raise exceptions.WrongFormatException()
+                        raise exceptions.WrongFormatException('Email')
             return email
         else:  
-            raise exceptions.WrongFormatException()
+            raise exceptions.WrongFormatException('Email')
     
     @staticmethod
     def acceptPassword():
         password = getpass.getpass('Password: ')
         if len(password) < 1:
             print('Password cannot be empty.')
-            raise exceptions.WrongFormatException()
+            raise exceptions.WrongFormatException('Password')
         if len(password) < 6:
             print('Given password is too short. Need at least 6 in length.')
-            raise exceptions.WrongFormatException()
+            raise exceptions.WrongFormatException('Password')
         if not any(i.isupper() for i in password):
             print('Password should contain at least one upper case character.')
-            raise exceptions.WrongFormatException()
+            raise exceptions.WrongFormatException('Password')
         if not any(i.islower() for i in password):
             print('Password should contain at least one lower case character.')
-            raise exceptions.WrongFormatException()
+            raise exceptions.WrongFormatException('Password')
         if not any(not i.isalnum() for i in password):
             print('Password should contain at least one special character.')
-            raise exceptions.WrongFormatException()
+            raise exceptions.WrongFormatException('Password')
         return password
     
     @staticmethod
@@ -129,7 +123,7 @@ class UserIOHelper:
         ticket_name = input('Ticket name: ')
 
         if len(ticket_name) < 1 or len(ticket_name) > 60:
-            raise exceptions.WrongFormatException()
+            raise exceptions.WrongFormatException('Ticket name')
 
         if len(ticket_name) > 1: 
             if ticket_name[0] == ' ':
@@ -141,7 +135,7 @@ class UserIOHelper:
         if check:
             return ticket_name
         else:
-            raise exceptions.WrongFormatException()
+            raise exceptions.WrongFormatException('Ticket name')
     
     @staticmethod
     def acceptTicketQuantity():
@@ -150,7 +144,7 @@ class UserIOHelper:
         if ticket_quantity.isdigit():
             ticket_quantity = int(ticket_quantity)
         else:
-            raise exceptions.WrongFormatException()
+            raise exceptions.WrongFormatException('Ticket quantity')
 
         if ticket_quantity > 0 and ticket_quantity <= 100:
             return ticket_quantity
@@ -164,7 +158,7 @@ class UserIOHelper:
         if price.isdigit():
             price = int(price)
         else:
-            raise exceptions.WrongFormatException()
+            raise exceptions.WrongFormatException('Ticket price')
 
         if price >= 10 and price <= 100:
             return price
@@ -176,15 +170,15 @@ class UserIOHelper:
         date = input('Date: ')
 
         if not date.isdigit():
-            raise exceptions.WrongFormatException()
+            raise exceptions.WrongFormatException('Date')
 
         if len(date) != 8:
-            raise exceptions.WrongFormatException()
+            raise exceptions.WrongFormatException('Date')
         
         if int(date[4:6]) < 1 or int(date[4:6]) > 12:
-            raise exceptions.WrongDateException()
+            raise exceptions.WrongFormatException('Date')
         elif int(date[6:]) < 1 or int(date[6:]) > 31:
-            raise exceptions.WrongDateException()
+            raise exceptions.WrongFormatException('Date')
         else:
             return date
 
