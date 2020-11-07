@@ -48,11 +48,16 @@ class ResourcesHelper:
     def getTicketInfo():
         return ticket_info
 
-
 '''
 Helper that handle all the transactional activities, including saving and adding new transactions.
 '''
 class TransactionsHelper:
+
+    current_username = 'no_username'
+
+    @staticmethod
+    def setUsername(username):
+        TransactionsHelper.current_username = username
 
     @staticmethod
     def saveTransactions(location):
@@ -62,13 +67,12 @@ class TransactionsHelper:
         transaction_file.close()
 
     @staticmethod
-    def newUserTransaction(transaction_name, user_name, user_email, user_password, balance):
-        transactions.append(str(transaction_name) + ', ' + str(user_name) + ', ' + str(user_email) + ', ' + str(user_password) + ', ' + str(balance))
+    def newUserTransaction(transaction_name, user_email, user_password, balance):
+        transactions.append(str(transaction_name) + ', ' + str(TransactionsHelper.current_username) + ', ' + str(user_email) + ', ' + str(user_password) + ', ' + str(balance))
 
     @staticmethod
-    def newTicketTransaction(transaction_name, user_name, ticket_name, ticket_price, quantity):
-        transactions.append(str(transaction_name) + ', ' + str(user_name) + ', ' + str(ticket_name) + ', ' + str(ticket_price) + ', ' + str(quantity))
-
+    def newTicketTransaction(transaction_name, ticket_name, ticket_price, quantity):
+        transactions.append(str(transaction_name) + ', ' + str(TransactionsHelper.current_username) + ', ' + str(ticket_name) + ', ' + str(ticket_price) + ', ' + str(quantity))
 
 '''
 Helper that handle all user inputs.

@@ -189,9 +189,9 @@ class UpdateSession(LoggedInSession):
     def operate(self):
         ticket_name = helpers.UserIOHelper.acceptTicketName()
         ticket_quantity = helpers.UserIOHelper.acceptTicketQuantity()
-        price = helpers.UserIOHelper.acceptTicketPrice()
+        ticket_price = helpers.UserIOHelper.acceptTicketPrice()
         date = helpers.UserIOHelper.acceptDate()
-        helpers.TransactionsHelper.newTicketTransaction("test transaction", "rickyzhangca", "a ticket", 999, 1)
+        helpers.TransactionsHelper.newTicketTransaction("update", ticket_name, ticket_price, ticket_quantity)
 
 
 '''
