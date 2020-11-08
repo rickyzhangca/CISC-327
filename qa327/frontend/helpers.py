@@ -2,6 +2,7 @@ import re
 import getpass
 import exceptions
 import datetime as dt
+import os
 
 '''
 This is the helpers module:
@@ -56,7 +57,7 @@ class TransactionsHelper:
 
     @staticmethod
     def saveTransactions(location):
-        transaction_file = open(location + '_transactions.csv', mode='a', newline=None)
+        transaction_file = open(location + '_transactions.csv', mode='a+', newline=None)
         for i in transactions:
             transaction_file.write(i)
         transaction_file.close()
