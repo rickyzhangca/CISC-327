@@ -164,37 +164,37 @@ class RegisterSession(UnloggedInSession):
     def operate(self):
         try:
             user_email = helpers.UserIOHelper.acceptEmail()
+
+            if self.checkExistence(user_email):
+                raise exceptions.EmailAlreadyExistsException()
+
             user_name = helpers.UserIOHelper.acceptUsername()
             user_password = helpers.UserIOHelper.acceptPassword()
             user_password2 = helpers.UserIOHelper.acceptPassword2()
-            if user_password !=  user_password2:
+            if user_password != user_password2:
                 raise exceptions.PasswordsNotMatchingException()
-            if not self.checkExistence(user_name, user_email):
-                self.addNewUser(user_name, user_email, user_password)
+            self.addNewUser(user_name, user_email, user_password)
+
+        except exceptions.EmailAlreadyExistsException: 
+            print('This email already exists in the system')
+            print('Register failed, ending session...')
         except exceptions.PasswordsNotMatchingException: 
             print('The password entered first time does not match the one enter the second time.')
-            print('Register failed, ending session...')        
+            print('Register failed, ending session...')
         except exceptions.WrongFormatException as e:
             print(str(e))
             print('Registation failed, ending session...')
+        except:
+            print('Registation failed, ending session...')
     
-    def checkExistence(self, user_name, user_email):
-        if user_name in helpers.ResourcesHelper.getUserInfo():
-            print('This username is already exist in the system.')
-            return True
+    def checkExistence(self, user_email):
         for i in helpers.ResourcesHelper.getUserInfo():
             if user_email == helpers.ResourcesHelper.getUserInfo()[i]['email']:
-                print('This email is already exist in the system.')
                 return True
         return False
 
     def addNewUser(self, user_name, user_email, user_password):
         helpers.TransactionsHelper.newUserTransaction("register", user_name, user_email, user_password, 3000)
-        helpers.ResourcesHelper.getUserInfo()[user_name] = {
-            'email': user_email,
-            'password': user_password,
-            'balence': 3000,
-        }
         print('Registered successfully.')
 
 '''
