@@ -2,9 +2,21 @@
 
 ## Organization 
 
-The current program is the SeetGeek online Customer-to-Customer ticket selling system, that Group 66 should make a test case structure for it. The main idea of SeetGeek is supporting to a registered user who can buy and sell tickets through this online application. Two components make the user interacts with the system through the terminal, a front-end component, and a backend component. Each component will be put to different new classifiers, 'frontend' and ‘backend' because each of them is a standalone program. Each classifier is a category include a whole range of feature fits in. Take the 'frontend' for example, landing, login, register, buy, sell, and the update should be put under frontend because all of them refer to the same purpose-supporting program interact with the user. So does the backend component. Then, various functions made up a feature, so this invites a new degree of separation. Finally, create sufficient unit test cases for each function, then create sufficient integration test cases for each feature, and two components at the end.
-then introduces a new degree of separation: grouped by feature-wise [different classes] ->[each smaller function in classes]
-Corresponding integration testing
+The current program is the SeetGeek online Customer-to-Customer ticket selling system, that Group 66 should make a test case structure for it. The main idea of SeetGeek is supporting to a registered user who can buy and sell tickets through this online application. 
+
+Two components make the user interacts with the system through the terminal, a front-end component, and a backend component. Each component will be put to different new classifiers, 'frontend' and ‘backend' because each of them is a standalone program. 
+
+Each classifier is a category include a whole range of feature fits in. Take the 'frontend' for example, landing, login, register, buy, sell, and the update should be put under frontend because all of them refer to the same purpose-supporting program interact with the user. So does the backend component. Then, various functions made up a feature, so this invites a new degree of separation. 
+
+Finally, create sufficient unit test cases (legal and illegal) for each function; secondly, create sufficient integration test cases for each feature; thirdly create integration test cases  for both two components;  at the end, create a test case for the program at a whole (go through both frontend and backend)
+
+Therefore, the deepest level of test case structure is unit test cases, corresponding to various functions that are components of classes feature no matter for backend or frontend, to verify if the individual function meets their detailed design specification.
+
+The upper level than this is the integration test cases,  which correspond to various feature classes that go through the frontend or backend, such as login, logout, sell, etc,... in this program. If those feature classes can be integrated to work as a whole.
+
+The upper level than this is the integration test case for the frontend and backend, verify if the group of feature class can be integrated to work at whole. Test if the frontend workflow meets the function specification is one of the examples for it. 
+
+The upper level is the system test case to verify that the complete program meets the functional specification.
 
 ## Order
 
