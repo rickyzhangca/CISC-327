@@ -10,9 +10,9 @@ class CannotAccessPageException(Exception):
     pass
 
 '''
-Exception of unknown error.
+Exception of the first password and the second password does not match during registration.
 '''
-class UnknownException(Exception):
+class PasswordsNotMatchingException(Exception):
     pass
 
 '''
@@ -20,7 +20,13 @@ Exception of when the user input format is wrong.
 '''
 class WrongFormatException(Exception):
     def __init__(self, message=''):
-        super().__init__('{} format is incorrect.'.format(message))
+        super().__init__('{}, format is incorrect.'.format(message))
+
+'''
+Exception of when the ticket name is wrong.
+'''
+class WrongTicketNameException(Exception):
+    pass
 
 '''
 Exception of when the ticket quantity is wrong.
