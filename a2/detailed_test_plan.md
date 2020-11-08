@@ -9,7 +9,7 @@ Corresponding integration testing
 ## Order
 
 Start first at unit testing to verifies every single function meet the detailed design specification; secondly, integration testing verifies that the group of units can be integrated and work, also need to meet the design specification; thirdly, complete program be verifies that meet the functional specification by system testing; finally, acceptance testing validates program that accepts by customer. 
-Unit testing -> integration testing -> system ->acceptance
+Unit testing -> integration testing -> system -> acceptance
 
 ## Techniques and Tools
 
@@ -25,11 +25,28 @@ Integration testing: Wrapup
 
 ## Environments
 
-Local: Windows, MacOS, VSCode, python
+Local: Windows, MacOS
+
+IDLE environment: VSCode
+
+Language: Python
+
 Cloud: github
 
 
+
 ## Responsibility
+
+   |                        Session Specification                         |  Contact Name                                               | Contact Information                                               |
+ | :----------------------------------------------------------: | ------------------------------------------------------------ | ------------------------------------------------------------ |
+ |  Landing   | Yixuan Fan  |     17YF20@queensu.ca           |
+ |  Login   |   |                |
+ |  Register   |   |                |
+ |  Log Out   |   |                |
+ |  Sell   |   |                |
+ |  Buy   |   |                |
+ |  Update   |   |                |
+ |  Exit   | Yixuan Fan |        17YF20@queensu.ca       |
 
 
 
