@@ -73,7 +73,7 @@ Cloud: `Github Actions, Ubuntu`, `Python 3.7`, `flake8`
 
 Using Github Action to automate the testings, the estimated budget is around $8 USD per month (1000 minutes per month), in addition to the 3000 minutes per month covered by Github Teams plan. Github Actions calculates minutes used at the end of months and generate bills for the minutes over 3000 minutes.
 
-On average, the budget will provide each team member 1000 minutes per month or about 33 minutes a day, suffcient for running any tests 10 times. The breakdown below further explains the estimation.
+On average, the budget will provide each team member 1000 minutes per month or about 33 minutes a day, sufficient for running any tests 10 times. The breakdown below further explains the estimation.
 
 ### Devlopment
 
@@ -81,16 +81,16 @@ During the development, testings will be done in the local environment using the
 
 ### Unit Testing
 
-Pushing commits to `dev-[feature]` branches (e.g. `dev-login`) triggers unit testing for the feature identified for the branch. The reseult will not affect the pushing. The test cases for `[feature]` will be used by Github Actions to automatically verify that the individual components meet their detailed design specification.
+Pushing commits to `dev-[feature]` branches (e.g. `dev-login`) triggers unit testing for the feature identified for the branch. The result will not affect pushing. The test cases for `[feature]` will be used by Github Actions to automatically verify that the individual components meet their detailed design specification.
 
-The estimate time cost of unit testing per commit is around 0.3 to 1 minutes.
+The estimated time cost of unit testing per commit is around 0.3 to 1 minutes.
 
 ### Integration Testing
 
 Pull requests from `dev-[feature]` to `dev` and `dev` to `master` branch trigger integration testing on Github Actions. There must be no errors in order to proceed to merge. It will perform all test cases to verify that all units works as intended in specifications and they can be integrated to work as a whole.
 
-The estimate time cost of unit testing per pull request is around 0.5 to 3 minutes.
+The estimated time cost of unit testing per pull request is around 0.5 to 3 minutes.
 
 ### System Testing
 
-For this program, system testing and integration has little difference because there are only two components. Thus, they are treated as the same thing.
+For this program, system testing and integration have little different because there are only two components. Thus, they are treated as the same thing.
