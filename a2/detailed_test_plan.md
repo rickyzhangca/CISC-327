@@ -28,14 +28,19 @@ In more detail, the order of the test cases in each level will depend on their i
 
 ## Techniques and Tools
 
-SeetGeek requires several techniques used for testing itself to ensure it is expected. Techniques the Group 66 will use in the future are security testing, usability testing, reliability testing, capability testing and regression testing. Security Testing is used to determine if the data and information that is used and stored are safe or not. Usability testing used to determine whether the frontend design fit the intended workflow for various comment require. Meanwhile, usability testing is used to ensure the program is intuitive to use which requires the program is easy to use from the user perspective. This technique also helps developers to review whether separate features are meet the required workflow no not, as does the system as a whole. Capability testing used to determine all of the separate functions, feature classes integrated by functions, and the system as a whole are meet required function. Regression testing used to determine the existing functionality is stable though code is changed, adding new code, or something else like fixing the bug.
+SeetGeek requires several techniques used for testing itself to ensure it is expected. Techniques the Group 66 will use in the future are security testing, usability testing, reliability testing, capability testing and regression testing. 
 
+Security Testing is used to determine if the data and information that is used and stored are safe or not. 
 
-tool: action - Pytest
+Usability testing used to determine whether the frontend design fit the intended workflow for various comment require. Meanwhile, usability testing is used to ensure the program is intuitive to use which requires the program is easy to use from the user perspective. This technique also helps developers to review whether separate features are meet the required workflow no not, as does the system as a whole. 
 
-Unit testing: Pytest? #Try Expect? Wrapup? Mocks?
+Capability testing used to determine all of the separate functions, feature classes integrated by functions, and the system as a whole are meet required function. 
 
-Integration testing: Wrapup 
+Regression testing used to determine the existing functionality is stable though code is changed, adding new code, or something else like fixing the bug. For regression testing, the tool, Github action will be used, every change of code will awake action to test.
+
+In more detail, the Group 66 use requirement partitioning to partition the function specification into various small requirement and creat test case for each, such as separate sell session specification into `Command invalid if the user has not logged in`, `Starts a ticket selling session`, `Should ask four input (ticket name, price, quantity, date)`, etc,... Then, use a hybrid method and input boundary testing to create test cases for testing each function while the function needs input. 
+
+The tool used for testing has been mention before, is Github action in automated. Meanwhile, manual inspection is also be used.
 
 
 ## Environments
