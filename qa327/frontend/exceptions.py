@@ -39,3 +39,9 @@ Exception of when the ticket quantity is wrong.
 '''
 class WrongTicketPriceException(Exception):
     pass
+
+'''
+Exception of when the email already exists in user data (already registered).
+'''
+class EmailAlreadyExistsException(Exception):
+    pass
