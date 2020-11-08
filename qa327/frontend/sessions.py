@@ -38,9 +38,6 @@ class LoggedInSession(Session):
     
     def routing(self):
         return LandingSession(self.username)
-        
-    def getBalence(self):
-        pass
 
     def getMenu(self):
         return 'buy, sell, update, and logout'
