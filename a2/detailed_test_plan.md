@@ -59,9 +59,9 @@ Cloud: `Github Actions, Ubuntu`, `Python 3.7`, `flake8`
    |                        Session Specification                         |  Contact Name                                               | Contact Information                                               |
  | :----------------------------------------------------------: | ------------------------------------------------------------ | ------------------------------------------------------------ |
  |  Landing   | Yixuan Fan  |     17YF20@queensu.ca           |
- |  Login   |   |                |
+ |  Login   | Chengzhen Guo |       15cg53@queensu.ca         |
  |  Register   | Ricky Zhang | ricky.zhang@queensu.ca |
- |  Log Out   |   |                |
+ |  Log Out   | Chengzhen Guo |        15cg53@queensu.ca        |
  |  Sell   | Qiru Jin  |     17qj@queensu.ca           |
  |  Buy   | Qiru Jin  |     17qj@queensu.ca           |
  |  Update   | Yixuan Fan |       17YF20@queensu.ca         |
