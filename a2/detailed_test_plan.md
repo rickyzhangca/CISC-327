@@ -47,9 +47,9 @@ The tool used for testing has been mention before, is Github action in automated
 
 Local: `Windows`, `MacOS`
 
-IDLE environment: `Pycharm`, `VScode`, 
+IDLE environment: `Pycharm`, `VS Code`
 
-Language: `Python`
+Language: `Python 3`
 
 Cloud: `Github`
 
@@ -60,7 +60,7 @@ Cloud: `Github`
  | :----------------------------------------------------------: | ------------------------------------------------------------ | ------------------------------------------------------------ |
  |  Landing   | Yixuan Fan  |     17YF20@queensu.ca           |
  |  Login   |   |                |
- |  Register   |   |                |
+ |  Register   | Ricky Zhang | ricky.zhang@queensu.ca |
  |  Log Out   |   |                |
  |  Sell   | Qiru Jin  |     17qj@queensu.ca           |
  |  Buy   | Qiru Jin  |     17qj@queensu.ca           |
