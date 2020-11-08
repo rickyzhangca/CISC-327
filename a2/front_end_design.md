@@ -4,7 +4,7 @@
 
 ## Overall Structure 
 
-The Frontend of the SeekTicket application contains four modules including, sessions module, helpers module, exceptions module, and main module.
+The Frontend of the SeetGeek application contains four modules including, sessions module, helpers module, exceptions module, and main module.
 
 The sessions module was constructed in an Object Oriented Structure. The base class sessions claimed the general structure of each sessions. Each module contains a username which will be set as None when the user have not logged in. The routing function inside each session’s class returns a new session object that the page will load to next. The operate functions interacts with user and the data storage with regarding helper functions.
 
