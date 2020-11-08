@@ -18,10 +18,15 @@ def main():
     # setting the Landing screen as the initial page.
     next_session = sessions.LandingSession()
     while next_session:
-        current_session = next_session
-        current_session.operate()
-        next_session = current_session.routing()
-        del current_session
+        try:
+            current_session = next_session
+            current_session.operate()
+            next_session = current_session.routing()
+            del current_session
+        except Exception as e:
+            print('\nUnexpected exception:')
+            print(str(e))
+            print('Please contact the admin for resolve, thank you!')
 
     # save transactions before exit.    
     helpers.TransactionsHelper.saveTransactions(location)
