@@ -10,6 +10,8 @@ Each classifier is a category include a whole range of feature fits in. Take the
 
 Finally, create sufficient unit test cases (legal and illegal) for each function; secondly, create sufficient integration test cases for each feature; thirdly create integration test cases  for both two components;  at the end, create a test case for the program at a whole (go through both frontend and backend)
 
+### Structure
+
 Therefore, the deepest level of test case structure is unit test cases, corresponding to various functions that are components of classes feature no matter for backend or frontend, to verify if the individual function meets their detailed design specification.
 
 The upper level than this is the integration test cases,  which correspond to various feature classes that go through the `frontend` or `backend`, such as `login`, `logout`, `sell`, etc,... in this program. If those feature classes can be integrated to work as a whole.
