@@ -14,6 +14,39 @@ The main function within the main module maintains the overall process of creati
 
 ## Classes and Methods
 
+### Resources Helper
+
+| Classes/Methods                                    | Description                                                                                               |
+| -------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| `ResourcesHelper`                                  | An class with static methods that helps retrieving user and tickiet data from`user.csv` and`tickert.csv`. |
+| `ResourcesHelper.loadUserInfo(user_file_path)`     | Load user data from `user.csv` given a file path and save to `helpers.user_info`                          |
+| `ResourcesHelper.loadTicketInfo(ticket_file_path)` | Load ticket data from `ticket.csv` given a file path and save to `helpers.ticket_info`                    |
+| `ResourcesHelper.getUserInfo()`                    | Return user data from`helpers.user_info`                                                                  |
+| `ResourcesHelper.getTicketInfo()`                  | Return ticket data from`helpers.ticket_info`                                                              |
+
+### User IO Helper
+
+| Classes/Methods                       | Description                                                                                                         |
+| ------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| `UserIOHelper`                        | An class with static methods that are used to validate different type of user inputs.                               |
+| `UserIOHelper.acceptEmail()`          | Ask the user to input an email address and validate according to RFC 5322 standard. Raise exceptions if failed.     |
+| `UserIOHelper.acceptPassword()`       | Ask the user to input a password and validate according to the requirements. Raise exceptions if failed.            |
+| `UserIOHelper.acceptPassword2()`      | Ask the user to input a string.                                                                                     |
+| `UserIOHelperacceptTicketName()`      | Ask the user to input a ticket name and validate according to the requirements. Raise exceptions if failed.         |
+| `UserIOHelper.acceptTicketQuantity()` | Ask the user to input a quantity of tickets and validate according to the requirements. Raise exceptions if failed. |
+| `UserIOHelper.acceptTicketPrice()`    | Ask the user to input a price for tickets and validate according to the requirements. Raise exceptions if failed.   |
+| `UserIOHelper.acceptDate()`           | Ask the user to input a date and validate according to the requirements. Raise exceptions if failed.                |
+| `UserIOHelper.acceptUserName()`       | Ask the user to input a user name and validate according to the requirements. Raise exceptions if failed.           |
+
+### Transactions Helper
+
+| Classes/Methods                                                                                               | Description                                                                                                     |
+| ------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| `TransactionsHelper`                                                                                          | An class with static methods that writes transactions.                                                          |
+| `TransactionsHelper.saveTransactions(location)`                                                               | Write transactions to a given path. Append if the file already exists, otherwise create a new transaction file. |
+| `TransactionsHelper.newUserTransaction(transaction_name, user_name, user_email, user_password, balance)`      | Append a new user transaction to `helpers. transactions`.                                                       |
+| `TransactionsHelper. newTicketTransaction(transaction_name, user_name, ticket_name, ticket_price, quantity) ` | Append a new ticket transaction to `helpers. transactions`.                                                     |
+
 ### Register
 
 | Classes/Methods                                                            | Description                                                                  |
