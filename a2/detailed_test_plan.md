@@ -45,14 +45,13 @@ The tool used for testing has been mention before, is Github action in automated
 
 ## Environments
 
-Local: Windows, MacOS
+Local: `Windows`, `MacOS`
 
-IDLE environment: VSCode
+IDLE environment: `Pycharm`, `VScode`, 
 
-Language: Python
+Language: `Python`
 
-Cloud: github
-
+Cloud: `Github`
 
 
 ## Responsibility
