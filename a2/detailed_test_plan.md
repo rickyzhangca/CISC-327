@@ -87,7 +87,7 @@ The estimate time cost of unit testing per commit is around 0.3 to 1 minutes.
 
 ### Integration Testing
 
-Pull requests from `dev-[feature]` to `dev` and `dev` to `master` branch trigger integration testing on Github Actions. There must be no errors in order to proceed to merge. It will perform all test cases identified to verify that all units works as intended in specifications and they can be integrated to work as a whole.
+Pull requests from `dev-[feature]` to `dev` and `dev` to `master` branch trigger integration testing on Github Actions. There must be no errors in order to proceed to merge. It will perform all test cases to verify that all units works as intended in specifications and they can be integrated to work as a whole.
 
 The estimate time cost of unit testing per pull request is around 0.5 to 3 minutes.
 
