@@ -45,7 +45,7 @@ Cloud: github
  |  Log Out   |   |                |
  |  Sell   |   |                |
  |  Buy   |   |                |
- |  Update   |   |                |
+ |  Update   | Yixuan Fan |       17YF20@queensu.ca         |
  |  Exit   | Yixuan Fan |        17YF20@queensu.ca       |
 
 
