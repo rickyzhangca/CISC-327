@@ -165,7 +165,7 @@ class RegisterSession(UnloggedInSession):
             if self.checkExistence(user_email):
                 raise exceptions.EmailAlreadyExistsException()
 
-            user_name = helpers.UserIOHelper.acceptUsername()
+            user_name = helpers.UserIOHelper.acceptUserName()
             user_password = helpers.UserIOHelper.acceptPassword()
             user_password2 = helpers.UserIOHelper.acceptPassword2()
             if user_password != user_password2:
@@ -180,8 +180,6 @@ class RegisterSession(UnloggedInSession):
             print('Register failed, ending session...')
         except exceptions.WrongFormatException as e:
             print(str(e))
-            print('Registation failed, ending session...')
-        except:
             print('Registation failed, ending session...')
     
     def checkExistence(self, user_email):

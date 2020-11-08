@@ -152,12 +152,12 @@ class UserIOHelper:
             return date
 
     @staticmethod
-    def acceptUsername():
-        username = input('Username: ')
-        if len(username) <= 2 or len(username) >= 20:
+    def acceptUserName():
+        userName = input('User name: ')
+        if len(userName) <= 2 or len(userName) >= 20:
             raise exceptions.WrongFormatException()
-        if username[0] == ' ' or username[-1] == ' ':
+        if userName[0] == ' ' or userName[-1] == ' ':
             raise exceptions.WrongFormatException('Space not on the first or the last character')
-        if not username.isalnum():
-            raise exceptions.WrongFormatException('Username should not contains special characters')
-        return username
+        if not userName.isalnum():
+            raise exceptions.WrongFormatException('User name should not contains special characters')
+        return userName
