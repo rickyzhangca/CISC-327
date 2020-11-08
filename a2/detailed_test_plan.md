@@ -55,8 +55,8 @@ Cloud: github
  |  Login   |   |                |
  |  Register   |   |                |
  |  Log Out   |   |                |
- |  Sell   |   |                |
- |  Buy   |   |                |
+ |  Sell   | Qiru Jin  |     17qj@queensu.ca           |
+ |  Buy   | Qiru Jin  |     17qj@queensu.ca           |
  |  Update   | Yixuan Fan |       17YF20@queensu.ca         |
  |  Exit   | Yixuan Fan |        17YF20@queensu.ca       |
 
