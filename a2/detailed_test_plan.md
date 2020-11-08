@@ -49,7 +49,7 @@ The tool used for testing has been mention before, is Github action in automated
 
 Local: `Windows`, `MacOS`
 
-IDLE environment: `Pycharm`, `VS Code`
+IDLE environment: `Pycharm`, `VS Code`, `PythonIDLE`
 
 Language: `Python 3.8.3`
 
