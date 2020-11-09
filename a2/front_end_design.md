@@ -55,3 +55,21 @@ The main function within the main module maintains the overall process of creati
 | `RegisterSession.operate(self)`                                            | The main behaviors of registering, asking for email, user name, and password |
 | `RegisterSession. checkExistence(self,user_name, user_email)`              | Check if the given email has been used in the user data `user.csv`           |
 | `RegisterSession. addNewUser(self, user_name, user_email, user_password) ` | Add new `register` user transaction when all inputs are valid.               |
+
+### Buy
+
+| Classes/Methods                                              | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `BuySession`                                                 | A loggedSession that asks for use input ticket information for sale |
+| `BuySession.operate(self)`                                   | The main behaviors of registering, asking for ticket_name and ticket_quantity |
+| `BuySession.printTicketList(self)`                           | Showing the information on available ticket sales.           |
+| `BuySession.checkBalance(self, ticket_price, ticket_quantity)` | Check if the balance in the user account is enough to buy tickets or not |
+| `BuySession.processOrder(self, ticket_name, ticket_price, ticket_quantity)` | Append a new registration transaction if successful buying   |
+
+### Sell
+
+| Classes/Methods                                              | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `SellSession`                                                | A loggedSession that asks for use input ticket information for sale |
+| `SellSession.operate(self)`                                  | The main behaviors of selling, asking for ticket_name, ticket_price, ticket_quantity and ticket_date |
+| `SellSession.addNewTicket(self, ticket_name, ticket_price, ticket_quantity)` | Append a new registration transaction if successful selling  |
