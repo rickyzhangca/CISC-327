@@ -56,6 +56,23 @@ The main function within the main module maintains the overall process of creati
 | `RegisterSession.checkExistence(self,user_name, user_email)`               | Check if the given email has been used in the user data `user.csv`           |
 | `RegisterSession.addNewUser(self, user_name, user_email, user_password) `  | Add new `register` user transaction when all inputs are valid                |
 
+### Login
+
+| Classes/Methods                                                            | Description                                                                  |
+| -------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `LoginSession`                                                             | An UnloggedSession that asks for user information to login                   |
+| `LoginSession.routing(self) `                                              | Route to a logged in landing session if the login was successful             |
+| `LoginSession.operate(self)`                                               | The main behaviors of login, asking for email and password then authorize    |
+| `LoginSession.authorize(self,email, password)`                             | Authorize email and password the user inputed. Setup username                |
+
+### Logout
+
+| Classes/Methods                                                            | Description                                                                  |
+| -------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `LogoutSession`                                                            | An loggedSession that loggout the current user                               |
+| `LogoutSession.routing(self) `                                             | Route to a unlogged in landing session                                       |
+| `LogoutSession.operate(self)`                                              | Notice the user that the logout was successfuly                              |
+
 ### Buy
 
 | Classes/Methods                                              | Description                                                  |
@@ -74,19 +91,10 @@ The main function within the main module maintains the overall process of creati
 | `SellSession.operate(self)`                                  | The main behaviors of selling, asking for ticket_name, ticket_price, ticket_quantity and ticket_date |
 | `SellSession.addNewTicket(self, ticket_name, ticket_price, ticket_quantity)` | Append a new registration transaction if successful selling  |
 
-### Login
+### Update
 
-| Classes/Methods                                                            | Description                                                                  |
-| -------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `LoginSession`                                                             | An UnloggedSession that asks for user information to login                   |
-| `LoginSession.routing(self) `                                              | Route to a logged in landing session if the login was successful             |
-| `LoginSession.operate(self)`                                               | The main behaviors of login, asking for email and password then authorize    |
-| `LoginSession.authorize(self,email, password)`                             | Authorize email and password the user inputed. Setup username                |
-
-### Logout
-
-| Classes/Methods                                                            | Description                                                                  |
-| -------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `LogoutSession`                                                            | An loggedSession that loggout the current user                               |
-| `LogoutSession.routing(self) `                                             | Route to a unlogged in landing session                                       |
-| `LogoutSession.operate(self)`                                              | Notice the user that the logout was successfuly                              |
+| Classes/Methods                                              | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `UpdateSession`                                                | A loggedSession that updates the ticket information        |
+| `UpdateSession.operate(self)`                                  | Ask for user to provide ticket_name, ticket_price, ticket_quantity infomation  |
+| `UpdateSession.updateTicket(self, ticket_name, ticket_price, ticket_quantity)` | Update the ticket infomation and write a transaction  |
