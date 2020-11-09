@@ -47,6 +47,17 @@ The main function within the main module maintains the overall process of creati
 | `TransactionsHelper.newUserTransaction(transaction_name, user_name, user_email, user_password, balance)`      | Append a new user transaction to `helpers. transactions`.                                                       |
 | `TransactionsHelper. newTicketTransaction(transaction_name, user_name, ticket_name, ticket_price, quantity) ` | Append a new ticket transaction to `helpers. transactions`.                                                     |
 
+### Landing
+
+| Classes/Methods                                                            | Description                                                                  |
+| -------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `LandingSession`                                                           | A Session that displays usermenu and balence, guide the user to the functional page|
+| `LandingSession.routing(self) `                                            | Route to the next page that the user requested                               |
+| `LandingSession.operate(self)`                                             | The main behaviors of landing, asking for a command                          |
+| `LandingSession.displayMenu(self)`                                         | Display the user menu according to wheather the usr logged in                |
+| `LandingSession.showBalence(self)`                                         | Display the user balence if the user logged in                               |
+| `LandingSession.getUserCommand(self)`                                      | Recieved the user input about the next session that the user want to go to   |
+
 ### Register
 
 | Classes/Methods                                                            | Description                                                                  |
@@ -69,7 +80,7 @@ The main function within the main module maintains the overall process of creati
 
 | Classes/Methods                                                            | Description                                                                  |
 | -------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `LogoutSession`                                                            | A loggedInSession that loggout the current user                               |
+| `LogoutSession`                                                            | A loggedInSession that loggout the current user                              |
 | `LogoutSession.routing(self) `                                             | Route to a unlogged in landing session                                       |
 | `LogoutSession.operate(self)`                                              | Notice the user that the logout was successfuly                              |
 
