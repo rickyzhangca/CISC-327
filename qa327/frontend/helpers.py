@@ -57,6 +57,7 @@ class TransactionsHelper:
 
     @staticmethod
     def saveTransactions(location):
+        # update translate information
         transaction_file = open(location + '_transactions.csv', mode='a+', newline=None)
         for i in transactions:
             transaction_file.write(i)
@@ -64,10 +65,12 @@ class TransactionsHelper:
 
     @staticmethod
     def newUserTransaction(transaction_name, user_name, user_email, user_password, balance):
+        # the new user in string list add on
         transactions.append(str(transaction_name) + ', ' + str(user_name) + ', ' + str(user_email) + ', ' + str(user_password) + ', ' + str(balance) + '\n')
 
     @staticmethod
     def newTicketTransaction(transaction_name, user_name, ticket_name, ticket_price, quantity):
+        # the new transaction uodate string list add on
         transactions.append(str(transaction_name) + ', ' + str(user_name) + ', ' + str(ticket_name) + ', ' + str(ticket_price) + ', ' + str(quantity) + '\n')
 
 
@@ -75,7 +78,9 @@ class TransactionsHelper:
 Helper that handle all user inputs.
 '''
 class UserIOHelper:
-    
+    '''
+        check email if it is valid
+        '''
     @staticmethod
     def acceptEmail():
         email = input('Email: ')
@@ -86,6 +91,7 @@ class UserIOHelper:
     
     @staticmethod
     def acceptPassword():
+        #minimum 6 characters long, at least one upper case, at least one lower case, at least one special character
         password = getpass.getpass('Password: ')
         if len(password) < 1:
             raise exceptions.WrongFormatException('Password cannot be empty')
@@ -106,6 +112,8 @@ class UserIOHelper:
     
     @staticmethod
     def acceptTicketName():
+        #name of the ticket is no longer than 60 characters
+        #The name of the ticket has to be alphanumeric-only, and space allowed only if it is not the first or the last character.
         ticket_name = input('Ticket name: ')
         if len(ticket_name) < 1:
             raise exceptions.WrongFormatException('The name of the ticket cannot be empty')
@@ -119,6 +127,7 @@ class UserIOHelper:
 
     @staticmethod
     def acceptTicketQuantity():
+        #The quantity of the tickets has to be more than 0, and less than or equal to 100.
         ticket_quantity = input('Ticket quantity: ')
         if len(ticket_quantity) < 1 or not ticket_quantity.isdigit():
             raise exceptions.WrongFormatException('Ticket quantity should be number')
@@ -129,6 +138,7 @@ class UserIOHelper:
 
     @staticmethod
     def acceptTicketPrice():
+        #Price has to be of range [10, 100]
         price = input('Price: ')
         if len(price) < 1 or not price.isdigit():
             raise exceptions.WrongFormatException('Ticket price should be number')

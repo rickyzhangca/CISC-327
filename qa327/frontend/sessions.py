@@ -28,7 +28,7 @@ class Session:
 Base class for sessions that required login.
 '''
 class LoggedInSession(Session):
-
+    # If logged in, show the menu item buy, sell, update, and logout. Also, print out the user's balance.
     # raise exceptions if user have not logged in.
     def __init__(self, username):
         super().__init__(username)   
@@ -47,7 +47,7 @@ class LoggedInSession(Session):
 Base class for sessions that does not required login.
 '''
 class UnloggedInSession(Session):
-
+    # if not logged in, show the menu item login, register, and exits.
     # raise exceptions if user have logged in.
     def __init__(self, username): 
         super().__init__() 
@@ -131,6 +131,7 @@ class LoginSession(UnloggedInSession):
     
     def operate(self):
         print('\nLog in session starts...')
+        #check email
         try:
             email = helpers.UserIOHelper.acceptEmail()
             password = helpers.UserIOHelper.acceptPassword()            
@@ -196,7 +197,7 @@ class RegisterSession(UnloggedInSession):
 update ticket
 '''
 class UpdateSession(LoggedInSession):
-
+    # only appear after user logged in
     def __init__(self, username):
         super().__init__(username)
 
@@ -224,7 +225,7 @@ class UpdateSession(LoggedInSession):
 User logout.
 '''
 class LogoutSession(LoggedInSession):
-
+    # only appear after user logged in
     def __init__(self, username):
         super().__init__(username)
 
@@ -239,7 +240,7 @@ class LogoutSession(LoggedInSession):
 Exiting the program.
 '''
 class ExitSession(UnloggedInSession):
-
+    # only appear after user not logged in
     def __init__(self, username):
         super().__init__(username)
 
@@ -254,7 +255,7 @@ class ExitSession(UnloggedInSession):
 Selling session.
 '''
 class SellSession(LoggedInSession):
-
+    # only appear after user logged in
     def __init__(self, username):
         super().__init__(username)
 
