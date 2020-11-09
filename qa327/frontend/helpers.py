@@ -1,6 +1,8 @@
 import re
 import getpass
 import exceptions
+import datetime as dt
+import os
 
 '''
 This is the helpers module:
@@ -10,7 +12,6 @@ user_info = {}
 ticket_info = {}
 
 transactions = []
-
 
 '''
 Helper that handle all the resorces loading and getting activities.
@@ -25,8 +26,8 @@ class ResourcesHelper:
             user_info[record[1]] = {
                 'email': record[0],
                 'password': record[2],
-                'balence': float(record[3]),
-    }
+                'balence': int(record[3]),
+            }
     
     @staticmethod
     def loadTicketInfo(ticket_file_path):        
@@ -34,10 +35,10 @@ class ResourcesHelper:
         for i in ticket_file:
             record = i.split(', ')
             ticket_info[record[0]] = {
-                'price': float(record[1]),
+                'price': int(record[1]),
                 'number': int(record[2]),
                 'email': record[3],
-    }
+            }
 
     @staticmethod
     def getUserInfo():
@@ -48,128 +49,115 @@ class ResourcesHelper:
     def getTicketInfo():
         return ticket_info
 
+
 '''
 Helper that handle all the transactional activities, including saving and adding new transactions.
 '''
 class TransactionsHelper:
 
-    current_username = 'no_username'
-
-    @staticmethod
-    def setUsername(username):
-        TransactionsHelper.current_username = username
-
     @staticmethod
     def saveTransactions(location):
-        transaction_file = open(location + '_transactions.csv', 'w+')
+        transaction_file = open(location + '_transactions.csv', mode='a+', newline=None)
         for i in transactions:
             transaction_file.write(i)
         transaction_file.close()
 
     @staticmethod
-    def newUserTransaction(transaction_name, user_email, user_password, balance):
-        transactions.append(str(transaction_name) + ', ' + str(TransactionsHelper.current_username) + ', ' + str(user_email) + ', ' + str(user_password) + ', ' + str(balance) + '\n')
+    def newUserTransaction(transaction_name, user_name, user_email, user_password, balance):
+        transactions.append(str(transaction_name) + ', ' + str(user_name) + ', ' + str(user_email) + ', ' + str(user_password) + ', ' + str(balance) + '\n')
 
     @staticmethod
-    def newTicketTransaction(transaction_name, ticket_name, ticket_price, quantity):
-        transactions.append(str(transaction_name) + ', ' + str(TransactionsHelper.current_username) + ', ' + str(ticket_name) + ', ' + str(ticket_price) + ', ' + str(quantity) + '\n')
+    def newTicketTransaction(transaction_name, user_name, ticket_name, ticket_price, quantity):
+        transactions.append(str(transaction_name) + ', ' + str(user_name) + ', ' + str(ticket_name) + ', ' + str(ticket_price) + ', ' + str(quantity) + '\n')
+
 
 '''
 Helper that handle all user inputs.
 '''
 class UserIOHelper:
-
+    
     @staticmethod
     def acceptEmail():
         email = input('Email: ')
-        if len(email) < 1:
-            print('Email address cannot be empty.')
-            raise exceptions.WrongFormatException()
-        if not re.match(r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)", email):
-            print('Recieved email address:', email, 'format is incorrect.')
-            raise exceptions.WrongFormatException()
+        regex = """(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])"""
+        if not re.search(regex,email):
+            raise exceptions.WrongFormatException('Email should be in a form of xxxx@xxxx.xxx')
         return email
     
     @staticmethod
     def acceptPassword():
         password = getpass.getpass('Password: ')
         if len(password) < 1:
-            print('Password cannot be empty.')
-            raise exceptions.WrongFormatException()
+            raise exceptions.WrongFormatException('Password cannot be empty')
         if len(password) < 6:
-            print('Given password is too short. Need at least 6 in length.')
-            raise exceptions.WrongFormatException()
+            raise exceptions.WrongFormatException('Given password is too short. Need at least 6 in length')
         if not any(i.isupper() for i in password):
-            print('Password should contain at least one upper case character.')
-            raise exceptions.WrongFormatException()
+            raise exceptions.WrongFormatException('Password should contain at least one upper case character')
         if not any(i.islower() for i in password):
-            print('Password should contain at least one lower case character.')
-            raise exceptions.WrongFormatException()
+            raise exceptions.WrongFormatException('Password should contain at least one lower case character')
         if not any(not i.isalnum() for i in password):
-            print('Password should contain at least one special character.')
-            raise exceptions.WrongFormatException()
+            raise exceptions.WrongFormatException('Password should contain at least one special character')
         return password
+    
+    @staticmethod
+    def acceptPassword2():
+        password2 = getpass.getpass('Confirm password: ')
+        return password2
     
     @staticmethod
     def acceptTicketName():
         ticket_name = input('Ticket name: ')
+        if len(ticket_name) < 1:
+            raise exceptions.WrongFormatException('The name of the ticket cannot be empty')
+        if len(ticket_name) > 60:
+            raise exceptions.WrongFormatException('The name of the ticket is no longer than 60 characters')
+        if ticket_name[0] == ' ' or ticket_name[-1] == ' ':
+            raise exceptions.WrongFormatException('Space not on the first or the last character')
+        if not all(x.isalnum() or x.isspace() for x in ticket_name):
+            raise exceptions.WrongFormatException('The name of the ticket has to be alphanumeric and space only')
+        return ticket_name
 
-        if len(ticket_name) < 1 or len(ticket_name) > 60:
-            raise exceptions.WrongFormatException()
-
-        if len(ticket_name) > 1: 
-            if ticket_name[0] == ' ':
-                ticket_name = ticket_name[1:]
-            if ticket_name[-1] == ' ':
-                ticket_name = ticket_name[:-1]
-
-        check = ticket_name.isalnum()
-        if check:
-            return ticket_name
-        else:
-            raise exceptions.WrongFormatException()
-    
     @staticmethod
     def acceptTicketQuantity():
         ticket_quantity = input('Ticket quantity: ')
+        if len(ticket_quantity) < 1 or not ticket_quantity.isdigit():
+            raise exceptions.WrongFormatException('Ticket quantity should be number')
+        ticket_quantity = int(ticket_quantity)
+        if ticket_quantity < 1 or ticket_quantity > 100:
+            raise exceptions.WrongTicketQuantityException('The quantity of the tickets has to be more than 0, and less than or equal to 100.')
+        return ticket_quantity
 
-        if ticket_quantity.isdigit():
-            ticket_quantity = int(ticket_quantity)
-        else:
-            raise exceptions.WrongFormatException()
-
-        if ticket_quantity > 0 and ticket_quantity <= 100:
-            return ticket_quantity
-        else:
-            raise exceptions.WrongTicektQuantityException()
-    
     @staticmethod
     def acceptTicketPrice():
         price = input('Price: ')
-
-        if price.isdigit():
-            price = int(price)
-        else:
-            raise exceptions.WrongFormatException()
-
-        if price >= 10 and price <= 100:
-            return price
-        else:
-            raise exceptions.WrongTicektPriceException()
+        if len(price) < 1 or not price.isdigit():
+            raise exceptions.WrongFormatException('Ticket price should be number')
+        price = int(price)
+        if price < 1 or price > 100:
+            raise exceptions.WrongTicketQuantityException('Price has to be of range [10, 100].')
+        return price
     
     @staticmethod
     def acceptDate():
         date = input('Date: ')
-
         if not date.isdigit():
-            raise exceptions.WrongFormatException()
-
+            raise exceptions.WrongFormatException('Date should be numebr')
         if len(date) != 8:
-            raise exceptions.WrongFormatException()
-        
+            raise exceptions.WrongFormatException('Date must be given in the format YYYYMMDD (e.g. 20200901)')        
         if int(date[4:6]) < 1 or int(date[4:6]) > 12:
-            raise exceptions.WrongDateException()
+            raise exceptions.WrongFormatException('month is incorrect')
         elif int(date[6:]) < 1 or int(date[6:]) > 31:
-            raise exceptions.WrongDateException()
+            raise exceptions.WrongFormatException('Day is incorrect')
         else:
             return date
+
+    @staticmethod
+    def acceptUserName():
+        userName = input('User name: ')
+        if len(userName) <= 2 or len(userName) >= 20:
+            raise exceptions.WrongFormatException()
+        if userName[0] == ' ' or userName[-1] == ' ':
+            raise exceptions.WrongFormatException('Space not on the first or the last character')
+        if not userName.isalnum():
+            raise exceptions.WrongFormatException('User name should not contains special characters')
+        return userName

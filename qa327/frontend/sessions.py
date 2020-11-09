@@ -1,5 +1,6 @@
 import helpers
 import exceptions
+import datetime as dt
 
 '''
 This is the sessions module:
@@ -37,9 +38,6 @@ class LoggedInSession(Session):
     
     def routing(self):
         return LandingSession(self.username)
-        
-    def getBalence(self):
-        pass
 
     def getMenu(self):
         return 'buy, sell, update, and logout'
@@ -112,7 +110,7 @@ class LandingSession(Session):
 
     def showBalence(self):
         if self.username:
-            print('\nHi', self.username + '!')
+            print('Hi', self.username + '!')
             print('Your balance is: $' + str(helpers.ResourcesHelper.getUserInfo()[self.username]['balence']) + '.\n')
 
     def getUserCommand(self):
@@ -137,7 +135,8 @@ class LoginSession(UnloggedInSession):
             email = helpers.UserIOHelper.acceptEmail()
             password = helpers.UserIOHelper.acceptPassword()            
             self.authorize(email, password)
-        except exceptions.WrongFormatException:            
+        except exceptions.WrongFormatException as e:
+            print(str(e))
             print('Login failed, ending session...')
     
     # authorize email and password the user inputed. Setup username. 
@@ -150,6 +149,9 @@ class LoginSession(UnloggedInSession):
         print('Email or password incorrect.')
 
 
+'''
+user register
+'''
 class RegisterSession(UnloggedInSession):
 
     def __init__(self, username):
@@ -157,42 +159,66 @@ class RegisterSession(UnloggedInSession):
         self.username = None
     
     def operate(self):
-        print('\nRegister Session...')
+        try:
+            user_email = helpers.UserIOHelper.acceptEmail()
+
+            if self.checkExistence(user_email):
+                raise exceptions.EmailAlreadyExistsException()
+
+            user_name = helpers.UserIOHelper.acceptUserName()
+            user_password = helpers.UserIOHelper.acceptPassword()
+            user_password2 = helpers.UserIOHelper.acceptPassword2()
+            if user_password != user_password2:
+                raise exceptions.PasswordsNotMatchingException()
+            self.addNewUser(user_name, user_email, user_password)
+
+        except exceptions.EmailAlreadyExistsException: 
+            print('This email already exists in the system')
+            print('Register failed, ending session...')
+        except exceptions.PasswordsNotMatchingException: 
+            print('The password entered first time does not match the one enter the second time.')
+            print('Register failed, ending session...')
+        except exceptions.WrongFormatException as e:
+            print(str(e))
+            print('Registation failed, ending session...')
     
-    def authorize(self, username, password):
-        self.username = username
+    def checkExistence(self, user_email):
+        for i in helpers.ResourcesHelper.getUserInfo():
+            if user_email == helpers.ResourcesHelper.getUserInfo()[i]['email']:
+                return True
+        return False
 
+    def addNewUser(self, user_name, user_email, user_password):
+        helpers.TransactionsHelper.newUserTransaction("register", user_name, user_email, user_password, 3000)
+        print('Registered successfully.')
 
-class SellSession(LoggedInSession):
-
-    def __init__(self, username):
-        super().__init__(username)
-
-    def operate(self):
-        print('\nSellSession...')
-
-
-class BuySession(LoggedInSession):
-
-    def __init__(self, username):
-        super().__init__(username)
-
-    def operate(self):
-        print('\nBuySession...')
-
-
+'''
+update ticket
+'''
 class UpdateSession(LoggedInSession):
 
     def __init__(self, username):
         super().__init__(username)
 
     def operate(self):
-        ticket_name = helpers.UserIOHelper.acceptTicketName()
-        ticket_quantity = helpers.UserIOHelper.acceptTicketQuantity()
-        ticket_price = helpers.UserIOHelper.acceptTicketPrice()
-        date = helpers.UserIOHelper.acceptDate()
-        helpers.TransactionsHelper.newTicketTransaction("update", ticket_name, ticket_price, ticket_quantity)
+        try:
+            ticket_name = helpers.UserIOHelper.acceptTicketName()
+            ticket_quantity = helpers.UserIOHelper.acceptTicketQuantity()
+            ticket_price = helpers.UserIOHelper.acceptTicketPrice()
+            date = helpers.UserIOHelper.acceptDate()
+            if ticket_name not in helpers.ResourcesHelper.getTicketInfo():
+                raise exceptions.WrongTicketNameException
+            updateTicket(self, ticket_name, ticket_price, ticket_quantity)        
+        except exceptions.WrongFormatException as e:     
+            print(str(e))
+            print('Update failed, ending session...')
+        except exceptions.WrongTicketNameException:
+            print('The ticket name you entered cannot be found, ending session...')
 
+    def updateTicket(self, ticket_name, ticket_price, ticket_quantity):
+        helpers.TransactionsHelper.newTicketTransaction("update", self.username, ticket_name, ticket_price, ticket_quantity)
+        helpers.ResourcesHelper.getTicketInfo()[ticket_name]['price'] = ticket_price
+        helpers.ResourcesHelper.getTicketInfo()[ticket_name]['number'] = ticket_quantity
 
 '''
 User logout.
@@ -222,3 +248,85 @@ class ExitSession(UnloggedInSession):
 
     def routing(self):
         return None
+
+
+'''
+Selling session.
+'''
+class SellSession(LoggedInSession):
+
+    def __init__(self, username):
+        super().__init__(username)
+
+    def operate(self):
+        print('\nSelling Session starts...')
+        try:
+            ticket_name = helpers.UserIOHelper.acceptTicketName()
+            if ticket_name in helpers.ResourcesHelper.getTicketInfo():
+                raise exceptions.WrongTicketNameException
+            ticket_quantity = helpers.UserIOHelper.acceptTicketQuantity()
+            ticket_price = helpers.UserIOHelper.acceptTicketPrice()
+            date = helpers.UserIOHelper.acceptDate()
+            self.addNewTicket(ticket_name, ticket_price, ticket_quantity)
+        except exceptions.WrongFormatException as e:
+            print(str(e))
+            print('Add new ticket failed, ending session...')
+        except exceptions.WrongTicketNameException:
+            print('Ticket with this name already exist, ending session...')        
+        except exceptions.WrongTicketQuantityException:
+            print('The ticket quantity you entered is not available, ending session...')     
+    
+    def addNewTicket(self, ticket_name, ticket_price, ticket_quantity):
+        helpers.TransactionsHelper.newTicketTransaction("sell", self.username, ticket_name, ticket_price, ticket_quantity)
+        helpers.ResourcesHelper.getTicketInfo()[ticket_name] = {
+            'price': ticket_price,
+            'number': ticket_quantity,
+            'email': helpers.ResourcesHelper.getUserInfo()[self.username]['email']
+        }
+        print('Ticket info added successfully.')
+
+
+'''
+Buying session.
+'''
+class BuySession(LoggedInSession):
+
+    def __init__(self, username):
+        super().__init__(username)
+
+    def operate(self):
+        print('\nBuying Session starts...')
+        self.printTicketList()
+        try:
+            ticket_name = helpers.UserIOHelper.acceptTicketName()            
+            if ticket_name not in helpers.ResourcesHelper.getTicketInfo():
+                raise exceptions.WrongTicketNameException
+            ticket_quantity = helpers.UserIOHelper.acceptTicketQuantity()
+            if ticket_quantity > helpers.ResourcesHelper.getTicketInfo()[ticket_name]['number']:
+                raise exceptions.WrongTicketQuantityException
+            ticket_price = helpers.ResourcesHelper.getTicketInfo()[ticket_name]['price']
+            if self.checkBalance(ticket_price, ticket_quantity):
+                self.processOrder(ticket_name, ticket_price, ticket_quantity)
+            else:
+                print('Insufficient funds, ending session...')
+        except exceptions.WrongFormatException as e:
+            print(str(e))
+            print('Buy ticket failed, ending session...')
+        except exceptions.WrongTicketNameException:
+            print('The ticket name you entered cannot be found, ending session...')
+        except exceptions.WrongTicketQuantityException:
+            print('The ticket quantity you entered is not available, ending session...')           
+    
+    def printTicketList(self):
+        print('Ticket avilable:\nTicket Name\tPrice\tQuantity')
+        for i in helpers.ResourcesHelper.getTicketInfo():
+            print(i + '\t' + str(helpers.ResourcesHelper.getTicketInfo()[i]['price']) + '\t' + str(helpers.ResourcesHelper.getTicketInfo()[i]['number']) )
+    
+    def checkBalance(self, ticket_price, ticket_quantity):
+        return helpers.ResourcesHelper.getUserInfo()[self.username]['balence'] >= ticket_price * ticket_quantity
+
+    def processOrder(self, ticket_name, ticket_price, ticket_quantity):
+        helpers.ResourcesHelper.getUserInfo()[self.username]['balence'] -= ticket_price * ticket_quantity
+        helpers.ResourcesHelper.getTicketInfo()[ticket_name]['number'] -= ticket_quantity
+        helpers.TransactionsHelper.newTicketTransaction("buy", self.username, ticket_name, ticket_price, ticket_quantity)        
+        print('Ticket "' + ticket_name + '" sold successfully.')
