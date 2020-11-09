@@ -27,7 +27,7 @@ class Session:
 Base class for sessions that required login.
 '''
 class LoggedInSession(Session):
-
+    # If logged in, show the menu item buy, sell, update, and logout. Also, print out the user's balance.
     # raise exceptions if user have not logged in.
     def __init__(self, username):
         super().__init__(username)   
@@ -49,7 +49,7 @@ class LoggedInSession(Session):
 Base class for sessions that does not required login.
 '''
 class UnloggedInSession(Session):
-
+    # if not logged in, show the menu item login, register, and exits.
     # raise exceptions if user have logged in.
     def __init__(self, username): 
         super().__init__() 
@@ -111,6 +111,7 @@ class LandingSession(Session):
             print(UnloggedInSession.getMenu(self))
 
     def showBalence(self):
+        # check if user loggged in first
         if self.username:
             print('\nHi', self.username + '!')
             print('Your balance is: $' + str(helpers.ResourcesHelper.getUserInfo()[self.username]['balence']) + '.\n')
@@ -123,7 +124,10 @@ class LandingSession(Session):
 session that guide the user's login process.
 '''
 class LoginSession(UnloggedInSession):
-
+    '''
+    For any formatting errors, show message '{} format is incorrect.'.format(the_corresponding_attribute), end the login session, and print the landing screen
+    '''
+    # Command invalid if the user has logged in.
     def __init__(self, username):
         super().__init__(username)
         self.username = None
@@ -151,7 +155,7 @@ class LoginSession(UnloggedInSession):
 
 
 class RegisterSession(UnloggedInSession):
-
+    # Should ask for email, user name, password, password
     def __init__(self, username):
         super().__init__(username)
         self.username = None
@@ -164,7 +168,7 @@ class RegisterSession(UnloggedInSession):
 
 
 class SellSession(LoggedInSession):
-
+    # only appear after user logged in
     def __init__(self, username):
         super().__init__(username)
 
@@ -173,7 +177,7 @@ class SellSession(LoggedInSession):
 
 
 class BuySession(LoggedInSession):
-
+    # only appear after user logged in
     def __init__(self, username):
         super().__init__(username)
 
@@ -182,7 +186,7 @@ class BuySession(LoggedInSession):
 
 
 class UpdateSession(LoggedInSession):
-
+    # only appear after user logged in
     def __init__(self, username):
         super().__init__(username)
 
@@ -198,7 +202,7 @@ class UpdateSession(LoggedInSession):
 User logout.
 '''
 class LogoutSession(LoggedInSession):
-
+    # only appear after user logged in
     def __init__(self, username):
         super().__init__(username)
 
@@ -213,7 +217,7 @@ class LogoutSession(LoggedInSession):
 Exiting the program.
 '''
 class ExitSession(UnloggedInSession):
-
+    # only appear after user logged out
     def __init__(self, username):
         super().__init__(username)
 
