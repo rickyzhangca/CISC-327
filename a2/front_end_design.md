@@ -69,7 +69,7 @@ The main function within the main module maintains the overall process of creati
 
 | Classes/Methods                                                            | Description                                                                  |
 | -------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `LogoutSession`                                                            | An loggedSession that loggout the current user                               |
+| `LogoutSession`                                                            | A loggedInSession that loggout the current user                               |
 | `LogoutSession.routing(self) `                                             | Route to a unlogged in landing session                                       |
 | `LogoutSession.operate(self)`                                              | Notice the user that the logout was successfuly                              |
 
@@ -77,7 +77,7 @@ The main function within the main module maintains the overall process of creati
 
 | Classes/Methods                                              | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `BuySession`                                                 | A loggedSession that asks for use input ticket information for sale |
+| `BuySession`                                                 | A loggedInSession that asks for use input ticket information for sale |
 | `BuySession.operate(self)`                                   | The main behaviors of registering, asking for ticket_name and ticket_quantity |
 | `BuySession.printTicketList(self)`                           | Showing the information on available ticket sales           |
 | `BuySession.checkBalance(self, ticket_price, ticket_quantity)` | Check if the balance in the user account is enough to buy tickets or not |
@@ -87,7 +87,7 @@ The main function within the main module maintains the overall process of creati
 
 | Classes/Methods                                              | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `SellSession`                                                | A loggedSession that asks for use input ticket information for sale |
+| `SellSession`                                                | A loggedInSession that asks for use input ticket information for sale |
 | `SellSession.operate(self)`                                  | The main behaviors of selling, asking for ticket_name, ticket_price, ticket_quantity and ticket_date |
 | `SellSession.addNewTicket(self, ticket_name, ticket_price, ticket_quantity)` | Append a new registration transaction if successful selling  |
 
@@ -95,6 +95,6 @@ The main function within the main module maintains the overall process of creati
 
 | Classes/Methods                                              | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `UpdateSession`                                                | A loggedSession that updates the ticket information        |
+| `UpdateSession`                                                | A loggedInSession that updates the ticket information        |
 | `UpdateSession.operate(self)`                                  | Ask for user to provide ticket_name, ticket_price, ticket_quantity infomation  |
 | `UpdateSession.updateTicket(self, ticket_name, ticket_price, ticket_quantity)` | Update the ticket infomation and write a transaction  |
