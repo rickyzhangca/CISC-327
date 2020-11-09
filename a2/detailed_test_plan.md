@@ -33,6 +33,11 @@ In more details, the order of the test cases in each level will depend on their 
 SeetGeek requires several techniques used for testing itself to ensure it is expected. Techniques for testing that the Group 66 will use in the future are security testing, usability testing, reliability testing, capability testing and regression testing. 
 
 Security Testing is used to determine if the data and information that is used and stored are safe or not. 
+which means the goal for that is: 
+-To identify the threats in the system.
+-To measure the potential vulnerabilities of the system.
+-To help in detecting every possible security risks in the system.
+-To help developers in fixing the security problems through coding.
 
 Usability testing used to determine whether the frontend design fit the intended workflow for various comment require. Meanwhile, usability testing is used to ensure the program is intuitive to use which requires the program is easy to use from the user perspective. This technique also helps developers to review whether separate features are meet the required workflow no not, as does the system as a whole. 
 
