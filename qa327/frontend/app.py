@@ -1,7 +1,5 @@
 import sys
 
-import sessions
-import helpers
 
 def main():
 
@@ -9,6 +7,7 @@ def main():
     location = sys.argv[-3]
 
     # load the account list file and the valid ticket list file at given location
+    import helpers
     helpers.ResourcesHelper.loadUserInfo(sys.argv[-2])
     helpers.ResourcesHelper.loadTicketInfo(sys.argv[-1])
 
@@ -16,6 +15,7 @@ def main():
     print('author @VeryUsefulGroup')
 
     # setting the Landing screen as the initial page.
+    import sessions
     next_session = sessions.LandingSession()
     while next_session:
         try:
@@ -34,3 +34,5 @@ def main():
     print('Transactions saved.')
     print()
     print('Good bye!')
+
+main()
