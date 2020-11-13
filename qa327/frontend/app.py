@@ -3,12 +3,12 @@ import sys
 
 def main():
     # location of the frontend hosting
-    location = sys.argv[-3]
+    location = sys.argv[0]
 
     # load the account list file and the valid ticket list file at given location
     import helpers
-    helpers.ResourcesHelper.loadUserInfo(sys.argv[-2])
-    helpers.ResourcesHelper.loadTicketInfo(sys.argv[-1])
+    helpers.ResourcesHelper.loadUserInfo(sys.argv[1])
+    helpers.ResourcesHelper.loadTicketInfo(sys.argv[2])
 
     print('Welcome to SeetGeek!')
     print('author @VeryUsefulGroup')
