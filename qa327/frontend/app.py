@@ -2,9 +2,6 @@ import sys
 
 
 def main():
-    print(sys.argv[-1])
-    print(sys.argv[-2])
-    print(sys.argv[-3])
     # location of the frontend hosting
     location = sys.argv[-3]
 

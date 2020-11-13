@@ -16,7 +16,7 @@ def test_r2(capsys):
     """
     helper(
         capsys=capsys,
-        test_id='r2'
+        test_id='re'
     )
 
 
@@ -53,9 +53,9 @@ def helper(
 
     # prepare program parameters
     sys.argv = [
-        'app.py',
-        os.path.join(case_folder, 'valid_account_list_file.txt'),
-        transaction_summary_file]
+        'app.py', 'Kingston',
+        os.path.join(case_folder, 'valid_account_list_file.csv'),
+        os.path.join(case_folder, 'valid_ticket_list_file.csv'),]
 
     # set terminal input
     sys.stdin = io.StringIO(
@@ -79,7 +79,7 @@ def helper(
     # compare transactions:
     with open(transaction_summary_file, 'r') as of:
         content = of.read()
-        with open(os.path.join(case_folder, 'transaction_summary_file.txt'), 'r') as exp_file_of:
+        with open(os.path.join(case_folder, 'transaction_summary_file.csv'), 'r') as exp_file_of:
             expected_content = exp_file_of.read()
             assert content == expected_content
 
