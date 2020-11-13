@@ -76,7 +76,7 @@ def helper(
     for i in range(1, len(terminal_output_tail)+1):
         index = i * -1
         #assert terminal_output_tail[index] == out_lines[index]
-        pritn(out_lines[index])
+        print(out_lines[index])
     assert False
 
     # compare transactions:
