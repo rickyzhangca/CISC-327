@@ -75,7 +75,9 @@ def helper(
     # compare terminal outputs at the end.`
     for i in range(1, len(terminal_output_tail)+1):
         index = i * -1
-        assert terminal_output_tail[index] == out_lines[index]
+        #assert terminal_output_tail[index] == out_lines[index]
+        pritn(out_lines[index])
+    assert False
 
     # compare transactions:
     with open(transaction_summary_file, 'r') as of:
