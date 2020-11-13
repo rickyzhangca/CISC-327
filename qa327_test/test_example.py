@@ -9,15 +9,16 @@ path = os.path.dirname(os.path.abspath(__file__))
 sys.path.append('qa327/frontend')
 import app
 
-def test_r2(capsys):
-    """Testing r2. All required information stored in folder r2. 
+################################################################
+# if want to force printing to console:
+# pritn(something)
+# assert false
+################################################################
 
-    Arguments:
-        capsys -- object created by pytest to capture stdout and stderr
-    """
+def test_r00(capsys): # example case
     helper(
         capsys=capsys,
-        test_id='re'
+        test_id='r00_example'
     )
 
 
