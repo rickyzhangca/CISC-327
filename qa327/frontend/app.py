@@ -29,7 +29,7 @@ def main():
 
     # save transactions before exit.    
     from helpers import TransactionsHelper
-    helpers.TransactionsHelper.saveTransactions(location)
+    TransactionsHelper.saveTransactions(location)
 
     print('Transactions saved.')
     print()
