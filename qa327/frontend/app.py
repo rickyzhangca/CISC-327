@@ -6,16 +6,16 @@ def main():
     location = sys.argv[0]
 
     # load the account list file and the valid ticket list file at given location
-    import helpers
-    helpers.ResourcesHelper.loadUserInfo(sys.argv[1])
-    helpers.ResourcesHelper.loadTicketInfo(sys.argv[2])
+    from helpers import ResourcesHelper
+    ResourcesHelper.loadUserInfo(sys.argv[1])
+    ResourcesHelper.loadTicketInfo(sys.argv[2])
 
     print('Welcome to SeetGeek!')
     print('author @VeryUsefulGroup')
 
     # setting the Landing screen as the initial page.
-    import sessions
-    next_session = sessions.LandingSession()
+    from sessions import LandingSession
+    next_session = LandingSession()
     while next_session:
         try:
             current_session = next_session
@@ -28,6 +28,7 @@ def main():
             print('Please contact the admin for resolve, thank you!')
 
     # save transactions before exit.    
+    from helpers import TransactionsHelper
     helpers.TransactionsHelper.saveTransactions(location)
 
     print('Transactions saved.')
