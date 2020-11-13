@@ -62,6 +62,7 @@ def helper(
         '\n'.join(terminal_input))
 
     # run the program
+    sys.argv = ['kingson','qa327/data/user.csv', 'qa327/data/ticket.csv']
     app.main()
 
     # capture terminal output / errors
