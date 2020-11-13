@@ -1,4 +1,4 @@
-name: Github Actions Testing
+name: Github Actions Example - Ricky
 
 on:
   push:
