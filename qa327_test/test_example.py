@@ -72,9 +72,10 @@ def helper(
     # split terminal output in lines
     out_lines = out.splitlines()
 
-    # compare terminal outputs at the end.`
+    # compare terminal outputs at the end
     for i in range(1, len(terminal_output_tail)+1):
         index = i * -1
+        print(out_lines[index])
         assert terminal_output_tail[index] == out_lines[index]
 
     # compare transactions:
