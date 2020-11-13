@@ -1,7 +1,7 @@
-Good bye!
-
-Transactions saved.
-Saving transactions & exit...
-Your command: 
-Menu options - login, register, and exits
 Landing Screen...
+Menu options - login, register, and exits
+Your command: 
+Saving transactions & exit...
+Transactions saved.
+
+Good bye!
