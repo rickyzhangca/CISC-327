@@ -214,7 +214,7 @@ class UpdateSession(LoggedInSession):
             date = helpers.UserIOHelper.acceptDate()
             if ticket_name not in helpers.ResourcesHelper.getTicketInfo():
                 raise exceptions.WrongTicketNameException
-            updateTicket(self, ticket_name, ticket_price, ticket_quantity)        
+            self.updateTicket(self, ticket_name, ticket_price, ticket_quantity)        
         except exceptions.WrongFormatException as e:     
             print(str(e))
             print('Update failed, ending session...')
