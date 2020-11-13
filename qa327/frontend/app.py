@@ -1,8 +1,8 @@
 import sys
-import helpers
 
 
 def main():
+    sys.path.append('qa327/frontend')
     # location of the frontend hosting
     location = sys.argv[0]
 
