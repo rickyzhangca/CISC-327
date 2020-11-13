@@ -35,5 +35,3 @@ def main():
     print('Transactions saved.')
     print()
     print('Good bye!')
-
-main()

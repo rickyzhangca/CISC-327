@@ -6,7 +6,6 @@ import sys
 import qa327.frontend.app as app
 
 path = os.path.dirname(os.path.abspath(__file__))
-sys.path.append('qa327/frontend')
 
 def test_r2(capsys):
     """Testing r2. All required information stored in folder r2. 
