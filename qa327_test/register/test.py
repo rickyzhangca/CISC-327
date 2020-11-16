@@ -18,7 +18,7 @@ import app
 def test_r2_1(capsys): # command invalid if the user has logged in	
     helper(
         capsys=capsys,
-        test_id='2-1'
+        test_id='r2_1'
     )
 
 
