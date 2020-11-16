@@ -15,13 +15,11 @@ import app
 # assert false
 ################################################################
 
-def run_all(capsys):
-    subfolders = [ f.name for f in os.scandir('qa327_test/register') if f.is_dir() ]
-    for s in subfolders:
-        helper(
-            capsys=capsys,
-            test_id=s
-        )
+def test_r2_1(capsys): # command invalid if the user has logged in	
+    helper(
+        capsys=capsys,
+        test_id='r2_1'
+    )
 
 
 def helper(
