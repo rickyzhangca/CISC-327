@@ -17,6 +17,9 @@ import app
 ################################################################
 
 subfolders = [ f.name for f in os.scandir('qa327_test/register') if f.is_dir() ].remove('__pycache__')
+
+print(subfolders)
+assert false
 @pytest.mark.parametrize('id',subfolders)
 def test_me(capsys, id):
     helper(
