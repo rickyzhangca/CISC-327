@@ -1,9 +1,9 @@
-name: Test Buy Session Only
+name: Github Actions Example - Ricky
 
 on:
   push:
     branches:
-      - QJ-test
+      github-actions-workflow
 
 jobs:
   build:
