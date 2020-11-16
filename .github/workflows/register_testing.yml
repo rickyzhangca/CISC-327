@@ -1,4 +1,4 @@
-name: Register Session Only 1
+name: Test Register Session Only
 
 on:
   push:
@@ -30,4 +30,4 @@ jobs:
     - name: Test with pytest
       run: |
         pip install pytest
-        pytest
+        pytest qa327_test/register
