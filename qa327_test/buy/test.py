@@ -44,6 +44,18 @@ def test_buy12(capsys):
         capsys=capsys,
         test_id='buy12'
     )
+#Check if the first character of name is space not be accepted in the selling session
+def test_buy13(capsys):
+    helper(
+        capsys=capsys,
+        test_id='buy13'
+    )
+#Check if the last character of name is space not be accepted in the selling session
+def test_buy131(capsys):
+    helper(
+        capsys=capsys,
+        test_id='buy131'
+    )
 def helper(
         capsys,
         test_id):
