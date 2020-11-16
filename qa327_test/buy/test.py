@@ -32,7 +32,12 @@ def test_buy02(capsys):
         capsys=capsys,
         test_id='buy02'
     )
-
+# Check if a valid ticket name can be accepted in the selling session
+def test_buy11(capsys):
+    helper(
+        capsys=capsys,
+        test_id='buy11'
+    )
 def helper(
         capsys,
         test_id):

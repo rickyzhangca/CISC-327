@@ -1,0 +1,8 @@
+login
+test@test.com
+Password!
+buy
+testTicket
+ 
+logout
+exits
