@@ -1,0 +1,7 @@
+login
+test@test.com
+Password!
+update
+Name, 50, 65, 20000320
+logout
+exit
