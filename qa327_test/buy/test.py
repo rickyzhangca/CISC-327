@@ -62,6 +62,12 @@ def test_buy14(capsys):
         capsys=capsys,
         test_id='buy14'
     )
+# Check if the name of the ticket is not exists in the database not accepted in the selling section
+def test_buy15(capsys):
+    helper(
+        capsys=capsys,
+        test_id='buy15'
+    )
 def helper(
         capsys,
         test_id):
