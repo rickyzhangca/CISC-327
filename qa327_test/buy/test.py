@@ -24,50 +24,69 @@ def test_buy_example(capsys):
 def test_buy01(capsys):
     helper(
         capsys=capsys,
-        test_id='buy01'
+        test_id='r5_0_1'
     )
 # Check if the selling command valid when user has logged in
 def test_buy02(capsys):
     helper(
         capsys=capsys,
-        test_id='buy02'
+        test_id='r5_0_2'
     )
 # Check if a valid ticket name can be accepted in the selling session
 def test_buy11(capsys):
     helper(
         capsys=capsys,
-        test_id='buy11'
+        test_id='r5_1_1'
     )
 #Check if a not alphanumeric-only ticket name not be accepted in the selling session
 def test_buy12(capsys):
     helper(
         capsys=capsys,
-        test_id='buy12'
+        test_id='r5_1_2'
     )
 #Check if the first character of name is space not be accepted in the selling session
 def test_buy13(capsys):
     helper(
         capsys=capsys,
-        test_id='buy13'
+        test_id='r5_1_3'
     )
 #Check if the last character of name is space not be accepted in the selling session
 def test_buy131(capsys):
     helper(
         capsys=capsys,
-        test_id='buy131'
+        test_id='r5_1_3_1'
     )
 # Check if the name of the ticket is longer than 60 characters not be accepted in the selling session
 def test_buy14(capsys):
     helper(
         capsys=capsys,
-        test_id='buy14'
+        test_id='r5_1_4'
     )
 # Check if the name of the ticket is not exists in the database not accepted in the selling section
 def test_buy15(capsys):
     helper(
         capsys=capsys,
-        test_id='buy15'
+        test_id='r5_1_5'
     )
+# Check if the quantity of the tickets is less than 0 not be accepted in the selling session
+def test_buy21(capsys):
+    helper(
+        capsys=capsys,
+        test_id='r5_2_1'
+    )
+# Check if the quantity of the tickets is equal to 0 not be accepted in the selling session
+def test_buy211(capsys):
+    helper(
+        capsys=capsys,
+        test_id='r5_2_1_1'
+    )
+# Check if the quantity of the tickets is more than available quantity not be accepted in the selling session
+def test_buy22(capsys):
+    helper(
+        capsys=capsys,
+        test_id='r5_2_2'
+    )
+
 def helper(
         capsys,
         test_id):
