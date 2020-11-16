@@ -14,17 +14,23 @@ import app
 # pritn(something)
 # assert false
 ################################################################
-
-def test_buy_example(capsys): #example of valid buy session
+# Check if the buying action succeed if user input is valid
+def test_buy_example(capsys): 
     helper(
         capsys=capsys,
         test_id='buy_example'
     )
-
-def test_buy01(capsys): #example of valid buy session
+# Check if the selling command invalid when user has not logged in
+def test_buy01(capsys):
     helper(
         capsys=capsys,
         test_id='buy01'
+    )
+# Check if the selling command valid when user has logged in
+def test_buy02(capsys):
+    helper(
+        capsys=capsys,
+        test_id='buy02'
     )
 
 def helper(
