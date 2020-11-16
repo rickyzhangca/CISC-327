@@ -16,16 +16,20 @@ import app
 # assert false
 ################################################################
 
-subfolders = [ f.name for f in os.scandir('qa327_test/register') if f.is_dir() ]
+subfolders = [ f.name for f in os.scandir('qa327_test/register') if f.is_dir() ].remove('__pycache__')
 @pytest.mark.parametrize('test_id',subfolders)
 def test_me(capsys, test_id):
     helper(
         capsys=capsys,
         test_id=test_id
     )
-
-
-
+'''
+def test_r2_1(capsys): # command invalid if the user has logged in	
+    helper(
+        capsys=capsys,
+        test_id='r2_1'
+    )
+'''
 
 def helper(
         capsys,
