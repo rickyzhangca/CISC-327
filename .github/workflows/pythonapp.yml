@@ -1,9 +1,9 @@
-name: Github Actions Example - Ricky
+name: Github Actions buy_session - Qiru Jin
 
 on:
   push:
     branches:
-      - github-actions-workflow
+      - QJ-test
 
 jobs:
   build:
