@@ -1,4 +1,4 @@
-name: Github Actions buy_session - Qiru Jin
+name: Test Buy Session Only
 
 on:
   push:
