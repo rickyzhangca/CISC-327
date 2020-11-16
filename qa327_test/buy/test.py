@@ -38,6 +38,12 @@ def test_buy11(capsys):
         capsys=capsys,
         test_id='buy11'
     )
+#Check if a not alphanumeric-only ticket name not be accepted in the selling session
+def test_buy12(capsys):
+    helper(
+        capsys=capsys,
+        test_id='buy12'
+    )
 def helper(
         capsys,
         test_id):
