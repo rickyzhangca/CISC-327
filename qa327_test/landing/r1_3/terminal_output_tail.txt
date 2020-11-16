@@ -1,0 +1,11 @@
+Landing Screen...
+Menu options - login, register, and exits
+Your command: 
+
+Landing Screen...
+Menu options - buy, sell, update, and logout
+Your command: 
+Saving transactions & exit...
+Transactions saved.
+
+Good bye!
