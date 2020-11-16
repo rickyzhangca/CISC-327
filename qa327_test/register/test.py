@@ -11,14 +11,14 @@ import app
 
 ################################################################
 # if want to force printing to console:
-# pritn(something)
+# print(something)
 # assert false
 ################################################################
 
-def test_r00(capsys): # example case
+def test_r2_1(capsys): # command invalid if the user has logged in	
     helper(
         capsys=capsys,
-        test_id=''
+        test_id='2-1'
     )
 
 
