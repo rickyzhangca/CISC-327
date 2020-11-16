@@ -21,6 +21,11 @@ def test_r00(capsys): # example case
         test_id='r00_example'
     )
 
+def test_buy01(capsys): #example of valid buy session
+    helper(
+        capsys=capsys,
+        test_id='buy01'
+    )
 
 def helper(
         capsys,
