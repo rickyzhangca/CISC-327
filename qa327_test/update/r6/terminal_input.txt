@@ -3,4 +3,5 @@ test@test.com
 Password!
 update
 %%%, 6, 65, 20000320
+logout
 exit
