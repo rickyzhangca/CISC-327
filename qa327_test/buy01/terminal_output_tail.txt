@@ -1,6 +1,7 @@
 Landing Screen...
 Menu options - login, register, and exits
-Your command: Invaild command, user must be logged in first
+Your command: 
+Invaild command, user must be logged in first
 
 Landing Screen...
 Menu options - login, register, and exits
