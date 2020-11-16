@@ -56,6 +56,12 @@ def test_buy131(capsys):
         capsys=capsys,
         test_id='buy131'
     )
+# Check if the name of the ticket is longer than 60 characters not be accepted in the selling session
+def test_buy14(capsys):
+    helper(
+        capsys=capsys,
+        test_id='buy14'
+    )
 def helper(
         capsys,
         test_id):
