@@ -3,6 +3,7 @@ from importlib import reload
 import os
 import io
 import sys
+import pytest
 
 path = os.path.dirname(os.path.abspath(__file__))
 
@@ -15,11 +16,15 @@ import app
 # assert false
 ################################################################
 
-def test_r2_1(capsys): # command invalid if the user has logged in	
+subfolders = [ f.name for f in os.scandir('qa327_test/register') if f.is_dir() ]
+@pytest.mark.parametrize('test_id',subfolders)
+def test_me(capsys, test_id):
     helper(
         capsys=capsys,
-        test_id='r2_1'
+        test_id=test_id
     )
+
+
 
 
 def helper(
