@@ -15,10 +15,16 @@ import app
 # assert false
 ################################################################
 
-def test_r00(capsys): # example case
+def test_buy_example(capsys): #example of valid buy session
     helper(
         capsys=capsys,
-        test_id='r00_example'
+        test_id='buy_example'
+    )
+
+def test_buy01(capsys): #example of valid buy session
+    helper(
+        capsys=capsys,
+        test_id='buy01'
     )
 
 def helper(
