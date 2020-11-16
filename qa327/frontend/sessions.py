@@ -201,6 +201,11 @@ class UpdateSession(LoggedInSession):
     def __init__(self, username):
         super().__init__(username)
 
+    def updateTicket(self, ticket_name, ticket_price, ticket_quantity):
+        helpers.TransactionsHelper.newTicketTransaction("update", self.username, ticket_name, ticket_price, ticket_quantity)
+        helpers.ResourcesHelper.getTicketInfo()[ticket_name]['price'] = ticket_price
+        helpers.ResourcesHelper.getTicketInfo()[ticket_name]['number'] = ticket_quantity
+
     def operate(self):
         try:
             ticket_name = helpers.UserIOHelper.acceptTicketName()
@@ -209,17 +214,12 @@ class UpdateSession(LoggedInSession):
             date = helpers.UserIOHelper.acceptDate()
             if ticket_name not in helpers.ResourcesHelper.getTicketInfo():
                 raise exceptions.WrongTicketNameException
-            updateTicket(self, ticket_name, ticket_price, ticket_quantity)        
+            self.updateTicket(self, ticket_name, ticket_price, ticket_quantity)        
         except exceptions.WrongFormatException as e:     
             print(str(e))
             print('Update failed, ending session...')
         except exceptions.WrongTicketNameException:
             print('The ticket name you entered cannot be found, ending session...')
-
-    def updateTicket(self, ticket_name, ticket_price, ticket_quantity):
-        helpers.TransactionsHelper.newTicketTransaction("update", self.username, ticket_name, ticket_price, ticket_quantity)
-        helpers.ResourcesHelper.getTicketInfo()[ticket_name]['price'] = ticket_price
-        helpers.ResourcesHelper.getTicketInfo()[ticket_name]['number'] = ticket_quantity
 
 '''
 User logout.

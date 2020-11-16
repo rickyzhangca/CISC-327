@@ -1,6 +1,9 @@
-name: Python application
+name: Github Actions Example - Ricky
 
-on: [push]
+on:
+  push:
+    branches:
+      - github-actions-workflow
 
 jobs:
   build:

@@ -1,22 +1,22 @@
 import sys
 
-import sessions
-import helpers
 
 def main():
-
+    sys.path.append('qa327/frontend')
     # location of the frontend hosting
     location = sys.argv[-3]
 
     # load the account list file and the valid ticket list file at given location
-    helpers.ResourcesHelper.loadUserInfo(sys.argv[-2])
-    helpers.ResourcesHelper.loadTicketInfo(sys.argv[-1])
+    from helpers import ResourcesHelper
+    ResourcesHelper.loadUserInfo(sys.argv[-2])
+    ResourcesHelper.loadTicketInfo(sys.argv[-1])
 
     print('Welcome to SeetGeek!')
     print('author @VeryUsefulGroup')
 
     # setting the Landing screen as the initial page.
-    next_session = sessions.LandingSession()
+    from sessions import LandingSession
+    next_session = LandingSession()
     while next_session:
         try:
             current_session = next_session
@@ -29,7 +29,8 @@ def main():
             print('Please contact the admin for resolve, thank you!')
 
     # save transactions before exit.    
-    helpers.TransactionsHelper.saveTransactions(location)
+    from helpers import TransactionsHelper
+    TransactionsHelper.saveTransactions(location)
 
     print('Transactions saved.')
     print()
