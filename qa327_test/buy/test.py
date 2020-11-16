@@ -87,6 +87,19 @@ def test_buy22(capsys):
         test_id='r5_2_2'
     )
 
+# Check if the buying action failed if user has not enough balance.
+def test_buy31(capsys):
+    helper(
+        capsys=capsys,
+        test_id='r5_3_1'
+    )
+# Check if the buying action succeed if user has enough balance.
+def test_buy32(capsys):
+    helper(
+        capsys=capsys,
+        test_id='r5_3_2'
+    )
+
 def helper(
         capsys,
         test_id):
