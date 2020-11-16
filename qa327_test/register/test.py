@@ -23,12 +23,6 @@ def run_all(capsys):
             test_id=s
         )
 
-def test_r2_1(capsys): # command invalid if the user has logged in	
-    helper(
-        capsys=capsys,
-        test_id='r2_1'
-    )
-
 
 def helper(
         capsys,
