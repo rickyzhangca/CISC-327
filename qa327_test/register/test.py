@@ -213,4 +213,4 @@ def helper(capsys, test_id):
 
     # clean up
     os.close(temp_fd)
-    os.remove(temp_file)
+    os.remove('Kingston_transactions.csv')
