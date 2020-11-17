@@ -21,7 +21,6 @@ def test_r00(capsys): # example case
         test_id='r00_example'
     )
 
-
 def helper(
         capsys,
         test_id):
