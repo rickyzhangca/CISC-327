@@ -87,6 +87,18 @@ def test_sell31(capsys): # example case
         capsys=capsys,
         test_id='r4_3_1'
     )
+# Check if the price of the ticket is not in range [10, 100] not be accepted in the selling session
+def test_sell32(capsys): # example case
+    helper(
+        capsys=capsys,
+        test_id='r4_3_2'
+    )
+# Check if the price of the ticket is not in range [10, 100] not be accepted in the selling session
+def test_sell321(capsys): # example case
+    helper(
+        capsys=capsys,
+        test_id='r4_3_2_1'
+    )
 # Check if the valid date can be accepted in the selling session
 def test_sell41(capsys): # example case
     helper(
