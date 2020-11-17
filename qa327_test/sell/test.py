@@ -81,7 +81,24 @@ def test_sell231(capsys): # example case
         capsys=capsys,
         test_id='r4_2_3_1'
     )
-
+# Check if the valid price can be accepted in the selling session
+def test_sell31(capsys): # example case
+    helper(
+        capsys=capsys,
+        test_id='r4_3_1'
+    )
+# Check if the valid date can be accepted in the selling session
+def test_sell41(capsys): # example case
+    helper(
+        capsys=capsys,
+        test_id='r4_4_1'
+    )
+# Check if the incorrect format date not be accepted in the selling session
+def test_sell42(capsys): # example case
+    helper(
+        capsys=capsys,
+        test_id='r4_4_2'
+    )
 # Check if the selling session work when every input valid
 def test_sell(capsys): # example case
     helper(
