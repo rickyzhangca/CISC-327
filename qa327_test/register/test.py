@@ -159,6 +159,8 @@ def helper(capsys, test_id):
 
     # cleanup package
     reload(app)
+    if os.path.exists("Kingston_transactions.csv"): 
+        os.remove("Kingston_transactions.csv")
 
     # locate test case folder:
     case_folder = os.path.join(path, test_id)
@@ -213,4 +215,5 @@ def helper(capsys, test_id):
 
     # clean up
     os.close(temp_fd)
+    os.remove(temp_file)
     os.remove('Kingston_transactions.csv')
