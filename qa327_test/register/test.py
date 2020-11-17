@@ -205,7 +205,7 @@ def helper(capsys, test_id):
         assert terminal_output_tail[index] == out_lines[index]
 
     # compare transactions:
-    with open(transaction_summary_file, 'r') as of:
+    with open('Kingston_transactions.csv', 'r') as of:
         content = of.read()
         with open(os.path.join(case_folder, 'transaction_summary_file.csv'), 'r') as exp_file_of:
             expected_content = exp_file_of.read()
