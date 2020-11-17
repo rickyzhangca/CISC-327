@@ -1,1 +1,4 @@
-exits
+login
+test@test.com
+Password!
+logout
