@@ -15,6 +15,12 @@ import app
 # assert false
 ################################################################
 
+# Check if the selling session work when every input valid
+def test_sell(capsys): # example case
+    helper(
+        capsys=capsys,
+        test_id='sell_example'
+    )
 # Check if the selling command invalid when user has not logged in
 def test_sell01(capsys): # example case
     helper(
@@ -80,12 +86,6 @@ def test_sell231(capsys): # example case
     helper(
         capsys=capsys,
         test_id='r4_2_3_1'
-    )
-# Check if the selling session work when every input valid
-def test_sell(capsys): # example case
-    helper(
-        capsys=capsys,
-        test_id='sell_example'
     )
 
 def helper(
