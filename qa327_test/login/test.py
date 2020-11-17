@@ -15,11 +15,6 @@ import app
 # assert false
 ################################################################
 
-def test_r00(capsys): # example case
-    helper(
-        capsys=capsys,
-        test_id='r00_example'
-    )
 def test_login(capsys): # example case
     helper(
         capsys=capsys,
