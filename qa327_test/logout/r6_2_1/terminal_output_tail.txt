@@ -1,0 +1,21 @@
+Landing Screen...
+Menu options - login, register, and exits
+Your command: login
+
+Log in session starts...
+Email: 
+Password: 
+Account logged in!
+
+Landing Screen...
+Hi test_name!
+Your balance is: $1000.
+
+Menu options - buy, sell, update, and logout
+Your command: logout
+
+Logout Successfully!
+
+Landing Screen...
+Menu options - login, register, and exits
+Your command:
