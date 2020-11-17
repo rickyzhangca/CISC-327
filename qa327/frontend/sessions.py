@@ -181,7 +181,7 @@ class RegisterSession(UnloggedInSession):
             print('\nRegister failed, ending session...')
         except exceptions.WrongFormatException as e:
             print(str(e))
-            print('\nRegistation failed, ending session...')
+            print('\Registration failed, ending session...')
     
     def checkExistence(self, user_email):
         for i in helpers.ResourcesHelper.getUserInfo():
