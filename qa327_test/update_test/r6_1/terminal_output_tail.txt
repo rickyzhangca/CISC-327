@@ -1,0 +1,22 @@
+Landing Screen...
+Menu options - login, register, and exits
+Your command: 
+Invaild command, user must be logged in first
+
+Landing Screen...
+Menu options - login, register, and exits
+Your command: 
+Update session starts...
+Update failed, ending session...
+
+Menu options - buy, sell, update, and logout
+Your command: 
+Logout Successfully!
+
+Landing Screen...
+Menu options - login, register, and exits
+Your command: 
+Saving transactions & exit...
+Transactions saved.
+
+Good bye!

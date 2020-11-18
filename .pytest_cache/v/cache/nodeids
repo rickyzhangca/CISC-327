@@ -4,5 +4,6 @@
   "qa327_test/exit_test/test_exit.py::test_r7_2",
   "qa327_test/landing_test/test_landing.py::test_r1_1",
   "qa327_test/landing_test/test_landing.py::test_r1_3",
-  "qa327_test/landing_test/test_landing.py::test_r1_4"
+  "qa327_test/landing_test/test_landing.py::test_r1_4",
+  "qa327_test/update_test/test_update.py::test_r6_1"
 ]

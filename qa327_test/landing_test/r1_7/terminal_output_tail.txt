@@ -12,15 +12,7 @@ Your balance is: $1000.
 
 Menu options - buy, sell, update, and logout
 Your command: 
-Buying Session starts...
-
-Ticket avilable:
-Ticket Name	Price	Number	Date
-testTicket	39	3	20201231
-
-Ticket name: Space not on the first or the last character, format is incorrect.
-
-Buy ticket failed, ending session...
+Command undefind.
 
 Landing Screen...
 Hi test_name!

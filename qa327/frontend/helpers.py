@@ -38,6 +38,7 @@ class ResourcesHelper:
                 'price': int(record[1]),
                 'number': int(record[2]),
                 'email': record[3],
+                'date': record[4],
             }
 
     @staticmethod
@@ -69,9 +70,9 @@ class TransactionsHelper:
         transactions.append(str(transaction_name) + ', ' + str(user_name) + ', ' + str(user_email) + ', ' + str(user_password) + ', ' + str(balance) + '\n')
 
     @staticmethod
-    def newTicketTransaction(transaction_name, user_name, ticket_name, ticket_price, quantity):
+    def newTicketTransaction(transaction_name, user_name, ticket_name, ticket_price, quantity, date):
         # the new transaction uodate string list add on
-        transactions.append(str(transaction_name) + ', ' + str(user_name) + ', ' + str(ticket_name) + ', ' + str(ticket_price) + ', ' + str(quantity) + '\n')
+        transactions.append(str(transaction_name) + ', ' + str(user_name) + ', ' + str(ticket_name) + ', ' + str(ticket_price) + ', ' + str(quantity) + ', ' + str(date) + '\n')
 
 
 '''
@@ -144,7 +145,7 @@ class UserIOHelper:
             raise exceptions.WrongFormatException('Ticket price should be number')
         price = int(price)
         if price < 10 or price > 100:
-            raise exceptions.WrongTicketQuantityException('Price has to be of range [10, 100].')
+            raise exceptions.WrongTicketPriceException('Price has to be of range [10, 100].')
         return price
     
     @staticmethod
