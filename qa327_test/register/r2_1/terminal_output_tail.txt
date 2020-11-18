@@ -15,7 +15,7 @@ Your balance is: $1000.
 
 Menu options - buy, sell, update, and logout
 Your command: 
-nvaild command, user must be logged out first
+Invaild command, user must be logged out first
 
 Landing Screen...
 Hi test_name!
