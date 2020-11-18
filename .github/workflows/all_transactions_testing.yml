@@ -1,9 +1,9 @@
-name: Github Actions Example - Ricky
+name: Test All Transactions
 
 on:
   push:
     branches:
-      - github-actions-workflow
+      - master
 
 jobs:
   build:
@@ -30,4 +30,10 @@ jobs:
     - name: Test with pytest
       run: |
         pip install pytest
-        pytest
+        pytest qa327_test/landing_test/test_landing.py
+        pytest qa327_test/register/test.py
+        pytest qa327_test/login/test.py
+        pytest qa327_test/buy/test.py
+        pytest qa327_test/sell/test.py
+        pytest qa327_test/logout/test.py
+        pytest qa327_test/exit_test/test_exit.py
