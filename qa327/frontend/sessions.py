@@ -336,4 +336,6 @@ class BuySession(LoggedInSession):
         helpers.ResourcesHelper.getUserInfo()[self.username]['balence'] -= ticket_price * ticket_quantity
         helpers.ResourcesHelper.getTicketInfo()[ticket_name]['number'] -= ticket_quantity
         helpers.TransactionsHelper.newTicketTransaction("buy", self.username, ticket_name, ticket_price, ticket_quantity, helpers.ResourcesHelper.getTicketInfo()[ticket_name]['date'])        
+
         print('\nTicket "' + ticket_name + '" sold successfully.')
+
