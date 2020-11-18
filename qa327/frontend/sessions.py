@@ -181,7 +181,7 @@ class RegisterSession(UnloggedInSession):
             print('\nRegister failed, ending session...')
         except exceptions.WrongFormatException as e:
             print(str(e))
-            print('\Registration failed, ending session...')
+            print('\nRegistation failed, ending session...')
     
     def checkExistence(self, user_email):
         for i in helpers.ResourcesHelper.getUserInfo():
@@ -267,8 +267,6 @@ class SellSession(LoggedInSession):
             if ticket_name in helpers.ResourcesHelper.getTicketInfo():
                 raise exceptions.WrongTicketNameException
             ticket_quantity = helpers.UserIOHelper.acceptTicketQuantity()
-            if ticket_quantity < 10 or ticket_quantity > 100:
-                raise exceptions.WrongTicketQuantityException
             ticket_price = helpers.UserIOHelper.acceptTicketPrice()
             ticket_date = helpers.UserIOHelper.acceptDate()
             self.addNewTicket(ticket_name, ticket_price, ticket_quantity, ticket_date)
@@ -278,9 +276,7 @@ class SellSession(LoggedInSession):
         except exceptions.WrongTicketNameException:
             print('\nTicket with this name already exist, ending session...')        
         except exceptions.WrongTicketQuantityException:
-            print('\nThe ticket quantity you entered is not acceptable, has to be of range [10, 100], ending session...')
-        except exceptions.WrongTicketPriceException:
-            print('\nThe ticket price you entered is not acceptable, has to be of range [10, 100], ending session...')  
+            print('\nThe ticket quantity you entered is not available, ending session...')     
     
     def addNewTicket(self, ticket_name, ticket_price, ticket_quantity, ticket_date):
         helpers.TransactionsHelper.newTicketTransaction("sell", self.username, ticket_name, ticket_price, ticket_quantity, ticket_date)
@@ -336,6 +332,4 @@ class BuySession(LoggedInSession):
         helpers.ResourcesHelper.getUserInfo()[self.username]['balence'] -= ticket_price * ticket_quantity
         helpers.ResourcesHelper.getTicketInfo()[ticket_name]['number'] -= ticket_quantity
         helpers.TransactionsHelper.newTicketTransaction("buy", self.username, ticket_name, ticket_price, ticket_quantity, helpers.ResourcesHelper.getTicketInfo()[ticket_name]['date'])        
-
         print('\nTicket "' + ticket_name + '" sold successfully.')
-
