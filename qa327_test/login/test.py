@@ -15,11 +15,39 @@ import app
 # assert false
 ################################################################
 
-def test_login(capsys): # example case
-    helper(
-        capsys=capsys,
-        test_id='login_example'
-    )
+def test_r3_1_1(capsys): # Check if the login command is invalid when user has logged in
+    helper(capsys=capsys, test_id='r3_1_1')
+
+def test_r3_2_1(capsys): # Check if the user can login when no user has logged in
+    helper(capsys=capsys, test_id='r3_2_1')
+
+def test_r3_3_1(capsys): # Check if the session ask for the user's email to login
+    helper(capsys=capsys, test_id='r3_3_1')
+
+def test_r3_3_2(capsys): # Check if the session ask for the user's password after email has been provided
+    helper(capsys=capsys, test_id='r3_3_2')
+
+def test_r3_4_1(capsys): # Check if a valid email can be accepted in the login session
+    helper(capsys=capsys, test_id='r3_4_1')
+
+def test_r3_4_2(capsys): # Check if a valid password can be accepted in the login session
+    helper(capsys=capsys, test_id='r3_4_2')
+
+def test_r3_4_3(capsys): # Check if a invalid email can be rejected
+    helper(capsys=capsys, test_id='r3_4_3')
+
+def test_r3_4_4(capsys): # Check if a invalid password can be rejected
+    helper(capsys=capsys, test_id='r3_4_4')
+
+def test_r3_5_1(capsys): # Check if the error message can be returned and end the session if there is formatting error in email or password
+    helper(capsys=capsys, test_id='r3_5_1')
+
+def test_r3_6_1(capsys): # Check if the massage 'Account logged in.' shows up snf returns to the landing screen, if the login info are correct
+    helper(capsys=capsys, test_id='r3_6_1')
+
+def test_r3_6_2(capsys): # Otherwise, show message 'Login failed.', end login session/process, and print the landing screen according to R1, if the password does not match the email
+    helper(capsys=capsys, test_id='r3_6_2')
+
 def helper(
         capsys,
         test_id):

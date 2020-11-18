@@ -1,0 +1,16 @@
+Landing Screen...
+Menu options - login, register, and exits
+Your command: 
+Log in session starts...
+
+Email: Email should be in a form of xxxx@xxxx.xxx, format is incorrect.
+
+Login failed, ending session...
+
+Landing Screen...
+Menu options - login, register, and exits
+Your command: 
+Saving transactions & exit...
+Transactions saved.
+
+Good bye!
