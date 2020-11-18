@@ -15,6 +15,13 @@ Your command:
 Ticket name: 
 Ticket quantity: 
 Price: 
+Unexpected exception:
+Price has to be of range [10, 100].
+Please contact the admin for resolve, thank you!
+
+Ticket name: 
+Ticket quantity: 
+Price: 
 Date: 
 Landing Screen...
 Hi test_name!

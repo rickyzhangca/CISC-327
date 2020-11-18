@@ -4,7 +4,6 @@ Password!
 update
 testTicket
 3
-40
-20201231
+-7
 logout
 exits
