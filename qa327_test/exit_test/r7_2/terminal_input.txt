@@ -1,0 +1,6 @@
+login
+test@test.com
+Password!
+exit
+logout
+exits
