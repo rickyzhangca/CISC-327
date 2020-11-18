@@ -22,11 +22,13 @@ def test_r1_1(capsys): # this test simple landing, unlogged in and valid command
         test_id='r1_1'
     )
 
+'''
 def test_r1_2(capsys): # this test unloggedd in valid command
     helper(
         capsys=capsys,
         test_id='r1_2'
     )
+    '''
 
 def test_r1_3(capsys): # this test log in with valid command and exit
     helper(
