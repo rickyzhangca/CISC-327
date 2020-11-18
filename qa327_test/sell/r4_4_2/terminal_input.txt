@@ -1,0 +1,10 @@
+login
+test@test.com
+Password!
+sell
+test
+3
+21
+09012020
+logout
+exits

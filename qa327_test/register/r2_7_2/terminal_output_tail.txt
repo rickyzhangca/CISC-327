@@ -1,3 +1,20 @@
+Welcome to SeetGeek!
+author @VeryUsefulGroup
+
+Landing Screen...
+Menu options - login, register, and exits
+Your command: 
+Email: 
+User name: 
+The password entered first time does not match the one enter the second time.
+
+Register failed, ending session...
+
+Landing Screen...
+Menu options - login, register, and exits
+Your command: 
+Command undefind.
+
 Landing Screen...
 Menu options - login, register, and exits
 Your command: 

@@ -1,0 +1,17 @@
+login
+not_a_email
+login
+test
+login
+test.test@com
+login
+testtest.com
+login
+test@testcom
+login
+@test.com
+login
+test@.com
+login
+test@test.
+exits
