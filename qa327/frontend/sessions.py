@@ -276,7 +276,10 @@ class SellSession(LoggedInSession):
         except exceptions.WrongTicketNameException:
             print('\nTicket with this name already exist, ending session...')        
         except exceptions.WrongTicketQuantityException:
-            print('\nThe ticket quantity you entered is not available, ending session...')     
+            print('\nThe ticket quantity you entered is not available, ending session...')
+        except exceptions.WrongTicketPriceException as e:
+            print(str(e))
+            print('\nThe ticket price you entered is not available, ending session...')        
     
     def addNewTicket(self, ticket_name, ticket_price, ticket_quantity, ticket_date):
         helpers.TransactionsHelper.newTicketTransaction("sell", self.username, ticket_name, ticket_price, ticket_quantity, ticket_date)
