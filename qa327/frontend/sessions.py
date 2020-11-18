@@ -267,6 +267,8 @@ class SellSession(LoggedInSession):
             if ticket_name in helpers.ResourcesHelper.getTicketInfo():
                 raise exceptions.WrongTicketNameException
             ticket_quantity = helpers.UserIOHelper.acceptTicketQuantity()
+            if ticket_quantity < 10 or ticket_quantity > 100:
+                raise exceptions.WrongTicketPriceException
             ticket_price = helpers.UserIOHelper.acceptTicketPrice()
             ticket_date = helpers.UserIOHelper.acceptDate()
             self.addNewTicket(ticket_name, ticket_price, ticket_quantity, ticket_date)
@@ -276,7 +278,9 @@ class SellSession(LoggedInSession):
         except exceptions.WrongTicketNameException:
             print('\nTicket with this name already exist, ending session...')        
         except exceptions.WrongTicketQuantityException:
-            print('\nThe ticket quantity you entered is not available, ending session...')     
+            print('\nThe ticket quantity you entered is not acceptable, has to be of range [10, 100], ending session...')
+        except exceptions.WrongTicketPriceException:
+            print('\nThe ticket price you entered is not acceptable, has to be of range [10, 100], ending session...')  
     
     def addNewTicket(self, ticket_name, ticket_price, ticket_quantity, ticket_date):
         helpers.TransactionsHelper.newTicketTransaction("sell", self.username, ticket_name, ticket_price, ticket_quantity, ticket_date)

@@ -144,8 +144,8 @@ class UserIOHelper:
         if len(price) < 1 or not price.isdigit():
             raise exceptions.WrongFormatException('Ticket price should be number')
         price = int(price)
-        if price < 1 or price > 100:
-            raise exceptions.WrongTicketQuantityException('Price has to be of range [10, 100].')
+        if price < 10 or price > 100:
+            raise exceptions.WrongTicketPriceException('Price has to be of range [10, 100].')
         return price
     
     @staticmethod
