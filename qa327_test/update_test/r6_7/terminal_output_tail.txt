@@ -15,7 +15,10 @@ Your command:
 Ticket name: 
 Ticket quantity: 
 Price: 
-Date: 
+Date: Date should be numebr, format is incorrect.
+
+Update failed, ending session...
+
 Landing Screen...
 Hi test_name!
 Your balance is: $1000.

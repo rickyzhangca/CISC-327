@@ -4,7 +4,10 @@ Password!
 update
 testTicket
 3
-40
+300
+testTicket
+3
+13
 20201231
 logout
 exits

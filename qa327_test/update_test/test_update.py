@@ -22,6 +22,36 @@ def test_r6_1(capsys): # valid test for update
         test_id='r6_1'
     )
 
+def test_r6_2(capsys): # invalid test for update when have invalid name input
+    helper(
+        capsys=capsys,
+        test_id='r6_2'
+    )
+
+def test_r6_3(capsys): # invalid test for update when have invalid quantity input
+    helper(
+        capsys=capsys,
+        test_id='r6_3'
+    )
+
+def test_r6_4(capsys): # invalid test for update when have invalid price input(negative number)
+    helper(
+        capsys=capsys,
+        test_id='r6_4'
+    )
+
+def test_r6_5(capsys): # invalid test for update when have invalid price input(too large number)
+    helper(
+        capsys=capsys,
+        test_id='r6_5'
+    )
+
+def test_r6_6(capsys): # invalid test for update when have invalid price input(too large number)
+    helper(
+        capsys=capsys,
+        test_id='r6_6'
+    )
+
 def helper(
         capsys,
         test_id):

@@ -16,6 +16,8 @@ Ticket name:
 Ticket quantity: 
 Price: 
 Date: 
+The ticket name you entered cannot be found, ending session...
+
 Landing Screen...
 Hi test_name!
 Your balance is: $1000.
