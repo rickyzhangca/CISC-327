@@ -1,1 +1,4 @@
+register
+test@test.com
+
 exits

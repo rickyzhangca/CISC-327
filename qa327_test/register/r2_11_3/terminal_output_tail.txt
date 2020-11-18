@@ -1,3 +1,18 @@
+Welcome to SeetGeek!
+author @VeryUsefulGroup
+
+Landing Screen...
+Menu options - login, register, and exits
+Your command: 
+Email: 
+User name: Password should contain at least one special character, format is incorrect.
+\Registration failed, ending session...
+
+Landing Screen...
+Menu options - login, register, and exits
+Your command: 
+Command undefind.
+
 Landing Screen...
 Menu options - login, register, and exits
 Your command: 

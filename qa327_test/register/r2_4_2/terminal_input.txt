@@ -1,1 +1,4 @@
+register
+tester@327.com
+
 exits
