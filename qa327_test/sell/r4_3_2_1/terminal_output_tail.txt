@@ -1,0 +1,36 @@
+Landing Screen...
+Menu options - login, register, and exits
+Your command: 
+Log in session starts...
+
+Email: 
+Account logged in!
+
+Landing Screen...
+Hi test_name!
+Your balance is: $1000.
+
+Menu options - buy, sell, update, and logout
+Your command: 
+Selling Session starts...
+
+Ticket name: 
+Ticket quantity: 
+Price: 
+The ticket quantity you entered is not available, ending session...
+
+Landing Screen...
+Hi test_name!
+Your balance is: $1000.
+
+Menu options - buy, sell, update, and logout
+Your command: 
+Logout Successfully!
+
+Landing Screen...
+Menu options - login, register, and exits
+Your command: 
+Saving transactions & exit...
+Transactions saved.
+
+Good bye!

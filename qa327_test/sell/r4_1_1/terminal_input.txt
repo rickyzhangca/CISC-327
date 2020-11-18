@@ -1,0 +1,8 @@
+login
+test@test.com
+Password!
+sell
+test
+
+logout
+exits
