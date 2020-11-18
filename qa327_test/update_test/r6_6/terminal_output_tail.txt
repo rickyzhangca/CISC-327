@@ -15,7 +15,7 @@ Your command:
 Ticket name: 
 Ticket quantity: 
 Price: 
-Date: Date should be numebr, format is incorrect.
+Date: Date must be given in the format YYYYMMDD (e.g. 20200901), format is incorrect.
 
 Update failed, ending session...
 
