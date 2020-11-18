@@ -268,7 +268,7 @@ class SellSession(LoggedInSession):
                 raise exceptions.WrongTicketNameException
             ticket_quantity = helpers.UserIOHelper.acceptTicketQuantity()
             if ticket_quantity < 10 or ticket_quantity > 100:
-                raise exceptions.WrongTicketPriceException
+                raise exceptions.WrongTicketQuantityException
             ticket_price = helpers.UserIOHelper.acceptTicketPrice()
             ticket_date = helpers.UserIOHelper.acceptDate()
             self.addNewTicket(ticket_name, ticket_price, ticket_quantity, ticket_date)
