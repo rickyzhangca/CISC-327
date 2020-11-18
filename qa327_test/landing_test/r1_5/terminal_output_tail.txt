@@ -8,7 +8,15 @@ Account logged in!
 
 Landing Screen...
 Hi test_name!
-Your balance is: $117.
+Your balance is: $1000.
+
+Menu options - buy, sell, update, and logout
+Your command: 
+Command undefind.
+
+Landing Screen...
+Hi test_name!
+Your balance is: $1000.
 
 Menu options - buy, sell, update, and logout
 Your command: 
