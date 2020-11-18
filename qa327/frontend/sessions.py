@@ -52,7 +52,7 @@ class UnloggedInSession(Session):
     def __init__(self, username): 
         super().__init__() 
         if username:
-            print('\nnvaild command, user must be logged out first')
+            print('\nInvaild command, user must be logged out first')
             raise exceptions.CannotAccessPageException()
 
     def routing(self):

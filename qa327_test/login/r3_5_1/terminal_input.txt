@@ -1,0 +1,6 @@
+login
+not_a_email
+login
+test@test.com
+not_a_password
+exits
