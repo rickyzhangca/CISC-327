@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+      - all-transactions-testing
 
 jobs:
   build:
