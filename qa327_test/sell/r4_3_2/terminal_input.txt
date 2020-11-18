@@ -1,9 +1,0 @@
-login
-test@test.com
-Password!
-sell
-test
-3
-9
-logout
-exits
