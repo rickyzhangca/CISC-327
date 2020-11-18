@@ -165,7 +165,7 @@ def helper(capsys, test_id):
     # locate test case folder:
     case_folder = os.path.join(path, test_id)
 
-    # read terminal input:
+    # read terminal input: 
     with open(
         os.path.join(
             case_folder, 'terminal_input.txt')) as rf:
