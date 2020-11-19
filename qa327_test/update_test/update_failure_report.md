@@ -1,9 +1,6 @@
-
-   |                   test_ID                    | Purpose                          | How the test was failed                                 |    code modification                      |
- | :----------------------------------------------------------: | ----------------------------------------------------------- | ------------------------------------------------------------ |-------------- |
- |  r6_1  | # valid test for update |         invalid ticket data transaction & IndexError: list index out of range       | add the date data transaction section to the ticket_file.csv and transaction.csv   |
- |  r6_2  | # invalid test for update when have invalid name input |       invalid ticket data transaction & IndexError: list index out of range         |     add the date data transaction section to the ticket_file.csv and transaction.csv   |
- |  r6_3  | # invalid test for update when have invalid quantity input |         invalid ticket data transaction & IndexError: list index out of range          |    add the date data transaction section to the ticket_file.csv and transaction.csv   |
- |  r6_4  | # invalid test for update when have invalid price input(negative number) |         invalid ticket data transaction & IndexError: list index out of range           |    add the date data transaction section to the ticket_file.csv and transaction.csv   |
- |  r6_5  | # invalid test for update when have invalid price input(too large number) |         invalid ticket data transaction  & IndexError: list index out of range          |    add the date data transaction section to the ticket_file.csv and transaction.csv        |
- |  r6_6  | # invalid test for update when have invalid price input(too large number) |         invalid ticket data transaction  & IndexError: list index out of range          |    add the date data transaction section to the ticket_file.csv and transaction.csv        |
+| Test ID           | Purpose                                                                                             | Failure                                      | Error in the code                                      | How Fix                                                        | Failures addressed or not |
+ |-----------------------|-----------------------------------------------------------------------------------------------------|----------------------------------------------|--------------------------------------------------------|----------------------------------------------------------------|---------------------------|
+ | r6_1 to r6_6 |     Varied but all related to checking for Update session       |      invalid ticket data transaction & IndexError: list index out of range         |    didn't have the date update section in update sessions' code. | add the date data transaction section to the ticket_file.csv and transaction.csv and added updated ticket date information to ticket_file.csv and transaction_file.csv.                    | Addressed                 |
+ 
+ A note:
+ the code change was made by Steven, and after r6_1's change (which applied to all the test file afterward), all the tests were passed.
