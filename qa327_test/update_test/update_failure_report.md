@@ -1,0 +1,9 @@
+
+   |                   test_ID                    | Purpose                          | How the test was failed                                 |    code modification                      |
+ | :----------------------------------------------------------: | ----------------------------------------------------------- | ------------------------------------------------------------ |-------------- |
+ |  r6_1  | # valid test for update |         invalid ticket data transaction & IndexError: list index out of range       | add the date data transaction section to the ticket_file.csv and transaction.csv   |
+ |  r6_2  | # invalid test for update when have invalid name input |       invalid ticket data transaction & IndexError: list index out of range         |     add the date data transaction section to the ticket_file.csv and transaction.csv   |
+ |  r6_3  | # invalid test for update when have invalid quantity input |         invalid ticket data transaction & IndexError: list index out of range          |    add the date data transaction section to the ticket_file.csv and transaction.csv   |
+ |  r6_4  | # invalid test for update when have invalid price input(negative number) |         invalid ticket data transaction & IndexError: list index out of range           |    add the date data transaction section to the ticket_file.csv and transaction.csv   |
+ |  r6_5  | # invalid test for update when have invalid price input(too large number) |         invalid ticket data transaction  & IndexError: list index out of range          |    add the date data transaction section to the ticket_file.csv and transaction.csv        |
+ |  r6_6  | # invalid test for update when have invalid price input(too large number) |         invalid ticket data transaction  & IndexError: list index out of range          |    add the date data transaction section to the ticket_file.csv and transaction.csv        |
