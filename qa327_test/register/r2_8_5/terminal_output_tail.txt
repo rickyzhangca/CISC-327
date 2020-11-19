@@ -6,7 +6,8 @@ Menu options - login, register, and exits
 Your command: 
 Email: 
 User name: Space not on the first or the last character, format is incorrect.
-\Registration failed, ending session...
+
+Registration failed, ending session...
 
 Landing Screen...
 Menu options - login, register, and exits

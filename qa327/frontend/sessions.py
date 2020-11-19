@@ -175,13 +175,13 @@ class RegisterSession(UnloggedInSession):
 
         except exceptions.EmailAlreadyExistsException: 
             print('\nThis email already exists in the system')
-            print('\nRegister failed, ending session...')
+            print('\nRegistration failed, ending session...')
         except exceptions.PasswordsNotMatchingException: 
             print('\nThe password entered first time does not match the one enter the second time.')
-            print('\nRegister failed, ending session...')
+            print('\nRegistration failed, ending session...')
         except exceptions.WrongFormatException as e:
             print(str(e))
-            print('\nRegistation failed, ending session...')
+            print('\nRegistration failed, ending session...')
     
     def checkExistence(self, user_email):
         for i in helpers.ResourcesHelper.getUserInfo():

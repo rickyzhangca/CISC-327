@@ -1,7 +1,0 @@
-Landing Screen...
-Menu options - login, register, and exits
-Your command: 
-Saving transactions & exit...
-Transactions saved.
-
-Good bye!
