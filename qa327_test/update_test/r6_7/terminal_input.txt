@@ -1,0 +1,10 @@
+login
+test@test.com
+Password!
+update
+testTicket
+3
+11
+20201231
+logout
+exits

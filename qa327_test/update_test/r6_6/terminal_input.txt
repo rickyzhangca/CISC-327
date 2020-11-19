@@ -1,0 +1,10 @@
+login
+test@test.com
+Password!
+update
+testTicket
+3
+11
+202077777
+logout
+exits

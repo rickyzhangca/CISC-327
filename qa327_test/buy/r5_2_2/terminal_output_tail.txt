@@ -15,8 +15,8 @@ Your command:
 Buying Session starts...
 
 Ticket avilable:
-Ticket Name	Price	Quantity
-testTicket	39	3
+Ticket Name	Price	Number	Date
+testTicket	39	3	20201231
 
 Ticket name: 
 Ticket quantity: 

@@ -1,0 +1,8 @@
+login
+test@test.com
+Password!
+update
+testTicket
+-2
+logout
+exits

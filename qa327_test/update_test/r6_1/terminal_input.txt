@@ -2,3 +2,9 @@ login
 test@test.com
 Password!
 update
+testTicket
+3
+40
+20201231
+logout
+exits

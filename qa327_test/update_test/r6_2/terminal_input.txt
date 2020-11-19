@@ -1,0 +1,10 @@
+login
+test@test.com
+Password!
+update
+testtket
+3
+40
+20201231
+logout
+exits
