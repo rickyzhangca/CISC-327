@@ -12,7 +12,7 @@ class Repository:
         self.readFile()
 
     def save(self, new_entity):
-        entity = findBy(new_entity.entity.id)
+        entity = self.findBy(new_entity.id())
         if entity:
             entity.entity = new_entity.entity
         else:
@@ -21,7 +21,7 @@ class Repository:
     def findBy(self, entity_id):
         for i in self.collection:
             if i.id() == entity_id:
-                return i.entity
+                return i
         return None
 
     def deleteBy(self, entity_id):
@@ -31,12 +31,13 @@ class Repository:
                 return
     
     def readFile(self):
-        file = open(filename, 'r')
-        self.content = file.read().split('\n')
+        file = open(self.filename, 'r')
+        self.content = file.read().split('\n')[:-1]
         file.close()
 
     def storeFile(self):
-        file = open(filename, 'w+')
+        print('storeFile')
+        file = open(self.filename, 'w+')
         for i in self.collection:
             file.write(i.toString())
         file.close()
@@ -60,11 +61,11 @@ class TransactionsRepository(Repository):
 
     def __init__(self, filename):
         super().__init__(filename)
-        self.UserCollection = []
-        self.TicketCollection = []
+        self.userCollection = []
+        self.ticketCollection = []
         for i in self.content:
             if 'register' in i:
-                self.UserCollection.append(entities.UserTransactionsEntity(i))
+                self.userCollection.append(entities.UserTransactionsEntity(i))
             else:
-                self.TicketCollection.append(entities.TicketTransactionsEntity(i))
+                self.ticketCollection.append(entities.TicketTransactionsEntity(i))
         self.collection = []

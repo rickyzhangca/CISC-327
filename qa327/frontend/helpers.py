@@ -26,7 +26,7 @@ class ResourcesHelper:
             user_info[record[1]] = {
                 'email': record[0],
                 'password': record[2],
-                'balence': int(record[3]),
+                'balance': int(record[3]),
             }
     
     @staticmethod

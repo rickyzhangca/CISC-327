@@ -5,18 +5,16 @@ This is the Entities module
 
 class Entity:
 
-    def __init__(self, entity, entity_id):
-        self.entity = entity
-        self.id = entity_id
+    entity = None
 
     def id(self):
-        return None
+        pass
 
     def toString(self):
         line = ''
         for i in self.entity:
             line += str(self.entity[i]) + ', '
-        return line[:, -2]
+        return line[:-2]
 
 
 class UserResourcesEntity(Entity):
@@ -28,18 +26,16 @@ class UserResourcesEntity(Entity):
                 'user_email': record[0],
                 'user_name': record[1],
                 'user_password': record[2],
-                'balence': int(record[3]),
+                'balance': int(record[3]),
             }
         else:
-            self.entity = {
-                'user_email': None,
-                'user_name': None,
-                'user_password': None,
-                'balence': None,
-            }
+            self.entity = {}
 
     def id(self):
         return self.entity['user_name']
+
+    def updatebalance(self, balance):
+        self.entity['balance'] = balance
 
 
 class TicketResourcesEntity(Entity):
@@ -55,16 +51,13 @@ class TicketResourcesEntity(Entity):
                 'date': record[4],
             }
         else:
-            self.entity = {
-                'ticket_name': None,
-                'ticket_price': None,
-                'quantity': None,
-                'user_email': None,
-                'date': None,
-            }
+            self.entity = {}
 
     def id(self):
         return self.entity['ticket_name']
+    
+    def updateQuantity(self, quantity):
+        self.entity['quantity'] = quantity
 
 
 class UserTransactionsEntity(Entity):
