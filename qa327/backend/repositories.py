@@ -37,8 +37,9 @@ class Repository:
 
     def storeFile(self):
         print('storeFile')
-        file = open(self.filename, 'w+')
+        file = open(self.filename, 'w')
         for i in self.collection:
+            print(i.toString())
             file.write(i.toString())
         file.close()
 
