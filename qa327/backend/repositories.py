@@ -49,8 +49,6 @@ class UserResourcesRepository(Repository):
     def __init__(self, filename):
         super().__init__(filename)
         self.collection = [ entities.UserResourcesEntity(i) for i in self.content ]
-        for i in self.collection:
-            print(i.entity)
 
 
 class TicketResourcesRepository(Repository):

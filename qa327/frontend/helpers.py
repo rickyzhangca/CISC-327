@@ -20,7 +20,7 @@ class ResourcesHelper:
 
     @staticmethod
     def loadUserInfo(user_file_path):
-        user_file = open(user_file_path, 'r').read().split('\n')
+        user_file = open(user_file_path, 'r').read().split('\n')[:-1]
         for i in user_file:
             record = i.split(', ')
             user_info[record[1]] = {
@@ -31,7 +31,7 @@ class ResourcesHelper:
     
     @staticmethod
     def loadTicketInfo(ticket_file_path):        
-        ticket_file = open(ticket_file_path, 'r').read().split('\n')
+        ticket_file = open(ticket_file_path, 'r').read().split('\n')[:-1]
         for i in ticket_file:
             record = i.split(', ')
             ticket_info[record[0]] = {
