@@ -36,7 +36,7 @@ class Repository:
         file.close()
 
     def storeFile(self):
-        print('storeFile')
+        print('storeFile:', self.filename)
         file = open(self.filename, 'w')
         for i in self.collection:
             print(i.toString())
@@ -49,6 +49,8 @@ class UserResourcesRepository(Repository):
     def __init__(self, filename):
         super().__init__(filename)
         self.collection = [ entities.UserResourcesEntity(i) for i in self.content ]
+        for i in self.collection:
+            print(i.entity)
 
 
 class TicketResourcesRepository(Repository):

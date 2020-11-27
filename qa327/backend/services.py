@@ -24,7 +24,6 @@ class UserService(Service):
         super().__init__(transaction_file)
 
     def processTransactions(self):
-        print('processTransactions')
         for i in self.transactionsRepository.userCollection:
             self.addUser(i)
 
