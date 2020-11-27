@@ -11,21 +11,19 @@ class Service:
         self.transactionsRepository = repositories.TransactionsRepository(transaction_file)
 
     def processTransactions(self):
-        pass
+        for i in self.transactionsRepository.userCollection:
+            self.addUser(i)
+        for i in self.transactionsRepository.ticketCollection:
+            transaction_name = i.entity['transaction_name']
+            if transaction_name == 'buy':
+                self.buyTicket(i)
+            else: # Sell or Update
+                self.sellUpdateTicket(i)
 
     def updateDatabase(self):
         self.userResourcesRepository.storeFile()
         self.ticketResourcesRepository.storeFile()
-        self.transactionsRepository.storeFile()
-
-class UserService(Service):
-
-    def __init__(self, transaction_file):
-        super().__init__(transaction_file)
-
-    def processTransactions(self):
-        for i in self.transactionsRepository.userCollection:
-            self.addUser(i)
+        self.transactionsRepository.storeFile()        
 
     def addUser(self, transaction):
         newUser = entities.UserResourcesEntity()
@@ -33,20 +31,7 @@ class UserService(Service):
         newUser.entity['user_name'] = transaction.entity['user_name']
         newUser.entity['user_password'] = transaction.entity['user_password']
         newUser.entity['balance'] = int(transaction.entity['balance'])
-        self.userResourcesRepository.save(newUser)
-
-class TicketService(Service):
-
-    def __init__(self, transaction_file):
-        super().__init__(transaction_file)
-
-    def processTransactions(self):
-        for i in self.transactionsRepository.ticketCollection:
-            transaction_name = i.entity['transaction_name']
-            if transaction_name == 'buy':
-                self.buyTicket(i)
-            else: # Sell or Update
-                self.sellUpdateTicket(i)
+        self.userResourcesRepository.save(newUser)        
 
     def buyTicket(self, transaction):
         user = self.userResourcesRepository.findBy(transaction.entity['user_name'])

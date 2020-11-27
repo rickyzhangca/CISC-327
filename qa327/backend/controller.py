@@ -7,10 +7,6 @@ class Controller:
         self.transaction_file = transaction_file
     
     def processOffice(self):
-        self.userService = services.UserService(self.transaction_file)
+        self.userService = services.Service(self.transaction_file)
         self.userService.processTransactions()        
         self.userService.updateDatabase()
-        
-        self.ticketService = services.TicketService(self.transaction_file)        
-        self.ticketService.processTransactions()
-        self.ticketService.updateDatabase()
