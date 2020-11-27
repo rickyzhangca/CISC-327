@@ -14,7 +14,7 @@ class Entity:
         line = ''
         for i in self.entity:
             line += str(self.entity[i]) + ', '
-        return line[:-2]
+        return line[:-2] + '\n'
 
 
 class UserResourcesEntity(Entity):
