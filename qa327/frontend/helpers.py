@@ -59,7 +59,7 @@ class TransactionsHelper:
     @staticmethod
     def saveTransactions(location):
         # update translate information
-        transaction_file = open(location + '_transactions.csv', mode='a+', newline=None)
+        transaction_file = open('data/' + location + '_transactions.csv', mode='a+', newline=None)
         for i in transactions:
             transaction_file.write(i)
         transaction_file.close()
