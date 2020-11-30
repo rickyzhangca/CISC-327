@@ -51,11 +51,11 @@ The main function within the main module maintains the overall process of creati
 
 | Classes/Methods                                                            | Description                                                                  |
 | -------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `LandingSession`                                                           | A Session that displays usermenu and balence, guide the user to the functional page|
+| `LandingSession`                                                           | A Session that displays usermenu and balance, guide the user to the functional page|
 | `LandingSession.routing(self) `                                            | Route to the next page that the user requested                               |
 | `LandingSession.operate(self)`                                             | The main behaviors of landing, asking for a command                          |
 | `LandingSession.displayMenu(self)`                                         | Display the user menu according to wheather the usr logged in                |
-| `LandingSession.showBalence(self)`                                         | Display the user balence if the user logged in                               |
+| `LandingSession.showbalance(self)`                                         | Display the user balance if the user logged in                               |
 | `LandingSession.getUserCommand(self)`                                      | Recieved the user input about the next session that the user want to go to   |
 
 ### Register

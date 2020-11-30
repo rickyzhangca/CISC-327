@@ -63,7 +63,7 @@ class UnloggedInSession(Session):
 
 
 '''
-Landing page that displays usermenu and balence.
+Landing page that displays usermenu and balance.
 '''
 class LandingSession(Session):
 
@@ -96,7 +96,7 @@ class LandingSession(Session):
     
     def operate(self):
         print('\nLanding Screen...')        
-        self.showBalence()
+        self.showbalance()
         self.displayMenu()
         self.getUserCommand()
     
@@ -108,10 +108,10 @@ class LandingSession(Session):
         else:
             print(UnloggedInSession.getMenu(self))
 
-    def showBalence(self):
+    def showbalance(self):
         if self.username:
             print('Hi', self.username + '!')
-            print('Your balance is: $' + str(helpers.ResourcesHelper.getUserInfo()[self.username]['balence']) + '.\n')
+            print('Your balance is: $' + str(helpers.ResourcesHelper.getUserInfo()[self.username]['balance']) + '.\n')
 
     def getUserCommand(self):
         self.command = input('Your command: ')
@@ -329,10 +329,10 @@ class BuySession(LoggedInSession):
             print(i + '\t' + str(helpers.ResourcesHelper.getTicketInfo()[i]['price']) + '\t' + str(helpers.ResourcesHelper.getTicketInfo()[i]['number']) + '\t' + str(helpers.ResourcesHelper.getTicketInfo()[i]['date']))
     
     def checkBalance(self, ticket_price, ticket_quantity):
-        return helpers.ResourcesHelper.getUserInfo()[self.username]['balence'] >= ticket_price * ticket_quantity
+        return helpers.ResourcesHelper.getUserInfo()[self.username]['balance'] >= ticket_price * ticket_quantity
 
     def processOrder(self, ticket_name, ticket_price, ticket_quantity):
-        helpers.ResourcesHelper.getUserInfo()[self.username]['balence'] -= ticket_price * ticket_quantity
+        helpers.ResourcesHelper.getUserInfo()[self.username]['balance'] -= ticket_price * ticket_quantity
         helpers.ResourcesHelper.getTicketInfo()[ticket_name]['number'] -= ticket_quantity
         helpers.TransactionsHelper.newTicketTransaction("buy", self.username, ticket_name, ticket_price, ticket_quantity, helpers.ResourcesHelper.getTicketInfo()[ticket_name]['date'])        
         print('\nTicket "' + ticket_name + '" sold successfully.')

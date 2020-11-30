@@ -1,0 +1,3 @@
+register, test1@test.com, another_name, Password123!, 1000
+buy, test2_name, testTicket, 39, 1, 20201231
+sell, test2_name, test3, 43, 3, 20201223

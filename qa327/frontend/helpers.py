@@ -20,18 +20,18 @@ class ResourcesHelper:
 
     @staticmethod
     def loadUserInfo(user_file_path):
-        user_file = open(user_file_path, 'r').read().split('\n')
+        user_file = open(user_file_path, 'r').read().split('\n')[:-1]
         for i in user_file:
             record = i.split(', ')
             user_info[record[1]] = {
                 'email': record[0],
                 'password': record[2],
-                'balence': int(record[3]),
+                'balance': int(record[3]),
             }
     
     @staticmethod
     def loadTicketInfo(ticket_file_path):        
-        ticket_file = open(ticket_file_path, 'r').read().split('\n')
+        ticket_file = open(ticket_file_path, 'r').read().split('\n')[:-1]
         for i in ticket_file:
             record = i.split(', ')
             ticket_info[record[0]] = {
@@ -59,7 +59,7 @@ class TransactionsHelper:
     @staticmethod
     def saveTransactions(location):
         # update translate information
-        transaction_file = open(location + '_transactions.csv', mode='a+', newline=None)
+        transaction_file = open('data/' + location + '_transactions.csv', mode='a+', newline=None)
         for i in transactions:
             transaction_file.write(i)
         transaction_file.close()
