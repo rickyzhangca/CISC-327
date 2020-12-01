@@ -1,5 +1,5 @@
 '''
-This is the Entities module
+This is the Entities module assigning unique features to an entity
 '''
 
 
@@ -16,7 +16,9 @@ class Entity:
             line += str(self.entity[i]) + ', '
         return line[:-2] + '\n'
 
-
+'''
+user resource entity: user profile + id + can update the balance
+'''
 class UserResourcesEntity(Entity):
 
     def __init__(self, line=None):
@@ -38,6 +40,9 @@ class UserResourcesEntity(Entity):
         self.entity['balance'] = balance
 
 
+'''
+ticket resource entity: ticket information + id + can update the quantity
+'''
 class TicketResourcesEntity(Entity):
 
     def __init__(self, line=None):
@@ -60,6 +65,9 @@ class TicketResourcesEntity(Entity):
         self.entity['quantity'] = quantity
 
 
+'''
+user transaction entity: a user transaction
+'''
 class UserTransactionsEntity(Entity):
 
     def __init__(self, line=None):
@@ -73,6 +81,9 @@ class UserTransactionsEntity(Entity):
         }
 
 
+'''
+ticket transaction entity: a ticket transaction
+'''
 class TicketTransactionsEntity(Entity):
 
     def __init__(self, line=None):
