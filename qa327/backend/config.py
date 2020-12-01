@@ -1,5 +1,5 @@
 '''
-This is the backend Config module
+This is the backend Config module specifying where to look for transaction records
 '''
 
 user_resources = 'data/user.csv'
