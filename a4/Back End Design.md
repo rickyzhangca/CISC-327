@@ -1,12 +1,17 @@
 # CISC 327 A2 - Front End Design
 
-
-
 ## Overall Structure 
 
 The Backend of the SeetGeek application contains six modules including, config module, controller module, entities module, repositories module, service module and main module.
 
----------continue to update----------------
+There are some specifications and the ways to meet them: 
+
+The backend program will first read accounts.csv and tickets.csv. These two files contain the account information and ticket information at the begining of the day. These two files are also used by the frontend offices of different locations. This specification will be archieved by UerResourceRepository and TicketResourceRpository to load, and use Service.updateDatabase(self) to update information into `ticket.csv`, `user.csv` and each transaction files.
+
+The transaction files, specified by the program input, are processed following an alphabetical order. Mostly the transaction will be stored in transaction file by `UserTransactionsEntity`, and processed by `Service.processTransactions(self) `, as the backend program needs to process the transaction one-by-one. Each transaction has to satisfy the constraints specificed in the frontend requirement. For example, a ticket purchase transaction has to make sure that there are enough tickets in order to proceeed, which is archieved by `TicketResourcesEntity` and `TicketResourcesEntity.updateQuantity(self, quantity).` these class loads ticket information and update the quantity.
+
+For failed/invalid transactions, log the error in the console. There is no specific requirement for the format.
+After processing all the transactions, output the updated account information in updated_accounts.csv file and the updated ticket information in updated_tickets.csv file by `Service.updateDatabase(self)` .
 
 The main function within the main module maintains the overall process of retrieving user and ticket information from each transaction and update into `user.csv` and `ticket.csv`.
 
