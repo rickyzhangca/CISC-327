@@ -36,7 +36,7 @@ class Repository:
         file.close()
 
     def storeFile(self):
-        file = open(self.filename, 'w')
+        file = open('updated_' + self.filename, 'w')
         for i in self.collection:
             file.write(i.toString())
         file.close()
