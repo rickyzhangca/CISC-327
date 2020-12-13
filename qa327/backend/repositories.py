@@ -52,8 +52,6 @@ class Repository:
     '''
     def storeFile(self):
         new_filename = self.filename
-        if self.collection:
-            new_filename = new_filename.replace('data/', 'data/updated_')
         file = open(new_filename, 'w')
         for i in self.collection:
             file.write(i.toString())
