@@ -8,9 +8,9 @@
 
 # front end
 chmod +x frontend/app.py
-cat daily_kingston.txt | python3 frontend/app.py kingston data/user.csv data/ticket.csv
-cat daily_toronto.txt | python3 frontend/app.py toronto data/user.csv data/ticket.csv
-cat daily_montreal.txt | python3 frontend/app.py montreal data/user.csv data/ticket.csv
+cat daily/daily_kingston.txt | python3 frontend/app.py kingston data/user.csv data/ticket.csv
+cat daily/daily_toronto.txt | python3 frontend/app.py toronto data/user.csv data/ticket.csv
+cat daily/daily_montreal.txt | python3 frontend/app.py montreal data/user.csv data/ticket.csv
 
 # back end 
 chmod +x backend2/backend.py
