@@ -2,6 +2,8 @@
 import csv
 import sys
 
+# add 'qa327' to all paths if you are to run this file directly
+
 '''
 csv -> list, by row
 '''
