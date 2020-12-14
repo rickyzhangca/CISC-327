@@ -4,6 +4,7 @@
 # 2. runs back end program that merges transaction and produce new information files
 
 # run this script by:
+# cd qa327
 # sh daily.sh
 
 # front end
