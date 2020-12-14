@@ -1,3 +1,4 @@
+from datetime import datetime
 import config
 import entities
 import repositories
@@ -17,6 +18,7 @@ class Service:
     update the databases based on transaction type
     '''
     def processTransactions(self):
+        print(datetime.now(), 'INFO --- Endpoint entering service function processTransactions(self)')
         for i in self.transactionsRepository.userCollection:
             self.addUser(i)
         for i in self.transactionsRepository.ticketCollection:
@@ -25,14 +27,17 @@ class Service:
                 self.buyTicket(i)
             else: # Sell or Update
                 self.sellUpdateTicket(i)
+        print(datetime.now(), 'INFO --- Calling procedural has been done')
 
     '''
     update the database from files
     '''
     def updateDatabase(self):
+        print(datetime.now(), 'INFO --- Endpoint entering service function updateDatabase(self)')
         self.userResourcesRepository.storeFile()
         self.ticketResourcesRepository.storeFile()
-        self.transactionsRepository.storeFile()        
+        self.transactionsRepository.storeFile()    
+        print(datetime.now(), 'INFO --- Calling procedural has been done')    
 
     '''
     add new user
