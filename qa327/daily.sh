@@ -14,5 +14,8 @@ cat daily/daily_toronto.txt | python3 frontend/app.py toronto data/user.csv data
 cat daily/daily_montreal.txt | python3 frontend/app.py montreal data/user.csv data/ticket.csv
 
 # back end 
-chmod +x backend2/backend.py
-python3 backend2/backend.py
+# chmod +x backend2/backend.py
+# python3 backend2/backend.py
+
+cd backend2
+python3 -c 'import backend; backend.main()'
