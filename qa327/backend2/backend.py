@@ -70,10 +70,17 @@ def process(tickets, users, transactions):
     '''
     def sell(transaction):
         try:
-            ticket_index = tickets.index([t for t in tickets if t[0] == transaction[2]][0])
-            tickets[ticket_index][2] = str(int(tickets[ticket_index][2]) + int(transaction[4]))
+            match_tickets = [t for t in tickets if t[0] == transaction[2]]
+
+            if len(match_tickets) == 1: # sell exiting ticket
+                ticket_index = tickets.index(match_tickets[0])
+                tickets[ticket_index][2] = str(int(tickets[ticket_index][2]) + int(transaction[4]))
+            elif len(match_tickets) == 0: # sell new ticket
+                tickets.append([transaction[2],transaction[3],transaction[4],transaction[1],transaction[-1]])    
+            else: # multiple matching tickets
+                print('error')
         except:
-            tickets.append([transaction[2],transaction[3],transaction[4],transaction[1],transaction[-1]])    
+            print('error')    
 
     '''
     update: directly update ticket information
@@ -106,6 +113,7 @@ tickets, users = get_data('qa327/data/ticket.csv','qa327/data/user.csv')
 
 # get transactions, from fixed paths or arguments
 # transactions = sys.argv[1:]
+# transactions = get_transactions(['qa327/data/test_transactions.csv'])
 transactions = get_transactions(['qa327/data/kingston_transactions.csv','qa327/data/montreal_transactions.csv','qa327/data/toronto_transactions.csv'])
 
 # process transactions
