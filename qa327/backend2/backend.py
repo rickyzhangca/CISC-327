@@ -122,5 +122,5 @@ process(tickets, users, transactions)
 # save new tickets and users, to new file, or replace the previous file
 # save('qa327/data/ticket.csv',tickets)
 # save('qa327/data/user.csv',users)
-save('qa327/data/new_ticket.csv',tickets)
-save('qa327/data/new_user.csv',users)
+save('qa327/data/updated_tickets.csv',tickets)
+save('qa327/data/updated_accounts.csv',users)
