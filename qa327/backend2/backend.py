@@ -110,24 +110,25 @@ def process(tickets, users, transactions):
         elif transactions[i][0] == 'update': 
             update(transactions[i])
 
-# get tickets and users
-tickets, users = get_data('data/ticket.csv','data/user.csv')
+def main():
+    # get tickets and users
+    tickets, users = get_data('data/ticket.csv','data/user.csv')
 
-# get transactions, from fixed paths or arguments
-# transactions = sys.argv[1:]
-# transactions = get_transactions(['qa327/data/test_transactions.csv'])
-transactions = get_transactions(['data/kingston_transactions.csv','data/montreal_transactions.csv','data/toronto_transactions.csv'])
+    # get transactions, from fixed paths or arguments
+    # transactions = sys.argv[1:]
+    # transactions = get_transactions(['qa327/data/test_transactions.csv'])
+    transactions = get_transactions(['data/kingston_transactions.csv','data/montreal_transactions.csv','data/toronto_transactions.csv'])
 
-# process transactions
-process(tickets, users, transactions)
+    # process transactions
+    process(tickets, users, transactions)
 
-# save new tickets and users, to new file, or replace the previous file
-# save('qa327/data/ticket.csv',tickets)
-# save('qa327/data/user.csv',users)
-save('data/updated_tickets.csv',tickets)
-save('data/updated_accounts.csv',users)
+    # save new tickets and users, to new file, or replace the previous file
+    # save('qa327/data/ticket.csv',tickets)
+    # save('qa327/data/user.csv',users)
+    save('data/updated_tickets.csv',tickets)
+    save('data/updated_accounts.csv',users)
 
-# empty transanction files
-save('data/kingston_transactions.csv',[])
-save('data/montreal_transactions.csv',[])
-save('data/toronto_transactions.csv',[])
+    # empty transanction files
+    save('data/kingston_transactions.csv',[])
+    save('data/montreal_transactions.csv',[])
+    save('data/toronto_transactions.csv',[])
