@@ -1,3 +1,3 @@
-buy, test_name, testTicket, 39, 1, 20201231
-sell, test_name, test, 10, 1, 20201220
-sell, test_name, test01, 12, 2, 20201224
+register, trtUser, trt@test.com, Password123!, 3000
+register, trtUser1, trt1@test.com, Password123!, 3000
+register, trtUser2, trt2@test.com, Password123!, 3000
