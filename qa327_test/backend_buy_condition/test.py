@@ -38,7 +38,7 @@ def helper(
     """
 
     # cleanup package
-    reload(app)
+
 
     # locate test case folder:
     case_folder = os.path.join(path, test_id)
@@ -65,7 +65,7 @@ def helper(
     sys.argv = ['backend2/bakend.py']
 
     # run the program
-    app.main()
+
 
     # read expected files:
     with open(
