@@ -20,4 +20,12 @@ do
     # back end 
     chmod +x backend2/backend.py
     python3 backend2/backend.py
+
+    cp data/user.csv weekly_log/daily${i}/
+    cp data/ticket.csv weekly_log/daily${i}/
+
+    cp data/kingston_transactions.csv weekly_log/daily${i}/
+    cp data/montreal_transactions.csv weekly_log/daily${i}/
+    cp data/toronto_transactions.csv weekly_log/daily${i}/
+
 done
