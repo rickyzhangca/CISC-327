@@ -2,8 +2,6 @@
 import csv
 import sys
 
-print(sys.argv)
-
 def read(file):
     results = []
     with open(file, newline='') as inputfile:
@@ -75,6 +73,7 @@ def process(tickets, users, transactions):
 
 tickets, users = get_data('qa327/data/ticket.csv','qa327/data/user.csv')
 transactions = get_transactions(['qa327/data/kingston_transactions.csv','qa327/data/montreal_transactions.csv','qa327/data/toronto_transactions.csv'])
+# transactions = sys.argv[1:]
 process(tickets, users, transactions)
 save('qa327/data/new_ticket.csv',tickets)
 save('qa327/data/new_user.csv',users)
