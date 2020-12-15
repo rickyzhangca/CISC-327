@@ -1,0 +1,8 @@
+login
+tester@kst.com
+Password!
+buy
+test
+1
+logout
+exits

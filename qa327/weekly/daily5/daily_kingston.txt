@@ -1,0 +1,6 @@
+register
+tester@kst2.com
+kstTest2
+Password!
+Password!
+exits

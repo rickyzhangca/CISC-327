@@ -1,0 +1,6 @@
+register
+tester@trt.com
+trtTester
+Password!
+Password!
+exits

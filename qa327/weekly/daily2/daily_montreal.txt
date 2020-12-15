@@ -1,0 +1,10 @@
+login
+tester@mtl.com
+Password!
+sell
+test
+3
+23
+20201228
+logout
+exits
