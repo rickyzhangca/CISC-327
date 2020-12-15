@@ -47,7 +47,7 @@ def helper(
     # prepare program parameters
     sys.argv = []
 
-    # run the program
+    # run the program and update files/folders
     in_ticket=case_folder+'/ticket.csv'
     in_user=case_folder+'/user.csv'
     in_transactions=[case_folder+'/kingston_transactions.csv',case_folder+'/montreal_transactions.csv',case_folder+'/toronto_transactions.csv']
@@ -58,14 +58,14 @@ def helper(
     backend.main(in_ticket, in_user, in_transactions, out_ticket, out_user, out_transactions)
 
     # users -> updated
-    with open(out_user, 'r') as of:
+    with open(out_user, 'r') as of:#open file
         content = of.read()
         with open(os.path.join(case_folder, 'expected_user.csv'), 'r') as exp_file_of:
             expected_content = exp_file_of.read()
             assert content == expected_content
 
     # tickets -> udpated
-    with open(out_ticket, 'r') as of:
+    with open(out_ticket, 'r') as of:#open file
         content = of.read()
         with open(os.path.join(case_folder, 'expected_ticket.csv'), 'r') as exp_file_of:
             expected_content = exp_file_of.read()
@@ -73,7 +73,7 @@ def helper(
 
     # transactions -> empty
     for t in out_transactions:
-        with open(t, 'r') as of:
+        with open(t, 'r') as of:#open file
             content = of.read()
             with open(t, 'r') as exp_file_of:
                 expected_content = exp_file_of.read()
