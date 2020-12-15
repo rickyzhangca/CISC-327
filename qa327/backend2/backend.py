@@ -110,14 +110,22 @@ def process(tickets, users, transactions):
         elif transactions[i][0] == 'update': 
             update(transactions[i])
 
-def main():
+def main(in_ticket='data/ticket.csv', 
+        in_user='data/user.csv', 
+        in_transactions=['data/kingston_transactions.csv','data/montreal_transactions.csv','data/toronto_transactions.csv'],
+        out_ticket='data/updated_tickets.csv', 
+        out_user='data/updated_accounts.csv',
+        out_transactions=['data/kingston_transactions.csv','data/montreal_transactions.csv','data/toronto_transactions.csv']):
+    
+    import os
+    os.chdir("..")
     # get tickets and users
-    tickets, users = get_data('data/ticket.csv','data/user.csv')
+    tickets, users = get_data(in_ticket,in_user)
 
     # get transactions, from fixed paths or arguments
     # transactions = sys.argv[1:]
     # transactions = get_transactions(['qa327/data/test_transactions.csv'])
-    transactions = get_transactions(['data/kingston_transactions.csv','data/montreal_transactions.csv','data/toronto_transactions.csv'])
+    transactions = get_transactions(in_transactions)
 
     # process transactions
     process(tickets, users, transactions)
@@ -125,10 +133,12 @@ def main():
     # save new tickets and users, to new file, or replace the previous file
     # save('qa327/data/ticket.csv',tickets)
     # save('qa327/data/user.csv',users)
-    save('data/updated_tickets.csv',tickets)
-    save('data/updated_accounts.csv',users)
+    save(out_ticket,tickets)
+    save(out_user,users)
 
     # empty transanction files
-    save('data/kingston_transactions.csv',[])
-    save('data/montreal_transactions.csv',[])
-    save('data/toronto_transactions.csv',[])
+    for t in out_transactions:
+        save(t,[])
+
+if __name__ == '__main__':
+    main()
