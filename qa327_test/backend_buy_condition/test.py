@@ -7,7 +7,7 @@ import unittest
 
 path = os.path.dirname(os.path.abspath(__file__))
 
-sys.path.append('qa327/backend2')
+sys.path.append('qa327/')
 import backend
 
 ################################################################
@@ -47,12 +47,13 @@ def helper(
     sys.argv = []
 
     # run the program
-    in_ticket='qa327_test/backend_buy_condition/condition=false/ticket.csv'
-    in_user='qa327_test/backend_buy_condition/condition=false/user.csv'
-    in_transactions=['qa327_test/backend_buy_condition/condition=false/kingston_transactions.csv','qa327_test/backend_buy_condition/condition=false/montreal_transactions.csv','qa327_test/backend_buy_condition/condition=false/toronto_transactions.csv']
-    out_ticket='temp/updated_tickets.csv'
-    out_user='temp/updated_accounts.csv'
-    out_transactions=['temp/kingston_transactions.csv','temp/montreal_transactions.csv','temp/toronto_transactions.csv']
+    in_ticket=case_folder+'/ticket.csv'
+    in_user=case_folder+'/user.csv'
+    in_transactions=[case_folder+'/kingston_transactions.csv',case_folder+'/montreal_transactions.csv',case_folder+'/toronto_transactions.csv']
+    out_ticket=case_folder+'/temp/updated_tickets.csv'
+    out_user=case_folder+'/temp/updated_accounts.csv'
+    out_transactions=[case_folder+'/temp/kingston_transactions.csv',case_folder+'/temp/montreal_transactions.csv',case_folder+'/temp/toronto_transactions.csv']
+
     backend.main(in_ticket, in_user, in_transactions, out_ticket, out_user, out_transactions)
 
     # users -> updated
@@ -73,7 +74,7 @@ def helper(
     for t in out_transactions:
         with open(t, 'r') as of:
             content = of.read()
-            with open(os.path.join(case_folder, 'expected_'+t), 'r') as exp_file_of:
+            with open(t, 'r') as exp_file_of:
                 expected_content = exp_file_of.read()
                 assert content == expected_content
 
