@@ -62,7 +62,7 @@ def process(tickets, users, transactions):
             cost = float(transaction[3]) * float(int(transaction[4])) * (1 + 0.35 + 0.05)
 
             if float(users[user_index][3]) >= cost and int(tickets[ticket_index][2]) >= int(transaction[4]):
-                users[user_index][3] = str(float(users[user_index][3]) - cost)
+                users[user_index][3] = str(int(float(users[user_index][3]) - cost))
                 tickets[ticket_index][2] = str(int(tickets[ticket_index][2]) - int(transaction[4]))
         except:
             print('error')     
