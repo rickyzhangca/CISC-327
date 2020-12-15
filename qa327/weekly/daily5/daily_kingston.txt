@@ -1,8 +1,6 @@
-login
-test@test.com
+register
+tester@kst2.com
+kstTest2
 Password!
-buy
-test4
-3
-logout
+Password!
 exits

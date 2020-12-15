@@ -1,10 +1,8 @@
 login
-test@test.com
+tester@mtl.com
 Password!
-sell
-test5
-3
-23
-20201228
+buy
+Mtltest
+1
 logout
 exits

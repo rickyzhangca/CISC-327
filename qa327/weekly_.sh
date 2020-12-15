@@ -18,8 +18,7 @@ do
     cat weekly/daily${i}/daily_montreal.txt | python3 frontend/app.py montreal data/user.csv data/ticket.csv
 
     # back end 
-    chmod +x backend2/backend.py
-    python3 backend2/backend.py
+    python3 -c 'import backend; backend.main()'
 
     cp data/user.csv weekly_data/daily${i}/
     cp data/ticket.csv weekly_data/daily${i}/
