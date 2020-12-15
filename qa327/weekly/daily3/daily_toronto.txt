@@ -1,6 +1,0 @@
-register
-tester@3272.com
-tester2
-Password!
-Password!
-exits

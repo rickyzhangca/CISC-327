@@ -1,8 +1,0 @@
-login
-tester@kst.com
-Password!
-buy
-Mtltest
-2
-logout
-exits

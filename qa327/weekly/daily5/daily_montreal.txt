@@ -1,8 +1,0 @@
-login
-tester@mtl.com
-Password!
-buy
-Mtltest
-1
-logout
-exits

@@ -1,6 +1,0 @@
-register
-tester@mtl.com
-mtlTester
-Password!
-Password!
-exits
