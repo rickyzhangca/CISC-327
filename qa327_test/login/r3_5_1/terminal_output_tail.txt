@@ -12,7 +12,8 @@ Menu options - login, register, and exits
 Your command: 
 Log in session starts...
 
-Email: Password should contain at least one upper case character, format is incorrect.
+Email: 
+Password: Password should contain at least one upper case character, format is incorrect.
 
 Login failed, ending session...
 

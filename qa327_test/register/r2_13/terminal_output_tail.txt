@@ -7,6 +7,7 @@ Your command:
 Log in session starts...
 
 Email: 
+Password: 
 Account logged in!
 
 Landing Screen...

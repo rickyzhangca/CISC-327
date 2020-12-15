@@ -6,6 +6,8 @@ Menu options - login, register, and exits
 Your command: 
 Email: 
 User name: 
+Password: 
+Confirm password: 
 The password entered first time does not match the one enter the second time.
 
 Registration failed, ending session...

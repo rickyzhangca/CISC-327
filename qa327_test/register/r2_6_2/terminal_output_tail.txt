@@ -5,7 +5,8 @@ Landing Screen...
 Menu options - login, register, and exits
 Your command: 
 Email: 
-User name: Given password is too short. Need at least 6 in length, format is incorrect.
+User name: 
+Password: Given password is too short. Need at least 6 in length, format is incorrect.
 
 Registration failed, ending session...
 

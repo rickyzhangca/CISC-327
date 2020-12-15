@@ -5,7 +5,8 @@ Landing Screen...
 Menu options - login, register, and exits
 Your command: 
 Email: 
-User name: Password cannot be empty, format is incorrect.
+User name: 
+Password: Password cannot be empty, format is incorrect.
 
 Registration failed, ending session...
 
