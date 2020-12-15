@@ -36,4 +36,3 @@ def main():
     print()
     print('Good bye!')
 
-main()
