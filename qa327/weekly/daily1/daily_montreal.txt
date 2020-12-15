@@ -1,10 +1,6 @@
-login
-test@test.com
+register
+tester@mtl.com
+mtlTester
 Password!
-sell
-test
-3
-23
-20201228
-logout
+Password!
 exits
