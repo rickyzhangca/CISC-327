@@ -47,11 +47,11 @@ def helper(
     sys.argv = []
 
     # run the program
-    in_ticket='qa327_test/backend_buy_condition/condition=false/ticket.csv', 
-    in_user='qa327_test/backend_buy_condition/condition=false/ticket.csv', 
-    in_transactions=['qa327_test/backend_buy_condition/condition=false/kingston_transactions.csv','qa327_test/backend_buy_condition/condition=false/montreal_transactions.csv','qa327_test/backend_buy_condition/condition=false/toronto_transactions.csv'],
-    out_ticket='temp/updated_tickets.csv', 
-    out_user='temp/updated_accounts.csv',
+    in_ticket='qa327_test/backend_buy_condition/condition=false/ticket.csv'
+    in_user='qa327_test/backend_buy_condition/condition=false/user.csv'
+    in_transactions=['qa327_test/backend_buy_condition/condition=false/kingston_transactions.csv','qa327_test/backend_buy_condition/condition=false/montreal_transactions.csv','qa327_test/backend_buy_condition/condition=false/toronto_transactions.csv']
+    out_ticket='temp/updated_tickets.csv'
+    out_user='temp/updated_accounts.csv'
     out_transactions=['temp/kingston_transactions.csv','temp/montreal_transactions.csv','temp/toronto_transactions.csv']
     backend.main(in_ticket, in_user, in_transactions, out_ticket, out_user, out_transactions)
 
