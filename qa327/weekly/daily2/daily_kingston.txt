@@ -1,8 +1,10 @@
 login
-test@test.com
+tester@kst.com
 Password!
-buy
-test
+sell
+kstTest
 3
+32
+20201228
 logout
 exits

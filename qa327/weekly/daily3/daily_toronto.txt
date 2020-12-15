@@ -1,6 +1,6 @@
 register
-tester@3273.com
-tester3
-Tester1234!
-Tester1234!
+tester@3272.com
+tester2
+Password!
+Password!
 exits

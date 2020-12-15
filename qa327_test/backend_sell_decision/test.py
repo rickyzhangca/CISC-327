@@ -16,13 +16,14 @@ import backend
 # assert false
 ################################################################
 
-def test_b_3(capsys): # valid test for update
+# added ticket quantity in exist ticket
+def test_b_3(capsys):
     helper(
         capsys=capsys,
         test_id='decision=false'
     )
-
-def test_b_4(capsys): # invalid test for update when have invalid name input
+# appended new ticket
+def test_b_4(capsys): 
     helper(
         capsys=capsys,
         test_id='decision=true'

@@ -1,8 +1,8 @@
 login
-test@test.com
+tester@kst.com
 Password!
 buy
-test2
-3
+test
+1
 logout
 exits
