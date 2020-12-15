@@ -19,4 +19,11 @@ do
 
     # back end 
     python3 -c 'import backend; backend.main()'
+
+    cp data/updated_accounts.csv weekly_data/daily${i}/
+    cp data/updated_tickets.csv weekly_data/daily${i}/
+    cp data/kingston_transactions.csv weekly_data/daily${i}/
+    cp data/toronto_transactions.csv weekly_data/daily${i}/
+    cp data/montreal_transactions.csv weekly_data/daily${i}/
+
 done
