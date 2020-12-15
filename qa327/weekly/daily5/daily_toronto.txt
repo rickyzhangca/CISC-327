@@ -1,6 +1,0 @@
-register
-tester@3275.com
-tester5
-Tester1234!
-Tester1234!
-exits
