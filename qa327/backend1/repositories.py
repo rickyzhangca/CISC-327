@@ -52,10 +52,6 @@ class Repository:
     '''
     def storeFile(self):
         new_filename = self.filename
-        file = open(new_filename, 'w')
-        for i in self.collection:
-            file.write(i.toString())
-        file.close()
 
 '''
 user database

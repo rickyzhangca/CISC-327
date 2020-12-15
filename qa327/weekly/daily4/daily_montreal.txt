@@ -1,0 +1,10 @@
+login
+test@test.com
+Password!
+sell
+test4
+3
+23
+20201228
+logout
+exits

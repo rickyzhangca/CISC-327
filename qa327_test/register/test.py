@@ -183,7 +183,7 @@ def helper(capsys, test_id):
 
     # prepare program parameters
     sys.argv = [
-        'app.py', 'Kingston',
+        'app.py', 'kingston',
         os.path.join(case_folder, 'valid_account_list_file.csv'),
         os.path.join(case_folder, 'valid_ticket_list_file.csv'),]
 
