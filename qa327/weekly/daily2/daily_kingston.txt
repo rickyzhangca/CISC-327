@@ -1,0 +1,10 @@
+login
+tester@kst.com
+Password!
+sell
+kstTest
+3
+32
+20201228
+logout
+exits

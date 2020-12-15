@@ -1,0 +1,6 @@
+register
+tester@327.com
+tester
+Password!
+Password!
+exits

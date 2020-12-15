@@ -1,0 +1,8 @@
+login
+tester@trt.com
+Password!
+buy
+Mtltest2
+3
+logout
+exits
