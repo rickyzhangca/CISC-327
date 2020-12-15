@@ -110,8 +110,8 @@ def process(tickets, users, transactions):
         elif transactions[i][0] == 'update': 
             update(transactions[i])
 
-def main(in_ticket='data/ticket.csv', 
-        in_user='data/user.csv', 
+def main(in_ticket='data/updated_tickets.csv', 
+        in_user='data/updated_accounts.csv', 
         in_transactions=['data/kingston_transactions.csv','data/montreal_transactions.csv','data/toronto_transactions.csv'],
         out_ticket='data/updated_tickets.csv', 
         out_user='data/updated_accounts.csv',
