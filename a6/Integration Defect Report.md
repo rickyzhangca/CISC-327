@@ -1,0 +1,1 @@
+During the integration between frontend end backend, most issues the team experienced were related to directories.
