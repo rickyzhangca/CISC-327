@@ -8,7 +8,7 @@ import unittest
 path = os.path.dirname(os.path.abspath(__file__))
 
 sys.path.append('qa327/')
-import backend
+import backend1
 
 ################################################################
 # if want to force printing to console:
