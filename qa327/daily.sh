@@ -7,6 +7,9 @@
 # cd qa327
 # sh daily.sh
 
+> data/updated_accounts.csv
+> data/updated_tickets.csv
+
 # front end
 chmod +x frontend
 cat daily/daily_kingston.txt | python3 frontend kingston data/updated_accounts.csv data/updated_tickets.csv
