@@ -2,9 +2,9 @@
 This is the backend Config module specifying where to look for transaction records
 '''
 
-user_resources = 'data/updated_user.csv'
+user_resources = 'data/updated_accounts.csv'
 
-ticket_resources = 'data/updated_ticket.csv'
+ticket_resources = 'data/updated_tickets.csv'
 
 kingston_transaction = 'data/kingston_transactions.csv'
 
