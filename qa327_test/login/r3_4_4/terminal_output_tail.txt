@@ -3,43 +3,8 @@ Menu options - login, register, and exits
 Your command: 
 Log in session starts...
 
-Email: Password should contain at least one upper case character, format is incorrect.
-
-Login failed, ending session...
-
-Landing Screen...
-Menu options - login, register, and exits
-Your command: 
-Log in session starts...
-
-Email: Given password is too short. Need at least 6 in length, format is incorrect.
-
-Login failed, ending session...
-
-Landing Screen...
-Menu options - login, register, and exits
-Your command: 
-Log in session starts...
-
-Email: Password should contain at least one upper case character, format is incorrect.
-
-Login failed, ending session...
-
-Landing Screen...
-Menu options - login, register, and exits
-Your command: 
-Log in session starts...
-
-Email: Password should contain at least one lower case character, format is incorrect.
-
-Login failed, ending session...
-
-Landing Screen...
-Menu options - login, register, and exits
-Your command: 
-Log in session starts...
-
-Email: Password should contain at least one special character, format is incorrect.
+Email: 
+Password: Password should contain at least one upper case character, format is incorrect.
 
 Login failed, ending session...
 
@@ -49,6 +14,47 @@ Your command:
 Log in session starts...
 
 Email: 
+Password: Given password is too short. Need at least 6 in length, format is incorrect.
+
+Login failed, ending session...
+
+Landing Screen...
+Menu options - login, register, and exits
+Your command: 
+Log in session starts...
+
+Email: 
+Password: Password should contain at least one upper case character, format is incorrect.
+
+Login failed, ending session...
+
+Landing Screen...
+Menu options - login, register, and exits
+Your command: 
+Log in session starts...
+
+Email: 
+Password: Password should contain at least one lower case character, format is incorrect.
+
+Login failed, ending session...
+
+Landing Screen...
+Menu options - login, register, and exits
+Your command: 
+Log in session starts...
+
+Email: 
+Password: Password should contain at least one special character, format is incorrect.
+
+Login failed, ending session...
+
+Landing Screen...
+Menu options - login, register, and exits
+Your command: 
+Log in session starts...
+
+Email: 
+Password: 
 Email or password incorrect.
 
 Landing Screen...

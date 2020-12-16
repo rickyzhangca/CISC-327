@@ -6,6 +6,8 @@ Menu options - login, register, and exits
 Your command: 
 Email: 
 User name: 
+Password: 
+Confirm password: 
 Registered successfully.
 
 Landing Screen...

@@ -5,7 +5,8 @@ Landing Screen...
 Menu options - login, register, and exits
 Your command: 
 Email: 
-User name: Password should contain at least one upper case character, format is incorrect.
+User name: 
+Password: Password should contain at least one upper case character, format is incorrect.
 
 Registration failed, ending session...
 
