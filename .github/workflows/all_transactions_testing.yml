@@ -38,3 +38,5 @@ jobs:
         pytest qa327_test/sell/test.py
         pytest qa327_test/logout/test.py
         pytest qa327_test/exit_test/test_exit.py
+        pytest qa327_test/backend_buy_condition/test.py
+        pytest qa327_test/backend_sell_decision/test.py
