@@ -6,8 +6,8 @@
 # run this script by:
 # sh weekly.sh
 
-> data/user.csv
-> data/ticket.csv
+> data/updated_accounts.csv
+> data/updated_tickets.csv
 
 for i in $(seq 1 5);
 do
