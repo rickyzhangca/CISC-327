@@ -8,7 +8,7 @@ import unittest
 path = os.path.dirname(os.path.abspath(__file__))
 
 sys.path.append('qa327/')
-import backend
+import backend1
 
 ################################################################
 # if want to force printing to console:
@@ -55,7 +55,7 @@ def helper(
     out_user=case_folder+'/temp/updated_accounts.csv'
     out_transactions=[case_folder+'/temp/kingston_transactions.csv',case_folder+'/temp/montreal_transactions.csv',case_folder+'/temp/toronto_transactions.csv']
 
-    backend.main(in_ticket, in_user, in_transactions, out_ticket, out_user, out_transactions)
+    backend1.main(in_ticket, in_user, in_transactions, out_ticket, out_user, out_transactions)
 
     # users -> updated
     with open(out_user, 'r') as of:#open file

@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - master
-      - all-transactions-testing
+      - fix_bash
 
 jobs:
   build:
@@ -31,12 +31,5 @@ jobs:
     - name: Test with pytest
       run: |
         pip install pytest
-        pytest qa327_test/landing_test/test_landing.py
-        pytest qa327_test/register/test.py
-        pytest qa327_test/login/test.py
-        pytest qa327_test/buy/test.py
-        pytest qa327_test/sell/test.py
-        pytest qa327_test/logout/test.py
-        pytest qa327_test/exit_test/test_exit.py
         pytest qa327_test/backend_buy_condition/test.py
         pytest qa327_test/backend_sell_decision/test.py

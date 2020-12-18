@@ -51,7 +51,11 @@ class Repository:
     save to a database file
     '''
     def storeFile(self):
-        new_filename = self.filename
+         file = open(self.filename, 'w')
+         for i in self.collection:
+             file.write(i.toString())
+         file.close()
+        
 
 '''
 user database

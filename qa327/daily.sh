@@ -7,14 +7,17 @@
 # cd qa327
 # sh daily.sh
 
+> data/updated_accounts.csv
+> data/updated_tickets.csv
+
 # front end
-chmod +x frontend/app.py
-cat daily/daily_kingston.txt | python3 frontend/app.py kingston data/updated_accounts.csv data/updated_tickets.csv
-cat daily/daily_toronto.txt | python3 frontend/app.py toronto data/updated_accounts.csv data/updated_tickets.csv
-cat daily/daily_montreal.txt | python3 frontend/app.py montreal data/updated_accounts.csv data/updated_tickets.csv
+chmod +x frontend
+cat daily/daily_kingston.txt | python3 frontend kingston data/updated_accounts.csv data/updated_tickets.csv
+cat daily/daily_toronto.txt | python3 frontend toronto data/updated_accounts.csv data/updated_tickets.csv
+cat daily/daily_montreal.txt | python3 frontend montreal data/updated_accounts.csv data/updated_tickets.csv
 
 # back end 
 # chmod +x backend2/backend.py
 # python3 backend2/backend.py
 
-python3 -c 'import backend; backend.main()'
+python3 backend
